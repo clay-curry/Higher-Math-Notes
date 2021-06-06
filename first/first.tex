@@ -1,5 +1,31 @@
 \documentclass{article}
-\begin{document}
-My first \LaTeX~document!
-\end{document}
 
+
+\begin{document}
+
+\section{\TeX}
+
+Donald Knuth began writing the \textit{TeX} typesetting engine in 1977 to explore the potential of printing equipment that was beginning to infiltrate the publishing industry at that time.  The main job of \textit{TeX} was to serve as a markup language.The version numbers of \TeX are converging toward the mathematical constant $\pi$, with the current version being 3.1415926.
+
+
+The tools \TeX offers out of the box are relatively primitive, and learning how to perform common tasks can require a significant time investment. Fortunately, document preparation systems based on \TeX (such as \LaTeX), consisting of pre-built commands and macros, do exist.
+
+\section{\LaTeX and engines}
+
+\LaTeX is a set of macros for \TeX for simplifying typesetting, especially for documents containing mathematical formulae. The purpose of \LaTeX was to split the two aspects of \TeX, typographical and logical markup, so that a typesetter can make a template and then the writers can just focus on \LaTeX logical markup.
+
+In addition to the commands and options \LaTeX offers, many other authors have contributed extensions, called \textit{packages} or \textit{styles}, which you can use for your documents. Many of these are bundled with most TeX/LaTeX software distributions; more can be found in the Comprehensive TeX Archive Network.
+
+
+XeTeX is a \TeX engine which supports Unicode input and .ttf and .otf fonts. LuaTeX is a \TeX engine with embedded Lua support, aiming at making \TeX internals more flexible. Like XeTeX, LuaTeX supports Unicode input and modern font files.
+
+pdfTeX - generates PDF output.
+
+tex, latex - the "original" \TeX engine. Generates DVI output.
+
+\section{Installing \LaTeX}
+
+At a minimum, you'll need a \TeX distribution, a good text editor, and a PDF or DVI viewer. More specifically, the basic requirement is to have a \TeX compiler (which is used to generate output files from source), fonts, and the \LaTeX macro set. Optional and recommended installations include an attractive editor and a bibliographic management program to manage references if you use them a lot.
+
+
+ \end{document}
