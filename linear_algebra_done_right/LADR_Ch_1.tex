@@ -21,19 +21,15 @@
 % \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
 \usepackage{sectsty}
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage{mathtools}
+\usepackage{lipsum}
+\usepackage[skins]{tcolorbox}
+\usepackage{fancybox}
 
-%%% PACKAGE SETUP (amsthm) - DEFINITIONS, THEOREMS, LEMMAS, PROOFS
-\theoremstyle{definition} % \theoremstyle sets the styling for the numbered environment defined right below it
-% definition - boldface title, romand body--used in definitions, conditions, problems and examples
-\newtheorem{definition}{Def}[subsection] % A new environment is created, called using {definition}
-% At the start of the {definition}, LaTeX prints "Def"
-% The numbering of each {definition} restarts with each new [section]
-\theoremstyle{definition}
-\newtheorem{theorem}{Theorem}[subsection]
-\theoremstyle{plain}
-\newtheorem{lemma}{Lemma}[theorem]
-\theoremstyle{remark} %  italicized title, romman body. Commonly used in remarks, notes, annotations, claims, cases, acknowledgments and conclusions.
-\newtheorem*{remark}{Remark}
+
+%%% PACKAGE SETUP - DEFINITIONS, THEOREMS, LEMMAS, PROOFS
+\definecolor{theorems}{RGB}{236,238,251}
+\definecolor{definitions}{RGB}{246,244,231}
 
 
 %%% PACKAGE SETUP (sectsty) - SECTION TITLE APPEARANCE
@@ -49,9 +45,13 @@
 %%% END Article customizations
 
 %%% SHORTCUTS
-\newcommand\rn[1]{\mathbf{R}^#1}
-\newcommand\cn[1]{\mathbf{C}^#1}
-\newcommand\fn[1]{\mathbf{F}^#1}
+\newcommand\R[1]{\mathbf{R^#1}}
+\newcommand\C[1]{\mathbf{C^#1}}
+\newcommand\F[1]{\mathbf{F^#1}}
+
+\newenvironment{deff}%
+{\begin{Sbox}\begin{tcolorbox}[enhanced,colback=definitions,boxrule=0pt,frame hidden,sharp corners]}%
+{\end{tcolorbox}\end{Sbox}\Ovalbox{\TheSbox}}
 
 
 \title{\huge Book Notes \\ \LARGE {Linear Algebra Done Right}}
@@ -66,6 +66,30 @@
 
 Linear algebra is the study of linear maps on finite-dimensional vector spaces. Vector spaces are defined in this chapter, and their basic properties are developed. Vector spaces are a generalization of the description of a plane using two coordinates, as published by Descartes in 1637. 
 
-\subsection{$\rn n$ and $\cn n$}
+\subsection{$\R{n}$, $\C{n}$, and $\F{n}$}
+
+\begin{deff}
+\textbf {Complex Numbers}
+
+A \textbf{complex number} is an ordered pair $(a,b) \in \mathbf{R}^2$, denoted $a + bi$.
+\end{deff}
+
 
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
