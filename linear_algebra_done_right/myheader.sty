@@ -1,0 +1,58 @@
+%%% PACKAGES
+\usepackage{amsthm} % American Mathematical Society: typesetting theorems 
+\usepackage{amsmath} % American Mathematical Society: 
+\usepackage{amssymb} % American Mathematical Society: typesetting math symbols
+\usepackage[english]{babel} % These packages are all incorporated in the memoir class to one degree or another...
+\usepackage{graphicx} % support the \includegraphics command and options
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{sectsty}
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage{mathtools}
+\usepackage{lipsum}
+\usepackage[skins]{tcolorbox}
+\usepackage{fancybox}
+\usepackage{setspace}
+
+%%% Reserved Characters
+% The following symbols are reserved characters that either have  special meaning under LaTeX or are unavailable in all the fonts:
+% # $ % ^ & _ { } ~ \
+% \# \$ \% \^{} \& \_ \{ \} \~{} \textbackslash{}
+
+
+%%% PACKAGE SETUP (sectsty) - SECTION TITLE APPEARANCE
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% SHORTCUTS
+\newcommand\R[1]{\mathbf{R^#1}}
+\newcommand\C[1]{\mathbf{C^#1}}
+\newcommand\F[1]{\mathbf{F^#1}}
+
+% DEFINITION
+\definecolor{defs-back}{RGB}{246,244,231}
+\definecolor{defs-frame}{RGB}{255,246,1}
+\newenvironment{deff}[1]%
+{\begin{tcolorbox}[colback=defs-back,colframe=defs-frame,coltitle=black,title=\textbf{Definition: #1}]}%
+{\end{tcolorbox}}
+
+% THEOREM
+\definecolor{thms-frame}{RGB}{246,24,23}
+\definecolor{thms-back}{RGB}{255,230,230}
+\newenvironment{thmm}[1]%
+{\begin{tcolorbox}[colback=thms-back,colframe=thms-frame,coltitle=black,title=\textbf{Theorem: #1}]}%
+{\end{tcolorbox}}
+
+% PROPERTY
+\definecolor{prop-frame}{RGB}{0,0,153}
+\definecolor{prop-back}{RGB}{111,111,255}
+\newenvironment{proo}[1]%
+{\begin{tcolorbox}[colback=thms-back,colframe=thms-frame,coltitle=black,title=\textbf{Theorem: #1}]}%
+{\end{tcolorbox}}
+
+

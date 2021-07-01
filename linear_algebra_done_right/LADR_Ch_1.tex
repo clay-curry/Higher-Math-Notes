@@ -7,54 +7,11 @@
 %%% PAGE DIMENSIONS
 \usepackage{geometry} % to change the page dimensions
 \geometry{a4paper} % or letterpaper (US) or a5paper or....
-% \geometry{margin=2in} % for example, change the margins to 2 inches all round
-% \geometry{landscape} % set up the page for landscape
-%   read geometry.pdf for detailed page layout information
+ \geometry{margin=20mm} % for example, change the margins to 2 inches all round
+\usepackage{myheader}
 
 
-%%% PACKAGES
-\usepackage{amsthm} % American Mathematical Society: typesetting theorems 
-\usepackage{amsmath} % American Mathematical Society: 
-\usepackage{amssymb} % American Mathematical Society: typesetting math symbols
-\usepackage[english]{babel} % These packages are all incorporated in the memoir class to one degree or another...
-\usepackage{graphicx} % support the \includegraphics command and options
-% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
-\usepackage{sectsty}
-\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
-\usepackage{mathtools}
-\usepackage{lipsum}
-\usepackage[skins]{tcolorbox}
-\usepackage{fancybox}
-
-
-%%% PACKAGE SETUP - DEFINITIONS, THEOREMS, LEMMAS, PROOFS
-\definecolor{theorems}{RGB}{236,238,251}
-\definecolor{definitions}{RGB}{246,244,231}
-
-
-%%% PACKAGE SETUP (sectsty) - SECTION TITLE APPEARANCE
-\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
-% (This matches ConTeXt defaults)
-
-%%% ToC (table of contents) APPEARANCE
-\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
-\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
-\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
-\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
-
-%%% END Article customizations
-
-%%% SHORTCUTS
-\newcommand\R[1]{\mathbf{R^#1}}
-\newcommand\C[1]{\mathbf{C^#1}}
-\newcommand\F[1]{\mathbf{F^#1}}
-
-\newenvironment{deff}%
-{\begin{Sbox}\begin{tcolorbox}[enhanced,colback=definitions,boxrule=0pt,frame hidden,sharp corners]}%
-{\end{tcolorbox}\end{Sbox}\Ovalbox{\TheSbox}}
-
-
-\title{\huge Book Notes \\ \LARGE {Linear Algebra Done Right}}
+\title{\LARGE {Linear Algebra Done Right}}
 \author{Sheldon Axler}
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
@@ -68,11 +25,28 @@ Linear algebra is the study of linear maps on finite-dimensional vector spaces. 
 
 \subsection{$\R{n}$, $\C{n}$, and $\F{n}$}
 
-\begin{deff}
-\textbf {Complex Numbers}
+\begin{deff}{Complex Number}
 
 A \textbf{complex number} is an ordered pair $(a,b) \in \mathbf{R}^2$, denoted $a + bi$.
+\begin{itemize}
+\item The set of all complex numbers is denoted by $\mathbf{C}$:
+  $$
+    \mathbf{C} = \{a+bi : a,b \in \mathbf{R}\}
+  $$
+ \item \textbf{Addition and multiplication} on $\mathbf{C}$ are defined by
+  $$
+  (a + bi) + (c + di) \equiv (a + c) + (b + d)i 
+  $$
+  $$
+  (a + bi)\cdot(c+di) \equiv (ac - bd) + (ad + bc)i
+  $$
+\end{itemize}
 \end{deff}
+
+\begin{thmm}{Complex Number}
+
+A \textbf{complex number} is an ordered pair $(a,b) \in \mathbf{R}^2$, denoted $a + bi$.
+\end{thmm}
 
 
 \end{document}

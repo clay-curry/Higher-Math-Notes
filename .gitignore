@@ -1,3 +1,4 @@
-*.log
-*.aux
-*.gz
+LADR_Ch_1.out
+LADR_Ch_1.aux
+LADR_Ch_1.log
+LADR_Ch_1.synctex.gz
