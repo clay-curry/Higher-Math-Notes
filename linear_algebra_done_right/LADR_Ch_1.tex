@@ -3,15 +3,19 @@
 
 \documentclass[11pt]{article} % use larger type; default would be 10pt
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
-
 \usepackage{clays_notes}
 
-\title{\LARGE {Linear Algebra Done Right}}
-\author{Sheldon Axler}
-\date{July 1, 2021}
+% FONT STYLES
+
+\title{Linear Algebra Done Right \\ Axler, Sheldon}
+\author{Notes by:  \\ Clay Curry}
+\date{}
 
 \begin{document}
+
 \maketitle
+\tableofcontents
+\clearpage
 
 \section{Vector Spaces}
 
@@ -19,28 +23,56 @@ Linear algebra is the study of linear maps on finite-dimensional vector spaces. 
 
 \subsection{$\R{n}$, $\C{n}$, and $\F{n}$}
 
-\begin{deff}{Complex Number}
+\definition
+{Complex Number}
+{A \textbf{complex number} is an ordered pair $(a,b) \in \mathbf{R}^2$, denoted $a + bi$. 
+	\points
+	{
+	The set of all complex numbers is denoted by $\C{ }$: 
+	\mathdiv{\C{ } = \{a+bi : a,b \in \R{ } \}}
+	}
+	{
+	\textbf{Addition and multiplication} on $\C{ }$ are defined by
+	  \mathdiv{ (a + bi) + (c + di) \equiv (a + c) + (b + d)i }
+	  \mathdiv{(a + bi)\cdot(c+di) \equiv (ac - bd) + (ad + bc)i }
+	}
+}
 
-A \textbf{complex number} is an ordered pair $(a,b) \in \mathbf{R}^2$, denoted $a + bi$.
-\begin{itemize}
-\item The set of all complex numbers is denoted by $\mathbf{C}$:
-  $$
-    \mathbf{C} = \{a+bi : a,b \in \mathbf{R}\}
-  $$
- \item \textbf{Addition and multiplication} on $\mathbf{C}$ are defined by
-  $$
-  (a + bi) + (c + di) \equiv (a + c) + (b + d)i 
-  $$
-  $$
-  (a + bi)\cdot(c+di) \equiv (ac - bd) + (ad + bc)i
-  $$
-\end{itemize}
-\end{deff}
 
-\begin{thmm}{Complex Number}
 
-A \textbf{complex number} is an ordered pair $(a,b) \in \mathbf{R}^2$, denoted $a + bi$.
-\end{thmm}
+The following properies are proven using the familiar properites of real numbers and the definition of complex addition and multiplication.
+
+\property{Properties of Complex Numbers}
+{
+\points
+{\textbf{Commutativity : } $\alpha + \beta = \beta + \alpha$ and $\alpha\beta = \beta\alpha$ for all $\alpha, \beta \in \mathbf{C}$}
+{\textbf{Associativity : } $(\alpha + \beta) + \lambda = \alpha + (\beta + \lambda)$ and $(\alpha \cdot \beta)\cdot \lambda = \alpha \cdot (\beta \cdot \lambda)$ for all  $\alpha, \beta, \lambda \in \mathbf{C}$}
+{\textbf{Identities : } $\lambda + e_+ \equiv \lambda + 0 \equiv \lambda$ and $\lambda \cdot e_\cdot \equiv \lambda \cdot 1 \equiv \lambda$ for all $\lambda \in \mathbf{C}$}
+{\textbf{Additive Inverse : } $\forall \alpha \in \mathbf{C}, \exists \beta \in \mathbf{C}$, such that $\alpha + \beta = e_+ = 0$}
+{\textbf{Multiplicative Inverse : } $\forall \alpha \in \mathbf{C}, \exists \beta \in \mathbf{C}$, such that $\alpha \cdot \beta = e_\cdot = 1$}
+{\textbf{Distributive Property} $\lambda \cdot (\alpha + \beta) = \lambda \cdot \alpha + \lambda \cdot \beta$, for all $\alpha, \beta, \lambda \in \mathbf{C}$}
+}
+
+
+\definition{Constructed Operations on $\C{}$: Subtraction and Division}
+{
+Let $\alpha, \beta \in \C{}$.
+	\points
+	{Let $-\alpha$ denote the additive inverse of $\alpha$.  Thus, $-\alpha$ is the unique element of $\C{}$ such that $\alpha+ (-\alpha) = 0$.}
+	{Subtraction on $\C{}$ is defined by \mathdiv{\beta - \alpha = \beta + (-\alpha)}}
+	{Let $(1/\alpha)$ denote the multiplicative inverse of $\alpha$.  Thus, $(1/\alpha)$ is the unique element of $\C{}$ such that $\alpha \cdot (1/\alpha) = 1$.}
+	{Division on \textbf{C} is defined by \mathdiv{\beta/\alpha = \beta \cdot (1/\alpha)}}
+	}
+
+
+Throughout these notes, $\F{}$ stands for either $\R{}$ or $\C{}$. The letter $\F{}$ is used because $\R{}$ and $\C{}$ are examples of the algebraic structure known as a \textbf{field}.
+
+
+\definition{}{}
+
+\theorem{}{}{}
+
+\property{}{}
 
 
 \end{document}

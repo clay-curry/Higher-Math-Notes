@@ -55,14 +55,9 @@
 
 
 %%% NOTATIONAL SHORTCUTS
-\newcommand\R[1]{\mathbf{R^{#1}}}
-\newcommand\C[1]{\mathbf{C^{#1}}}
-\newcommand\F[1]{\mathbf{F^{#1}}}
-\newcommand\mathdiv[1]{
-$$
-#1
-$$
-}
+\newcommand\R[1]{\mathbf{R^#1}}
+\newcommand\C[1]{\mathbf{C^#1}}
+\newcommand\F[1]{\mathbf{F^#1}}
 
 % DEFINITION
 \definecolor{defs-back}{RGB}{246,244,231}
@@ -84,6 +79,7 @@ Proof:
 \hfill \ensuremath{\Box}
 }
 
+
 % PROPERTY
 \definecolor{prop-frame}{RGB}{150,169,220}
 \definecolor{prop-back}{RGB}{217,245,254}
@@ -98,7 +94,7 @@ Proof:
 % This code can use @ in macro names
 \newcommand{\points}[1]{%
 \begin{itemize}
-\item #1 \checknextarg
+\item #1 \\ \checknextarg
 }
 \newcommand{\checknextarg}{\@ifnextchar\bgroup{\gobblenextarg}{\end{itemize}}}
 \newcommand{\gobblenextarg}[1]{\item #1\@ifnextchar\bgroup{\gobblenextarg}{\end{itemize}}}
