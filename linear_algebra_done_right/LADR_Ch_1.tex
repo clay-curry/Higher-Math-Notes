@@ -5,6 +5,8 @@
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 \usepackage{clays_notes}
 
+\newcommand\V{\mathbf{V}}
+
 % FONT STYLES
 
 \title{Linear Algebra Done Right \\ Axler, Sheldon}
@@ -25,20 +27,25 @@ Linear algebra is the study of linear maps on finite-dimensional vector spaces. 
 
 \definition
 {Complex Number}
-{A \textbf{complex number} is an ordered pair $(a,b) \in \mathbf{R}^2$, denoted $a + bi$. 
+{
+A \textbf{complex number} is an ordered pair $(a,b) \in \mathbf{R}^2$, denoted $a + bi$. 
 	\points
 	{
 	The set of all complex numbers is denoted by $\C{ }$: 
 	\mathdiv{\C{ } = \{a+bi : a,b \in \R{ } \}}
 	}
-	{
-	\textbf{Addition and multiplication} on $\C{ }$ are defined by
-	  \mathdiv{ (a + bi) + (c + di) \equiv (a + c) + (b + d)i }
-	  \mathdiv{(a + bi)\cdot(c+di) \equiv (ac - bd) + (ad + bc)i }
-	}
 }
 
+Relations on any collection of mathematical objects are the mathematical tools used to \textit{describe} the additional structure or relationships \textit{defined/discovered} between those objects. For example, the relation $1 < 2$ is true because $<$ semantically depends on the "ordering" in $\R{}$ that defines 1 to be "less than" 2. 
 
+Operations are a special kind of kind of function that map zero or more input values from a set $S$ to a well-defined output in $S$. The reason we consider the following statements to be "Properties of Complex Numbers", rather than "Properties of Operations on Complex Numbers" is because operations such as addition, multiplication, negation, and exponentiation describe actual structure and relationships between numbers in $\C{}$.
+
+\definition{Operations on Complex Numbers}
+{
+\textbf{Addition and multiplication} on $\C{ }$ are defined by
+\mathdiv{ (a + bi) + (c + di) \equiv (a + c) + (b + d)i }
+\mathdiv{(a + bi)\cdot(c+di) \equiv (ac - bd) + (ad + bc)i }
+}
 
 The following properies are proven using the familiar properites of real numbers and the definition of complex addition and multiplication.
 
@@ -52,7 +59,9 @@ The following properies are proven using the familiar properites of real numbers
 {\textbf{Multiplicative Inverse : } $\forall \alpha \in \mathbf{C}, \exists \beta \in \mathbf{C}$, such that $\alpha \cdot \beta = e_\cdot = 1$}
 {\textbf{Distributive Property} $\lambda \cdot (\alpha + \beta) = \lambda \cdot \alpha + \lambda \cdot \beta$, for all $\alpha, \beta, \lambda \in \mathbf{C}$}
 }
+\clearpage
 
+The following operations are defined for convenience of thinking and proof-writing. They do not ordain a set with any additional structure beyond what is already defined by their parent operations.
 
 \definition{Constructed Operations on $\C{}$: Subtraction and Division}
 {
@@ -62,18 +71,187 @@ Let $\alpha, \beta \in \C{}$.
 	{Subtraction on $\C{}$ is defined by \mathdiv{\beta - \alpha = \beta + (-\alpha)}}
 	{Let $(1/\alpha)$ denote the multiplicative inverse of $\alpha$.  Thus, $(1/\alpha)$ is the unique element of $\C{}$ such that $\alpha \cdot (1/\alpha) = 1$.}
 	{Division on \textbf{C} is defined by \mathdiv{\beta/\alpha = \beta \cdot (1/\alpha)}}
-	}
-
+}
 
 Throughout these notes, $\F{}$ stands for either $\R{}$ or $\C{}$. The letter $\F{}$ is used because $\R{}$ and $\C{}$ are examples of the algebraic structure known as a \textbf{field}.
 
+\definition{List, length}
+{
+Suppose $n \in \mathbb{N}$. A \textbf{list} of \textbf{length} $n$ is an ordered collection of $n$ elements (e.g. numbers, other lists, functions, more abstract entities) separated by commas and--optionally--surrounded by parentheses. Many mathematicians call a list of length $n$ an $\mathbf{n}$\textbf{-tuple}.
+	
+	\points
+	{Two lists are \textbf{equal} means they have the same length and the same elements in the same order.}
+	{$\F{n}$ is the set of all lists of length $n$ of elements of $\F{}$. \mathdiv{\F{n} = \{ (x_1, \ldots, x_n) : x_1, \ldots, x_n \in \F{} \}}}
+	{For $(x_1, \ldots, x_n) \in \F{n}$ and $j \in \{1, \ldots, n\}$, we say that $x_j$ is the $j^\text{th}$ \textbf{coordinate} of $(x_1, \ldots, x_n)$.}
+}
 
-\definition{}{}
+Having defined a basic set of mathematical objects, $\F{n}$, it is possible to define operations that describe the structure existing between them.
 
-\theorem{}{}{}
+\definition{Addition in $\F{n}$}
+{
+The \textbf{sum} of two elements $\mathbf{x, y} \in \F{n}$, denoted $\mathbf{x + y}$ and properly read as "\textbf{the sum of $\mathbf{x}$ and $\mathbf{y}$}"), is computed by adding the cooresponding coordinates.
+\mathdiv{(x_1, \ldots, x_n) + (y_1, \ldots, y_n) \equiv (x_1 + y_1, \ldots, x_n + y_n) }
+}
 
-\property{}{}
+\definition{0}
+{Let \textbf{0} denote the additive identity in $\F{n}$, that is, the list of length $n$ whose coordinates are all 0: \mathdiv{\mathbf{0} = (0, \ldots, 0).}}
 
+\definition{Additive Inverse}
+{
+For $x \in \F{n}$, the additive inverse of $x$, denoted $-x$, is the vector $-x \in \F{n}$ that maps the vector $x$ under addition to the additive identity of $\F{n}$: \mathdiv{x + (-x) = 0}.
+}
+
+Commutativity of addition is the symmetric property of addition in $\F{}$ denoting the invariance between permutations of operands. In other words, the ``sum" of $x$ and $y$ is the same for all permutations of $x$ and $y$.
+
+\theorem{Commutativity of addition in $\F{n}$}
+{If $x, y \in \F{n}$, then $x + y = y + x$.}
+{
+Choose any $x, y$.
+	\begin{align*}
+	x + y &= (x_1, \ldots, x_n) + (y_1, \ldots, y_n) \\
+		&= (x_1 + y_1, \ldots, x_n + y_n) \\
+		&= (y_1 + x_1, \ldots, y_n + x_n) \\
+		&= (y_1, \ldots, y_n) + (x_1, \ldots, x_n) \\
+		&= y + x
+	\end{align*}
+}
+\clearpage
+
+\subsection{Definition of Vector Space}
+
+The motivation for the definition of a vector space comes from properties of addition and scalar multiplication in $\F{n}$:
+	\points
+	{$+$ is commutative, associative, has an identity, pair each element with an additive inverse.}
+	{$\cdot$ is associative, has an identity.}
+	{$+$ and $\cdot$ are connected by distributive properties. }
+
+\definition{Addition, Scalar Multiplication}
+{
+\points
+{An \textbf{Addition} on a set $V$ is a function that assigns an element $u + v \in V$ to each pair of elements $u, v \in V$.}
+{A \textbf{Scalar Multiplication} on a set $V$ is a function that assigns an element $\lambda v \in V$ to each $\lambda \in \textbf{F}$ and each $v \in V$.}
+}
+
+Formal definition for a Vector Space:
+
+\definition{Vector Space}
+{
+A \textbf{Vector Space} is a set $V$ with an addition $+ : V \times V \rightarrow V$ on V and scalar multiplication $\cdot : F \times V \rightarrow V$ on V such that the following properties hold:
+	\points
+	{\textbf{Commutativity} : $u + v = v + u \text{ for all } u,v \in V$;}
+	{\textbf{Associativity} : $(u + v) + w = u + (v + w) \text{ and } a (bv) = (ab) v \text{ for all } u, v, w \in V \text{ and all } a, b \in \mathbf{F}$;}
+	{\textbf{Additive Identity} : $\exists \hspace{4 pt} \mathbf{0} \in V\text{, such that } \mathbf{0} + v = v,$ for all $v \in V$;}
+	{\textbf{Additive Inverse} : For all $v \in V$, there exists $-v \in V$ such that $v + (-v) = \mathbf{0}$;}
+	{\textbf{Multiplicative Identity} : $\mathbf{1} \cdot v = v$ as expected for $\mathbf{1} \in \mathbf{F}$;}
+	{\textbf{Distributive Properties} : Addition and Scalar Multiplication satisfy the following two relations:
+	\mathdiv{a (v + u) = av + au \text{ for all } a \in F \text{ and } u, v \in V, \\}
+	\mathdiv{(a + b) v = av + bv \text{ for all } a, b \in F \text{ and } v \in V.}
+	}
+}
+
+Since the properties of a vector space depend on properties of scalar multiplication, which itself depends on the choice of $\F{}$, the phrase \textbf{``$\V$ is a vector space over $\F{}$"} indicates that $\V$ is a vector space and, for the situation at hand, the choice of scalar field is $\F{}$.
+
+\definition{Real Vector Space, Complex Vector Space}
+{
+\points
+{A vector space over $\R{}$ is called a \textbf{real vector space}.}
+{A vector space over $\C{}$ is called a \textbf{complex vector space}.}
+}
+
+The following geometric language is defined for convenience of thinking. \textbf{Linear algebra} studies the \textit{\textbf{algebra}} of vector spaces; intuition depending greatly on geometric insight will significantly hamper the development of algebraic insight. 
+
+\clearpage
+
+Common geometric concepts like ``angle", ``orientation", and ``distance" (unless we consider a vector space with an \textit{inner product}) between points and vectors do not ordain a vector space with additional structure beyond what is already defined by the basic operations. For dealing with these ideas in linear algebra, the \textit{inner product} and \textit{inner product spaces} is a later topic of discussion.
+
+\definition{Vector, Point}
+{Elements of a vector space are called \textbf{vectors} or \textbf{points}.}
+
+The following operation is defined for convenience of thinking and proof-writing. It does not ordain a set with any additional structure beyond what is already defined by its parent operation.
+
+\definition{Subtraction}
+{
+Let $v, w \in V$. Then 
+	\points
+	{$-v$ denotes the additive inverse of $v$;}
+	{$w-v$ is defined to be $w + (-v)$.}
+}
+
+There are many more examples of vector spaces than $\F{n}$.
+
+\definition{$\F{S}$}
+{
+If $S$ is a set, then $\mathbf{F}^S$ denotes the set of functions $\{ f : f : S \rightarrow \mathbf{F}\}$. For $f, g \in \mathbf{F}^S$, addition and scalar multiplication are defined by:
+	\points
+	{\mathdiv{(f+g)(x) = f(x) + g(x)}    for all $x \in S$.}
+	{\mathdiv{(\lambda \cdot f)(x) = \lambda \cdot f(x)}    for all $x \in S$.}
+It is easy to verify that $\F{S}$ is a vector space.
+}
+
+The following theorems hold for all vector spaces.
+
+\theorem{Unique Additive Identity}
+{Every vector space has a unique additive identity.}
+{}
+
+\theorem{Unique Additive Inverse}
+{Every element in a vector space has a unique additive inverse.}
+{}
+
+\theorem{The Annihilating Scalar}
+{$0 \cdot v = 0 \in V$ for every $v \in V$.}
+{}
+
+\theorem{Scaling the Additive Identity}
+{$a \cdot 0  = 0 \in V$ for every $a \in \textbf{F}$.}
+{}
+
+\theorem{The number (-1) as a Scalar}
+{$(-1) \cdot v = -v$ for every $v \in V$.}
+{}
+
+%%%%%%%%%%%%%%%%
+% Section 1.3 : Subspaces
+%%%%%%%%%%%%%%%%
+\clearpage
+\subsection{Subspaces}
+
+The concept of subspaces greatly increases the richness of the subject as a tool for discovery.
+
+\definition{Subspace}
+{A subset $U \subset \V$ over $\F{}$ is called a subspace of $\V$ if $U$ is also a vector space over $\F{}$.}
+
+The next result gives an easy way to check whether a subset of a vector space is a subspace.
+\theorem{Conditions for a Subspace}
+{
+A subset $U \subset V$ is a subspace of V over \textbf{F} if and only if $U$ satisfies the following:
+	\points
+	{\textbf{Additive Identity: }$0 \in U$;}
+	{\textbf{Closure Under Addition: } $u, w \in U \implies u + w \in U$;}
+	{\textbf{Closure Under Scalar Multiplication: } $u \in U \implies \lambda \cdot u \in U$ for every $\lambda \in \textbf{F}$.}
+}
+{}
+
+\vspace{10 pt}
+Given the above result, it is easy to verify that each of the following are subspaces.
+\points
+	{
+	If $b \in \textbf{F}$, then \mathdiv{ \{(x_1, x_2, x_3, x_4) \in \mathbf{F^4} : x_3 = 5x_4 + b\} }
+    	is a subspace of $\mathbf{F^4}$ if and only if $b=0.$
+	}
+    	{The set of continuous real-valued functions on the interval $[0, 1]$ is a subspace of $\mathbf{R}^{[0,1]}$.}
+    	{The set of differentiable real-valued functions on \textbf{R} is a subspace of $\mathbf{R^R}$.}
+    	{The set of differentiable real-valued functions $f$ on the interval $(0, 3)$ such that $f'(2)=b$ is a subspace of $\mathbf{R}^(0, 3)$ if and only if $b = 0$.}
+    	{The set of all sequences of complex numbers with limit 0 is a subspace of $\mathbf{C}^\infty$.}
+
+
+The notion of the sum of subspaces will be useful.
+
+\definition{Sum of Subsets}
+{
+Suppose $U_1, \ldots, U_m \subset \V$. The \textbf{sum} of $U_1, \ldots, U_m$, denoted $U_1 + \cdots + U_m$, is the set of all possible sums of elements of $U_1, \ldots, U_m$. More precisely,
+\mathdiv{ U_1 + \cdots + U_m = \{u_1 + \cdots + u_m \in \V : u_1 \in U_1, \ldots, u_m \in U_M \} }
+}
 
 \end{document}
 
