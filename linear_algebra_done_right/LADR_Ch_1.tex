@@ -25,6 +25,9 @@ Linear algebra is the study of linear maps on finite-dimensional vector spaces. 
 
 \subsection{$\R{n}$, $\C{n}$, and $\F{n}$}
 
+\subsubsection{Complex Numbers}
+Complex numbers were invented so that we can take square roots of negative numbers. The idea is to assume we have a square root of $-1$, denoted $i$, that obeys the usual rules of arithemetic. Here are the formal definitions:
+
 \definition
 {Complex Number}
 {
@@ -75,6 +78,8 @@ Let $\alpha, \beta \in \C{}$.
 
 Throughout these notes, $\F{}$ stands for either $\R{}$ or $\C{}$. The letter $\F{}$ is used because $\R{}$ and $\C{}$ are examples of the algebraic structure known as a \textbf{field}.
 
+\subsubsection{From $\F{}$ to $\F{n}$}
+
 \definition{List, length}
 {
 Suppose $n \in \mathbb{N}$. A \textbf{list} of \textbf{length} $n$ is an ordered collection of $n$ elements (e.g. numbers, other lists, functions, more abstract entities) separated by commas and--optionally--surrounded by parentheses. Many mathematicians call a list of length $n$ an $\mathbf{n}$\textbf{-tuple}.
@@ -89,7 +94,7 @@ Having defined a basic set of mathematical objects, $\F{n}$, it is possible to d
 
 \definition{Addition in $\F{n}$}
 {
-The \textbf{sum} of two elements $\mathbf{x, y} \in \F{n}$, denoted $\mathbf{x + y}$ and properly read as "\textbf{the sum of $\mathbf{x}$ and $\mathbf{y}$}"), is computed by adding the cooresponding coordinates.
+The \textbf{sum} of two elements $\mathbf{x, y} \in \F{n}$, denoted $\mathbf{x + y}$ (and properly read in all mathematical settings as "\textbf{the sum of $\mathbf{x}$ and $\mathbf{y}$}"), is computed by adding the cooresponding coordinates.
 \mathdiv{(x_1, \ldots, x_n) + (y_1, \ldots, y_n) \equiv (x_1 + y_1, \ldots, x_n + y_n) }
 }
 
@@ -101,12 +106,12 @@ The \textbf{sum} of two elements $\mathbf{x, y} \in \F{n}$, denoted $\mathbf{x +
 For $x \in \F{n}$, the additive inverse of $x$, denoted $-x$, is the vector $-x \in \F{n}$ that maps the vector $x$ under addition to the additive identity of $\F{n}$: \mathdiv{x + (-x) = 0}.
 }
 
-Commutativity of addition is the symmetric property of addition in $\F{}$ denoting the invariance between permutations of operands. In other words, the ``sum" of $x$ and $y$ is the same for all permutations of $x$ and $y$.
+Commutativity is a symmetric property of an operation. It denotes the invariance between permutations of operands under an operation.
 
 \theorem{Commutativity of addition in $\F{n}$}
 {If $x, y \in \F{n}$, then $x + y = y + x$.}
 {
-Choose any $x, y$.
+Choose any $x, y \in \F{}$.
 	\begin{align*}
 	x + y &= (x_1, \ldots, x_n) + (y_1, \ldots, y_n) \\
 		&= (x_1 + y_1, \ldots, x_n + y_n) \\
@@ -114,7 +119,11 @@ Choose any $x, y$.
 		&= (y_1, \ldots, y_n) + (x_1, \ldots, x_n) \\
 		&= y + x
 	\end{align*}
+Hence, for any $x, y \in \F{} \implies x + y = y + x$
 }
+
+\vspace{10 pt}
+In previous words, \textbf{``the sum of $\mathbf{x}$ and $\mathbf{y}$"} is the same as \textbf{``the sum of $\mathbf{y}$ and $\mathbf{x}$"}.
 \clearpage
 
 \subsection{Definition of Vector Space}
@@ -162,7 +171,7 @@ The following geometric language is defined for convenience of thinking. \textbf
 
 \clearpage
 
-Common geometric concepts like ``angle", ``orientation", and ``distance" (unless we consider a vector space with an \textit{inner product}) between points and vectors do not ordain a vector space with additional structure beyond what is already defined by the basic operations. For dealing with these ideas in linear algebra, the \textit{inner product} and \textit{inner product spaces} is a later topic of discussion.
+Common geometric notions  like ``angle", ``orientation", and ``distance" between points and vectors (unless we consider a vector space with an \textit{inner product})  do not ordain a vector space with additional structure beyond what is already defined by the basic operations. For dealing with these ideas in linear algebra, the \textit{inner product} and \textit{inner product spaces} is a later topic of discussion.
 
 \definition{Vector, Point}
 {Elements of a vector space are called \textbf{vectors} or \textbf{points}.}
@@ -190,9 +199,16 @@ It is easy to verify that $\F{S}$ is a vector space.
 
 The following theorems hold for all vector spaces.
 
+
 \theorem{Unique Additive Identity}
 {Every vector space has a unique additive identity.}
-{}
+{
+Suppose $0$ and $0'$ are additive identities in $V$.
+	\begin{align}
+	0 = 0 + 0' = 0' + 0 = 0'
+	\end{align*}
+where the first equality holds because $0$ hold its identity under adddition with $0'$; the second equality holds by the commutative property of addition in vector spaces, and the final equality holds because $0'$ hold its identity under adddition with $0$. Hence, any two elements that act like the additive identity are equal.
+}
 
 \theorem{Unique Additive Inverse}
 {Every element in a vector space has a unique additive inverse.}
