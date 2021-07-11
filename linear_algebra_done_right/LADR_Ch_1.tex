@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 \usepackage{clays_notes}
 
+\newcommand\U{\mathbf{U}}
 \newcommand\V{\mathbf{V}}
 
 % FONT STYLES
@@ -144,16 +145,16 @@ Formal definition for a Vector Space:
 
 \definition{Vector Space}
 {
-A \textbf{Vector Space} is a set $V$ with an addition $+ : V \times V \rightarrow V$ on V and scalar multiplication $\cdot : F \times V \rightarrow V$ on V such that the following properties hold:
+A \textbf{Vector Space} is a set $\V$ with an addition $+ : \V \times \V \rightarrow \V$ on $\V$ and scalar multiplication $\cdot : \F{} \times \V \rightarrow \V$ on $\V$ such that the following properties hold:
 	\points
-	{\textbf{Commutativity} : $u + v = v + u \text{ for all } u,v \in V$;}
-	{\textbf{Associativity} : $(u + v) + w = u + (v + w) \text{ and } a (bv) = (ab) v \text{ for all } u, v, w \in V \text{ and all } a, b \in \mathbf{F}$;}
-	{\textbf{Additive Identity} : $\exists \hspace{4 pt} \mathbf{0} \in V\text{, such that } \mathbf{0} + v = v,$ for all $v \in V$;}
-	{\textbf{Additive Inverse} : For all $v \in V$, there exists $-v \in V$ such that $v + (-v) = \mathbf{0}$;}
+	{\textbf{Commutativity} : $u + v = v + u \text{ for all } u,v \in \V$;}
+	{\textbf{Associativity} : $(u + v) + w = u + (v + w) \text{ and } a (bv) = (ab) v \text{ for all } u, v, w \in \V \text{ and all } a, b \in \mathbf{F}$;}
+	{\textbf{Additive Identity} : $\exists \hspace{4 pt} \mathbf{0} \in \V\text{, such that } \mathbf{0} + v = v,$ for all $v \in \V$;}
+	{\textbf{Additive Inverse} : For all $v \in \V$, there exists $-v \in \V$ such that $v + (-v) = \mathbf{0}$;}
 	{\textbf{Multiplicative Identity} : $\mathbf{1} \cdot v = v$ as expected for $\mathbf{1} \in \mathbf{F}$;}
 	{\textbf{Distributive Properties} : Addition and Scalar Multiplication satisfy the following two relations:
-	\mathdiv{a (v + u) = av + au \text{ for all } a \in F \text{ and } u, v \in V, \\}
-	\mathdiv{(a + b) v = av + bv \text{ for all } a, b \in F \text{ and } v \in V.}
+	\mathdiv{a (v + u) = av + au \text{ for all } a \in F \text{ and } u, v \in \V, \\}
+	\mathdiv{(a + b) v = av + bv \text{ for all } a, b \in F \text{ and } v \in \V.}
 	}
 }
 
@@ -179,7 +180,7 @@ The following operation is defined for convenience of thinking and proof-writing
 
 \definition{Subtraction}
 {
-Let $v, w \in V$. Then 
+Let $v, w \in \V$. Then 
 	\points
 	{$-v$ denotes the additive inverse of $v$;}
 	{$w-v$ is defined to be $w + (-v)$.}
@@ -203,27 +204,55 @@ The following theorems hold for all vector spaces.
 {Every vector space has a unique additive identity.}
 {
 Suppose $0$ and $0'$ are additive identities in $V$.
-	\begin{align*}
+Suppose $0$ and $0'$ are additive identities in $\V$.
+\mathdiv{
 	0 = 0 + 0' = 0' + 0 = 0'
-	\end{align*}
-where the first equality holds because $0$ hold its identity under adddition with $0'$; the second equality holds by the commutative property of addition in vector spaces, and the final equality holds because $0'$ hold its identity under adddition with $0$. Hence, any two elements that act like the additive identity are equal.
 }
+where the first equality holds because $0$ hold its identity under adddition with $0'$; the second equality holds by the commutative property of addition in vector spaces, and the final equality holds because $0'$ hold its identity under adddition with $0$. Hence, any two elements that are additive identities in $\V$ are, in fact, equal. Every vector space has a unique additive identity.
+}
+\clearpage
 
 \theorem{Unique Additive Inverse}
 {Every element in a vector space has a unique additive inverse.}
-{}
+{
+Take any $u, v, w \in \V$ where $u + v = 0$ and $u + w = 0$. Then
+	\begin{align*}
+	v 	&= v + 0 \\
+		&= v + (u + w) \\
+		&= (v + u) + w \\
+		&= (u + v) + w \\
+		&= 0 + w \\
+		&= w \\
+	\end{align*}
+Hence, any two elements that are additive inverses of some $u \in \V$ are, in fact, equal. Every element in a vector space has a unique additive inverse.
+}
 
 \theorem{The Annihilating Scalar}
-{$0 \cdot v = 0 \in V$ for every $v \in V$.}
-{}
+{$0 \cdot v = 0 \in \V$ for every $v \in \V$.}
+{
+Take any $v \in \V$. Notice 
+\mathdiv{0 \cdot v = (0 + 0) \cdot v = 0 \cdot v + 0 \cdot v.}
+Since every element in $\V$ has an additive inverse, the additive inverse of $0 \cdot v$ can be added to both sides, resulting in the following sum, 
+\mathdiv{\mathbf{0} = 0 \cdot v}
+Hence, $0 \cdot v = 0 \in \V$ for every $v \in \V$. 
+}
 
 \theorem{Scaling the Additive Identity}
-{$a \cdot 0  = 0 \in V$ for every $a \in \textbf{F}$.}
-{}
+{$a \cdot 0  = 0 \in \V$ for every $a \in \textbf{F}$.}
+{
+Take any $a \in \F{}$. Notice \mathdiv{a \cdot 0 = a \cdot (0 + 0) = a \cdot 0 + a \cdot 0.}
+Since every element in $\V$ has an additive inverse, the additive inverse of $a \cdot 0$ can be added to both sides, resulting in the following sum,
+\mathdiv{\mathbf{0} = a \cdot 0}
+Hence, $a \cdot 0  = 0 \in \V$ for every $a \in \textbf{F}$.
+}
 
 \theorem{The number (-1) as a Scalar}
-{$(-1) \cdot v = -v$ for every $v \in V$.}
-{}
+{$(-1) \cdot v = -v$ for every $v \in \V$.}
+{
+By the annihilating scalar theorem, for any $v \in \V$, 
+\mathdiv{\mathbf{0} = 0 \cdot v = (1 + (-1)) \cdot v = 1 \cdot v + (-1) \cdot v = v + (-1) \cdot v \implies -1 \cdot v = -v} 
+Hence, $(-1) \cdot v = -v$ for every $v \in \V$.
+}
 
 %%%%%%%%%%%%%%%%
 % Section 1.3 : Subspaces
@@ -234,21 +263,46 @@ where the first equality holds because $0$ hold its identity under adddition wit
 The concept of subspaces greatly increases the richness of the subject as a tool for discovery.
 
 \definition{Subspace}
-{A subset $U \subset \V$ over $\F{}$ is called a subspace of $\V$ if $U$ is also a vector space over $\F{}$.}
+{A subset $\U \subset \V$ over $\F{}$ is called a subspace of $\V$ if $\U$ is also a vector space over $\F{}$.}
 
-The next result gives an easy way to check whether a subset of a vector space is a subspace.
+The next, very important, result gives an easy way to check whether a subset of a vector space is a subspace.
 \theorem{Conditions for a Subspace}
 {
-A subset $U \subset V$ is a subspace of V over \textbf{F} if and only if $U$ satisfies the following:
+A subset $\U \subset \V$ is a subspace of $\V$ over \textbf{F} if and only if $\U$ satisfies the following:
 	\points
-	{\textbf{Additive Identity: }$0 \in U$;}
-	{\textbf{Closure Under Addition: } $u, w \in U \implies u + w \in U$;}
-	{\textbf{Closure Under Scalar Multiplication: } $u \in U \implies \lambda \cdot u \in U$ for every $\lambda \in \textbf{F}$.}
+	{\textbf{Additive Identity: }$0 \in \U$;}
+	{\textbf{Closure Under Addition: } $u, w \in \U \implies u + w \in \U$;}
+	{\textbf{Closure Under Scalar Multiplication: } $u \in \U \implies \lambda \cdot u \in \U$ for every $\lambda \in \textbf{F}$.}
 }
-{}
+{
+The forward implication is true by definition.
+To demonstrate the converse, consider any $u, v \in \U \subset \V$. Since $u, v$ are, inherently, elements of $\V$, which is a vector space, the following statements are true for the operations of addition and scalar multiplication.
+	\points
+	{\textbf{Commutativity} : $u + v = v + u \text{ for all } u,v \in \U$;}
+	{\textbf{Associativity} : $(u + v) + w = u + (v + w) \text{ and } a (bv) = (ab) v \text{ for all } u, v, w \in \U \text{ and all } a, b \in \mathbf{F}$;}
+	{\textbf{Multiplicative Identity} : $\mathbf{1} \cdot v = v$ as expected for $\mathbf{1} \in \mathbf{F}$;}
+	{\textbf{Distributive Properties} : Addition and Scalar Multiplication satisfy the following two relations:
+	\mathdiv{a (v + u) = av + au \text{ for all } a \in F \text{ and } u, v \in \U, \\}
+	\mathdiv{(a + b) v = av + bv \text{ for all } a, b \in F \text{ and } v \in \U.}
+	}
+
+These above properties require the closure of addition and scalar multiplication, which required demonstration.
+
+The following guarentees that $\U$ is a non-empty set, and it satisfies one of the two remaining required properties for $\U$ to be a vector space ($\exists \hspace{4 pt} \mathbf{0} \in \V\text{, such that } \mathbf{0} + v = v,$ for all $v \in \V$): 
+\mathdiv{\text{\textbf{Additive Identity} : }\exists \hspace{4 pt} \mathbf{0} \in \U \text{, such that } \mathbf{0} + v = v, \text{ for all } v \in \U;}
+
+The following guarentees that addition, as defined, is a valid operation in $\U$, which is a requirement for $\U$ to be a vector space:
+\mathdiv{\text{\textbf{Closure Under Addition: }} u, w \in \U \implies u + w \in \U}
+
+The following guarentees that scalar multiplication, as defined, is a valid operation in $\U$, which is a requirement for $\U$ to be a vector space:
+\mathdiv{\text{\textbf{Closure Under Scalar Multiplication: }}u \in \U \implies \lambda \cdot u \in \U \text{ for every }\lambda \in \textbf{F}}
+
+According to the theorem on the number (-1) as a scalar, the third test checks off the last required property that $\U$ must satisfy for it to be considered, by definition, a vector space ($\forall v \in \V, \exists -v \in \V$ such that $v + (-v) = \mathbf{0}$). Hence, these three tests are necessary and sufficient to show that a subset $\U$ of $\V$ is a subspace of $\V$ over \textbf{F}.
+}
+\clearpage
 
 \vspace{10 pt}
-Given the above result, it is easy to verify that each of the following are subspaces.
+Given the last result, it is easy to verify that each of the following are subspaces.
 \points
 	{
 	If $b \in \textbf{F}$, then \mathdiv{ \{(x_1, x_2, x_3, x_4) \in \mathbf{F^4} : x_3 = 5x_4 + b\} }
