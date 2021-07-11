@@ -1,0 +1,163 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{clays_notes}
+
+
+\newcommand\R[1]{\mathbf{R^{#1}}}
+\newcommand\C[1]{\mathbf{C^{#1}}}
+\newcommand\F[1]{\mathbf{F^{#1}}}
+\newcommand\U{\mathbf{U}}
+\newcommand\V{\mathbf{V}}
+\newcommand\W{\mathbf{W}}
+\newcommand\lc[3]{#1_1 #2_1 + \cdots + #1_{#3} #2_{#3}}
+\newcommand\ls[2]{#1_1, \ldots, #1_{#2}}
+\renewcommand\span[1]{\mathbf{span}(#1)}
+\newcommand\set[1]{\{#1\}}
+\newcommand\poly[1]{\mathcal{P}_{#1}(\F{})}
+\renewcommand\deg{\text{deg }}
+
+% FONT STYLES
+
+\title{Linear Algebra Done Right \\ Axler, Sheldon}
+\author{Notes by:  \\ Clay Curry}
+\date{}
+
+\begin{document}
+
+\section{Finite-Dimensional Vector Spaces}
+Linear algebra focueses on finite-dimensional vector spaces, which are introduced in this chapter.
+
+\subsection{Span and Linear Independence}
+Adding up scalar multiples of vectors in a list gives what is called a \textbf{linear combination} of the list.
+
+\subsubsection{Linear Combinations and Span}
+
+\definition{Linear Combination}
+{
+A \textbf{linear combination} of a list $\ls{v}{m}$ of vectors in $\V$ is a vector of the form
+\mathdiv{\lc{a}{v}{m}}
+where $\ls{a}{m} \in \F{}$.
+}
+
+\definition{Span}
+{
+The set of all linear combinations of a list of vector $\ls{v}{m} \in V$ is called the \textbf{span} of $\ls{v}{m}$, denoted $\span{\ls{v}{m}}$. In other words
+\mathdiv{\span{\ls{v}{m}} = \set{\lc{a}{v}{m} : \ls{a}{m} \in \F{}}.}
+The span of the empty list $()$ is defined to be zero.
+}
+Some mathematicians use the term \textbf{linear span}, which means the same thing as span.
+
+\theorem{Span is the smallest containing subspace}
+{
+The span of a list of vectors in $V$ is the smallest subspace of $V$ containing all the vectors in the list.
+}
+{}
+\newpage
+
+\definition{Spans}
+{If $\span{\ls{v}{m}}$ equals $V$, then we say $\ls{v}{m}$ \textbf{spans} $V$.}
+
+\example{Natual Basis}
+{
+Suppose $n \in \mathbf{N}$. Show that
+\mathdiv{(1, 0, \ldots, 0), (0, 1, 0, \ldots,0), \ldots, (0, \ldots, 0, 1)}
+spans $\F{n}$. Here the $j^{\text{th}}$ vector in the list above is the $n$-tuple with 1 in the $j^{\text{th}}$ slot and $0$ in all the other slots.
+\vspace{10 pt}
+Suppose $(\ls{x}{n}) \in \F{n}$. Then
+\mathdiv{(\ls{x}{n}) = (x_1, 0, \ldots, 0) + \cdots + (0, \ldots, 0, x_n) = x_1(1, 0, \ldots, 0) + \cdots + x_n(0, \ldots, 0, 1)}
+Thus $(\ls{x}{n}) \in \span{(1, 0, \ldots, 0), \ldots, (0, \ldots, 0, 1)}$, as desired.
+}
+
+Now we can make one of the key definitions in linear algebra. Recall that every list, by definition, has a finite length.
+\definition{Finite Dimensional Vector Space}
+{A vector space is called \textbf{finite-dimensional} if some list of vectors in it spans the space.}
+The above example shows that $\F{n}$ is a finite-dimensional vector space for every positive integer $n$.
+
+\definition{Polynomial, $\poly{}$}
+{
+A function $p : \F{} \to \F{}$ is called a \textbf{polynomial} with coefficients in $\F{}$ if there exists $a_0, \ls{a}{m} \in \F{}$ such that
+\mathdiv{p(z) = a_0 + a_1 z + a_2 z^2 + \cdots + a_m z^m}
+for all $z \in \F{}$.
+\points
+{$\poly{}$ is the set of all polynomials with coefficients in $\F{}$.}
+}
+
+With the usual operations of addition and scalar multiplication, $\poly{}$ is a vector space over $\F{}$. As such, $\poly{}$ is a subspace of $\F{\F{}}$.
+
+It will later be shown that the coefficients of the polynomial uniquely determine the polynomial.
+\definition{degree of a polynomial, deg p}
+{
+\points
+{A polynomial $p \in \poly{}$ is said to have \textit{\textbf{degree} m} if there exists scalars $a_0, \ls{a}{m} \in \F{}$ with $a_m \ne 0$ such that
+\mathdiv{p(z) = a_0 + a_1 z + a_2 z^2 + \cdots + a_m z^m}
+for all $z \in \F{}$. If $p$ has degree $m$, we write $\deg p = m$.}
+{The polynomial that is identically 0 is said to have degree $- \infty$.}
+}
+
+We use the convention that $- \infty < m$, which means that the polynomial $0$ is in $\poly{m}$.
+\definition{$\poly{m}$}
+{For any $m \in \mathbb{N}$, $\poly{m}$ denotes the set of all polynomials with coefficients in $\F{}$ and degree at most $m$.}
+
+
+\example{Finite-dimensional vector space}
+{$\poly{m}$ is a finite dimensional vector space for each non-negative integer $m$.}
+
+\definition{Infinite-dimensional vector space}
+{A vector space is called \textbf{infinite-dimensional} if it is not finite dimensional.}
+
+\example{Infinite-dimensional vector space}
+{$\poly{}$ is infinite dimensional.}
+
+\subsubsection{Linear Independence}
+Suppose $\ls{v}{m} \in V$ and $v \in \span{\ls{v}{m}}$. By the definition of span, there exists $\ls{a}{m} \in \F{}$ such that
+\mathdiv{v=\lc{a}{v}{m}.}
+
+Consider the question of whether the choice of scalars in the expression is unique. Suppose $\ls{c}{n} \in \F{}$ is another set of scalars such that
+\mathdiv{v = \lc{c}{v}{m}.}
+
+Subtracting the last two equations, we have
+\mathdiv{0 = (a_1 - c_1) v_1 + \cdots + (a_m - c_m) v_m.}
+
+If the only way to write $0$ as a linear combination of $\ls{v}{m}$ is by taking $0$ for each scalar then, $a_j = c_j$ (the choice of scalars for each vector in $\span{\ls{v}{m}}$ must be unique). This situation is so important that we give it a special name, linear independence.
+
+\definition{Linearly Independent}
+{\points
+{A list $\ls{v}{n}$ of vectors in $V$ is called \textbf{linearly independent} if the only choice of $\ls{a}{n} \in \F{}$ that makes $\lc{a}{v}{n}$ equal to $0$ is $a_1 = \cdots = a_n = 0$.}
+{The empty list () is also declared to be linearly independent.}
+}
+
+\definition{Linearly dependent}
+{\points{A list $\ls{v}{n}$ of vectors in $V$ is called \textbf{linearly dependent} if it is not linearly independent.}}
+
+
+\newpage
+\theorem{Linear Dependence Lemma}
+{
+Suppose $\ls{v}{m}$ is a linearly dependent list in $V$. Then there exists $j \le m$ such that the following hold:
+\points
+{$v_j \in \span{\ls{v}{j-1}}$;}
+{If the $j^{\text{th}}$ term is removed from $\ls{v}{m}$, the span of the remaining list equals $\span{\ls{v}{m}}$.}
+}
+{}
+
+\theorem{Length of a linearly independent list $\le$ length of spanning list}
+{
+In a finite-dimensional vector space, the length of every linearly indepenedent list of vectors is less than or equal to the length of every spanning list of vectors.
+}
+{}
+
+\theorem{Finite dimensional subspaces}
+{Every subspace of a finite-dimensional vector space is finite-dimensional}
+{}
+
+\newpage
+
+\subsection{Bases}
+The following section derives crucial theorems built on concepts of linear independence and span.
+
+\definition{Basis}
+{A \textbf{basis} of $V$ is a list of vectors in $V$ that is linearly independent and spans $V$.}
+\end{document}
