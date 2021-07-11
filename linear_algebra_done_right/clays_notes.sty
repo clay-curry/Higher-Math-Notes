@@ -55,9 +55,6 @@
 
 
 %%% NOTATIONAL SHORTCUTS
-\newcommand\R[1]{\mathbf{R^{#1}}}
-\newcommand\C[1]{\mathbf{C^{#1}}}
-\newcommand\F[1]{\mathbf{F^{#1}}}
 \newcommand\mathdiv[1]{
 $$
 #1
@@ -92,6 +89,17 @@ Proof:
 #2
 \end{tcolorbox}
 }
+
+% EXAMPLE - Colorbox
+\definecolor{exam-frame}{RGB}{191,191,191}
+\definecolor{exam-back}{RGB}{250,250,250}
+\newcommand\example[2]{
+\begin{tcolorbox}[colback=exam-back,colframe=exam-frame,coltitle=black,title=\textbf{Example: #1}]%
+#2
+\end{tcolorbox}
+}
+
+
 
 % LISTS EASY TO READ
 \makeatletter

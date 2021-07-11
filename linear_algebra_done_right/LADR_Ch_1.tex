@@ -5,8 +5,14 @@
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 \usepackage{clays_notes}
 
+\newcommand\R[1]{\mathbf{R^{#1}}}
+\newcommand\C[1]{\mathbf{C^{#1}}}
+\newcommand\F[1]{\mathbf{F^{#1}}}
 \newcommand\U{\mathbf{U}}
+\renewcommand\u{\mathbf{u}}
 \newcommand\V{\mathbf{V}}
+\newcommand\W{\mathbf{W}}
+
 
 % FONT STYLES
 
@@ -15,9 +21,6 @@
 \date{}
 
 \begin{document}
-
-\maketitle
-\clearpage
 
 \section{Vector Spaces}
 
@@ -282,11 +285,11 @@ To demonstrate the converse, consider any $u, v \in \U \subset \V$. Since $u, v$
 	{\textbf{Associativity} : $(u + v) + w = u + (v + w) \text{ and } a (bv) = (ab) v \text{ for all } u, v, w \in \U \text{ and all } a, b \in \mathbf{F}$;}
 	{\textbf{Multiplicative Identity} : $\mathbf{1} \cdot v = v$ as expected for $\mathbf{1} \in \mathbf{F}$;}
 	{\textbf{Distributive Properties} : Addition and Scalar Multiplication satisfy the following two relations:
-	\mathdiv{a (v + u) = av + au \text{ for all } a \in F \text{ and } u, v \in \U, \\}
-	\mathdiv{(a + b) v = av + bv \text{ for all } a, b \in F \text{ and } v \in \U.}
+	\mathdiv{a (v + u) = av + au \text{ for all } a \in \F{} \text{ and } u, v \in \U, \\}
+	\mathdiv{(a + b) v = av + bv \text{ for all } a, b \in \F{} \text{ and } v \in \U.}
 	}
 
-These above properties require the closure of addition and scalar multiplication, which required demonstration.
+For the above properties to be attrubuted to $\U$, addition and scalar multiplication for members of $\U$ should always produce another member of $\U$.
 
 The following guarentees that $\U$ is a non-empty set, and it satisfies one of the two remaining required properties for $\U$ to be a vector space ($\exists \hspace{4 pt} \mathbf{0} \in \V\text{, such that } \mathbf{0} + v = v,$ for all $v \in \V$): 
 \mathdiv{\text{\textbf{Additive Identity} : }\exists \hspace{4 pt} \mathbf{0} \in \U \text{, such that } \mathbf{0} + v = v, \text{ for all } v \in \U;}
@@ -303,27 +306,94 @@ According to the theorem on the number (-1) as a scalar, the third test checks o
 
 \vspace{10 pt}
 Given the last result, it is easy to verify that each of the following are subspaces.
+\example{Subspaces}
+{
 \points
 	{
-	If $b \in \textbf{F}$, then \mathdiv{ \{(x_1, x_2, x_3, x_4) \in \mathbf{F^4} : x_3 = 5x_4 + b\} }
-    	is a subspace of $\mathbf{F^4}$ if and only if $b=0.$
+	If $b \in \F{}$, then \mathdiv{ \{(x_1, x_2, x_3, x_4) \in \F{4} : x_3 = 5x_4 + b\} }
+    	is a subspace of $\F{4}$ if and only if $b=0.$
 	}
-    	{The set of continuous real-vaued functions on the interval $[0, 1]$ is a subspace of $\mathbf{R}^{[0,1]}$.}
-    	{The set of differentiable real-valued functions on \textbf{R} is a subspace of $\mathbf{R^R}$.}
-    	{The set of differentiable real-valued functions $f$ on the interval $(0, 3)$ such that $f'(2)=b$ is a subspace of $\mathbf{R}^(0, 3)$ if and only if $b = 0$.}
-    	{The set of all sequences of complex numbers with limit 0 is a subspace of $\mathbf{C}^\infty$.}
+    	{The set of continuous real-vaued functions on the interval $[0, 1]$ is a subspace of $\R{[0,1]}$.}
+    	{The set of differentiable real-valued functions on $\R{}$ is a subspace of $\R{\R{}}$.}
+    	{The set of differentiable real-valued functions $f$ on the interval $(0, 3)$ such that $f'(2)=b$ is a subspace of $\R{(0, 3)}$ if and only if $b = 0$.}
+    	{The set of all sequences of complex numbers with limit 0 is a subspace of $\C{\infty}$.}
+}
 
+The subspaces of $\R{2}$ are $\{0\}, \R{2}$ and all lines that pass through the origin. The subspaces of $\R{3}$ are $\{0\}, \R{3}$, and all lines and planes that pass through the origin. To prove all these objects are indeed subspaces is easy; to show they are the only subspaces requires tools which are introduced in the next chapter.
 
-The notion of the sum of subspaces will be useful.
+The notion of the sum of subspaces will be useful. 
 
 \definition{Sum of Subsets}
 {
-Suppose $U_1, \ldots, U_m \subset \V$. The \textbf{sum} of $U_1, \ldots, U_m$, denoted $U_1 + \cdots + U_m$, is the set of all possible sums of elements of $U_1, \ldots, U_m$. More precisely,
-\mathdiv{ U_1 + \cdots + U_m = \{u_1 + \cdots + u_m \in \V : u_1 \in U_1, \ldots, u_m \in U_M \} }
+Suppose $\U_1, \ldots, \U_m \subset \V$. The \textbf{sum} of $\U_1, \ldots, \U_m$, denoted $\U_1 + \cdots + \U_m$, is the set of all possible sums of elements of $\U_1, \ldots, \U_m$. More precisely,
+\mathdiv{ \U_1 + \cdots + \U_m = \{u_1 + \cdots + u_m \in \V : u_1 \in \U_1, \ldots, u_m \in \U_m \} }
 }
 
+\example{Sum of Subspaces}
+{
+Let $U \subset \F{3}$ be the set of all elements whose second and third coordinates equal $0$ and $W \subset \F{3}$ be the set of all elements whose first and third coordinates equal $0$:
+\mathdiv{U=\{(x, 0, 0) \in \F{3} : x \in \F{}\} \text{ and } W = \{(0, x, 0) \in \F{3} : x \in \F{}\}}
+Then,
+\mathdiv{U+W = \{(x, y, 0) \in \F{3} : x, y \in \F{}\}}
+}
+\example{Sum of Subspaces}
+{
+Let 
+\mathdiv{U = \{(x,x,y,y)\in \F{4}: x, y \in \F{}\}\text{ and }W = \{(x,x,x,y) \in \F{4}: x, y \in \F{}\}}
+Then,
+\mathdiv{U+W = \{(x, x, y, z) \in \F{4} : x, y, z \in \F{}\}}
+}
 \vspace{10 pt}
 
+\theorem{Sum of subspaces is the smallest containing subspace}
+{Suppose $\U_1, \ldots, \U_m$ are subspaces of $\V$. Then $\U_1 + \cdots + \U_m$ is the smallest subspace containing $\U_1, \ldots, \U_m$.}
+{}
+
+\subsubsection{Direct Sums}
+Consider any $\mathbf{u}$ in $\U_1 + \cdots + \U_m$. By definition, $\exists u_1 \in \U_1, \ldots, \exists u_m \in \U_m$ such that:
+\mathdiv{\mathbf{u} = u_1 + \cdots + u_m}
+In all kinds of settings, it is ideal to work with sums of subspaces where each $\mathbf{u}$ in $\U_1 + \cdots + \U_m$ can be written as a unique combination of elements. The situation is so important that we give it a special name: \textbf{direct sum}.
+
+\definition{Direct Sum}
+{
+Suppose $\U_1, \ldots, \U_m$ are subspaces of $\V$.
+\points
+{The sum $\U_1 + \cdots + \U_m$ is called a \textbf{direct sum} if each element of $\U_1 + \cdots + \U_m$ can be written in only one way as a sum $\u_1 + \cdots + \u_m$, where each $\u_j$ is in $\U_j$.}
+{If $\U_1 + \cdots + \U_m$ is a direct sum, then $\U_1 \oplus \cdots \oplus \U_m$ denotes $\U_1 + \cdots + \U_m$ with the notiation $\oplus$ denoting the set is a direct sum.}
+}
+
+\example{Natural Basis}
+{
+Suppose $U_j \subset \F{n}$ is the subspace whose coordinates are all zero, except at coordinate $j$. Hence $U_2 = \{(0,x,0, \ldots, 0) \in \F{n}: x \in \F{}\}$. Then 
+\mathdiv{\F{n} = U_1 + \cdots + U_n}
+}
+
+\example{Not a direct sum}
+{
+Let \begin{align*}
+U_1 &= \{(x,y,0) \in \F{3} : x, y \in \F{}\}, \\
+U_2 &= \{(0,0,z) \in \F{3} : z \in \F{}\}, \\
+U_3 &= \{(0,y,y) \in \F{3} : y \in \F{}\} 
+\end{align*}
+Notice $(0, 0, 0) \in U_1, U_2, U_3$. \\
+Also notice \begin{align*}
+&(0, 1, 0) \in U_1 \\
+&(0,0,1) \in U_2 \\ 
+&(0, -1, -1) \in U_3.
+\end{align*}
+Because $(0,0,0)$ can be written in two different ways as the sum of elements in $U_1, U_2, U_3$,
+\mathdiv{(0,0,0) = (0,0,0) + (0,0,0) + (0,0,0) = (0, 1, 0) + (0,0,1) + (0,-1,-1),}
+the sum $U_1 + U_2 + U_3$ is not a direct sum.
+}
+
+
+\theorem{Conditions for a direct sum}
+{Suppose $\U_1, \ldots, \U_m$ are subspaces of $\V$. Then $\U_1 + \cdots + \U_m$ is a direct sum if and only if the only way to write 0 as a sum of $\u_1 + \cdots + \u_m$, where each $\u_j \in \U_j$ is by taking each $\u_j$ equal to 0.}
+{}
+
+\theorem{Conditions for a direct sum}
+{Suppose $\U$ and $\W$ are subspaces of $\V$. Then $\U + \W$ is a direct sum if and only if $\U \cap \W = \{0\}$}
+{}
 \end{document}
 
 
