@@ -1,0 +1,43 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{clays_notes}
+
+
+\newcommand\R[1]{\mathbf{R^{#1}}}
+\newcommand\C[1]{\mathbf{C^{#1}}}
+\newcommand\F[1]{\mathbf{F^{#1}}}
+\renewcommand\L{\mathcal{L}}
+
+\newcommand\lc[3]{#1_1 #2_1 + \cdots + #1_{#3} #2_{#3}}
+\newcommand\ls[2]{#1_1, \ldots, #1_{#2}}
+\renewcommand\span[1]{\mathbf{span}(#1)}
+\newcommand\set[1]{\{#1\}}
+\newcommand\poly[1]{\mathcal{P}_{#1}(\F{})}
+\renewcommand\deg{\text{deg }}
+\renewcommand\dim{\text{dim}}
+
+
+% FONT STYLES
+
+\title{Linear Algebra Done Right \\ Axler, Sheldon}
+\author{Notes by:  \\ Clay Curry}
+\date{}
+
+\begin{document}
+
+\section{Linear Maps}
+\subsection{The Vector Space of Linear Maps}
+\definition{Linear Map}
+{
+A \textbf{linear map} from $V$ to $W$ is a function $T : V \to W$ with the following properies:
+\points
+{\textbf{Additivity: } $T(u+v) = Tu + Tv$ for all $u, v \in V$;}
+{\textbf{Homogeneity: } $T(\lambda v) = \lambda Tv$ for all $\lambda \in \F{}$ and $v \in V$.}
+The set of all linear maps from $V$ to $W$ is denoted $\L(V,W)$.
+}
+
+
+\end{document}
