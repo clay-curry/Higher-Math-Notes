@@ -9,7 +9,7 @@
 \newcommand\R[1]{\mathbf{R^{#1}}}
 \newcommand\C[1]{\mathbf{C^{#1}}}
 \newcommand\F[1]{\mathbf{F^{#1}}}
-\renewcommand\L{\mathcal{L}}
+\renewcommand\L[2]{\mathcal{L}(#1,#2)}
 
 \newcommand\lc[3]{#1_1 #2_1 + \cdots + #1_{#3} #2_{#3}}
 \newcommand\ls[2]{#1_1, \ldots, #1_{#2}}
@@ -30,14 +30,49 @@
 
 \section{Linear Maps}
 \subsection{The Vector Space of Linear Maps}
+\subsubsection{Definition and Examples of Linear Maps}
 \definition{Linear Map}
 {
 A \textbf{linear map} from $V$ to $W$ is a function $T : V \to W$ with the following properies:
 \points
 {\textbf{Additivity: } $T(u+v) = Tu + Tv$ for all $u, v \in V$;}
 {\textbf{Homogeneity: } $T(\lambda v) = \lambda Tv$ for all $\lambda \in \F{}$ and $v \in V$.}
-The set of all linear maps from $V$ to $W$ is denoted $\L(V,W)$.
+The set of all linear maps from $V$ to $W$ is denoted $\L{V}{W}$.
 }
 
+\theorem{Linear maps and basis of domain}
+{Suppose $\ls{v}{n}$ is a basis of $V$ and $\ls{w}{n} \in W$. Then there exists a unique linear map $T: V \to W$ such that \mathdiv{Tv_j = w_j} for each $j =1, \ldots, n$.}
+{}
+
+\subsubsection{Algebraic Operations on $\L{V}{W}$}
+\definition{Addition and Scalar Multiplication on $\L{V}{W}$}
+{
+Suppose $S, T \in \L{V}{W}$ and $\lambda \in \F{}$. The \textbf{sum} $S+T$ and the \textbf{product} $\lambda T$ are the maps from $V$ to $W$ defined by:
+\mathdiv{(S+T)(v) = Sv + Tv \text{ \hspace{5 pt} and \hspace{5 pt} } (\lambda T)(v) = \lambda (Tv)}
+for all $v \in V$.
+}
+
+\theorem{$\L{V}{W}$ is a vector space}
+{With the operations of addition and scalar multiplication as defined above, $\L{V}{W}$ is a vector space.}
+{}
+
+\definition{Product of Linear Maps}
+{If $T \in \L{U}{V}$ and $S \in \L{V}{W}$, then the \textbf{product} $ST : U \to W$ is defined by \mathdiv{(ST)(u) = S(Tu)}for $u \in U$.}
+
+\theorem{The product of linear maps is a linear map}
+{If $T \in \mathcal{L}(U,V)$ and $S \in \L{V}{W}$, then $ST \in \L{U}{W}$.}
+{}
+
+\property{Algebraic properties of products of linear maps}
+{
+\points
+{\textbf{Associativity: }\mathdiv{(T_1T_2)T_3 = T_1(T_2T_3)}whenever $T_1, T_2,$ and $T_3$ are linear maps such that products make sense.}
+{\textbf{Identity: }\mathdiv{TI = IT = T}whenever $T \in \L{V}{W}$ and the left $I$ is the identity map on $V$ and the right $I$ is the identity map on $W$.}
+{\textbf{Distributitvity: }\mathdiv{(S_1 + S_2)T = S_1T + S_2T \text{ \hspace{5pt} and \hspace{5pt} } S(T_1 + T_2) = ST_1 + ST_2}whenever $S, S_1, S_2 \in \L{V}{W}$ and $T, T_1, T_2 \in \L{U}{V}$.}
+}
+
+\theorem{Linear maps take 0 to 0}
+{Suppose $T \in \L{V}{W}$. Then $T(0) = 0$.}
+{}
 
 \end{document}
