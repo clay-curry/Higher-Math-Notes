@@ -17,7 +17,9 @@
 \newcommand\set[1]{\{#1\}}
 \newcommand\poly[1]{\mathcal{P}_{#1}(\F{})}
 \renewcommand\deg{\text{deg }}
-\renewcommand\dim{\text{dim}}
+\renewcommand\dim{\text{dim }}
+\renewcommand\null{\text{null }}
+\newcommand\range{\text{range }}
 
 
 % FONT STYLES
@@ -74,5 +76,72 @@ for all $v \in V$.
 \theorem{Linear maps take 0 to 0}
 {Suppose $T \in \L{V}{W}$. Then $T(0) = 0$.}
 {}
+
+
+%%%%%%%%%%%%%%%%%%%
+% Section 3.2 : Null Spaces and Ranges
+%%%%%%%%%%%%%%%%%%%
+
+\subsection{Null Spaces and Ranges}
+\subsubsection{Null Spaces and Injectivity}
+
+In this section, we will learn about two subspaces intimitely connected with each linear map. The first subspace exists in the domain; the second exists in the codomain.
+
+\definition{Null Space}
+{For $T \in \L{V}{W}$, the \textbf{null space} of $T$, denoted $\null T$, is the subset of $V$ consisting of all the vectors $v \in V$ that $T$ maps to $0 \in W$:\mathdiv{\null T = \set{v \in V : Tv = 0 \in W}}}
+
+Some mathematicians use the term \textbf{kernel} instead of null space.
+
+\theorem{The null space is a subspace}
+{Suppose $T \in \L{V,W}$. Then $\null T$ is a subspace of $V$.}
+{}
+
+\definition{Injective, one-to-one}
+{A function $T : V \to W$ is called injective if $Tu = Tv$ implies $u=v$.}
+
+\theorem{Injectivity is equivalent to null space equals $\set{0}$}
+{Let $T \in \L{V,W}$. Then $T$ is injective if and only if $\null T = \set{0}$}
+{}
+
+\subsubsection{Range and Surjectivity}
+\definition{Range}
+{For a function $T : V \to W$, the range of $T$ is the subset of $W$ consisting of those vectors that are of the form $Tv$ for some $v \in V$:
+\mathdiv{\range T = \set{Tv : v \in V}}
+}
+
+\theorem{The range is a subspace}
+{Suppose $T \in \L{V}{W}$. Then $\range T$ is a subspace of $W$.}
+{}
+
+\definition{Surgective, onto}
+{A function $T : V \to W$ is called \textbf{surjective} or \textbf{onto} if its range is equal to $W$.}
+
+\subsubsection{Fundamental Theorem of Linear Maps}
+The next result is so important that it gets a dramatic name.
+\theorem{Fundamental Theorem of Linear Maps}
+{Suppose $V$ is finite-dimensional and $T \in \L{V}{W}$. Then $\range T$ is finite-dimensional and \mathdiv{\dim V = \dim \null T + \dim \range T}}
+{}
+
+Now we can show that no linear map from a finite-dimensional vector space to a "smaller" vector space can be injective, where "smaller" is measured in dimension.
+
+\theorem{A map to a smaller dimensional subspace is not injective}
+{Suppose $V$ and $W$ are finite-dimensional vector spaces such that $\dim V > \dim W$. Then no linear map from $V$ to $W$ is injective.}
+{}
+
+\theorem{A map to a larger dimensional subspace is not surjective}
+{Suppose $V$ and $W$ are finite-dimensional vector spaces such that $\dim V < \dim W$. Then no linear map from $V$ to $W$ is surjective.}
+{}
+
+\theorem{Homogenous system of linear equations}
+{A homogenous system of linear equations with more variables than eqautions has non-zero solutions.}
+{}
+
+\theorem{Inhomogeneous system of linear equations}
+{An inhomogeneous system of linear equations with more equations than variables has no solution for some choice of the constant terms.}
+{}
+
+%%%%%%%%%%%%%%%%%%%
+% Section 3.2 : Matrices
+%%%%%%%%%%%%%%%%%%%
 
 \end{document}
