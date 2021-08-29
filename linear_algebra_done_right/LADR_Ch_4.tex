@@ -1,0 +1,36 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{clays_notes}
+
+
+\newcommand\R[1]{\mathbf{R^{#1}}}
+\newcommand\C[1]{\mathbf{C^{#1}}}
+\newcommand\F[1]{\mathbf{F^{#1}}}
+\newcommand\U{\mathbf{U}}
+\newcommand\V{\mathbf{V}}
+\newcommand\W{\mathbf{W}}
+\newcommand\lc[3]{#1_1 #2_1 + \cdots + #1_{#3} #2_{#3}}
+\newcommand\ls[2]{#1_1, \ldots, #1_{#2}}
+\newcommand\spann[1]{\mathbf{span}(#1)}
+%\newcommand\set[1]{\{#1\}}
+%\newcommand\poly[1]{\mathcal{P}_{#1}(\F{})}
+%\renewcommand\deg{\text{deg }}
+%\renewcommand\dim{\text{dim}}
+%\newcommand\0{\mathbf{0}}
+
+% FONT STYLES
+
+\title{Linear Algebra Done Right \\ Axler, Sheldon}
+\author{Notes by:  \\ Clay Curry}
+\date{}
+
+\begin{document}
+\begin{align*} 
+v &= \lc{a}{v}{j-1} + a_j v_j + a_{j+1} v_{j+1} + \cdots + a_m v_m \\
+&= \lc{a}{v}{j-1} + a_j (\lc{b}{v}{j-1}) + a_{j+1} v_{j+1} + \cdots + a_m v_m \\
+&= (a_1+a_jb_1)v_1 + \cdots + (a_{j-1}+a_jb{j-1}) v_{j-1} + a_{j+1} v_{j+1} + \cdots + a_m v_m
+\end{align*}
+\end{document}

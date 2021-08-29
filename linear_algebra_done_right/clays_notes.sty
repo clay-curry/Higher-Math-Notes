@@ -17,6 +17,8 @@
 \usepackage[skins]{tcolorbox}
 \usepackage{fancybox}
 \usepackage{setspace}
+\usepackage{changepage}   % for the adjustwidth environment
+
 
 %%% Reserved Characters
 % The following symbols are reserved characters that either have  special meaning under LaTeX or are unavailable in all the fonts:
@@ -61,6 +63,15 @@ $$
 $$
 }
 
+% NOTE
+\definecolor{defs-back}{RGB}{246,244,231}
+\definecolor{defs-frame}{RGB}{253,248,152}
+\newcommand\note[2]{
+\begin{tcolorbox}[colback=defs-back,colframe=defs-frame,coltitle=black,title=\textbf{Note: #1}]
+#2
+\end{tcolorbox}}
+
+
 % DEFINITION
 \definecolor{defs-back}{RGB}{246,244,231}
 \definecolor{defs-frame}{RGB}{253,248,152}
@@ -76,7 +87,8 @@ $$
 \begin{tcolorbox}[colback=thms-back,colframe=thms-frame,coltitle=black,title=\textbf{Theorem: #1}]
 #2
 \end{tcolorbox}
-Proof:
+\noindent Proof:
+
 #3
 \hfill \ensuremath{\Box}
 }
@@ -106,10 +118,10 @@ Proof:
 % This code can use @ in macro names
 \newcommand{\points}[1]{%
 \begin{itemize}
-\item #1 \checknextarg
+\item #1 \checknextargpoints
 }
-\newcommand{\checknextarg}{\@ifnextchar\bgroup{\gobblenextarg}{\end{itemize}}}
-\newcommand{\gobblenextarg}[1]{\item #1\@ifnextchar\bgroup{\gobblenextarg}{\end{itemize}}}
+\newcommand{\checknextargpoints}{\@ifnextchar\bgroup{\gobblenextargpoints}{\end{itemize}}}
+\newcommand{\gobblenextargpoints}[1]{\item #1\@ifnextchar\bgroup{\gobblenextargpoints}{\end{itemize}}}
 
 \makeatother
 
