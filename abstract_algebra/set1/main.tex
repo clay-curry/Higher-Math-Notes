@@ -29,29 +29,33 @@
 \usepackage[utf8]{inputenc} % Required for inputting international characters
 \usepackage[T1]{fontenc} % Output font encoding for international characters
 \usepackage{mathpazo} % Use the Palatino font
-
 \usepackage{graphicx} % Required for including images
-
 \usepackage{booktabs} % Required for better horizontal rules in tables
-
 \usepackage{listings} % Required for insertion of code
-
 \usepackage{enumerate} % To modify the enumerate environment
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+%----------------------------------------------------------------------------------------
+%	MY SHORTCUTS
+%----------------------------------------------------------------------------------------
+
+\newcommand\set[1]{\{#1\}}
+\newcommand\qed{\text{$\blacksquare$}}
+\newcommand\R{\mathbb{R}}
+\newcommand\Z{\mathbb{Z}}
+
+%----------------------------------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
 %	ASSIGNMENT INFORMATION
 %----------------------------------------------------------------------------------------
 
 \title{Homework \#1} % Assignment title
-
 \author{Felipe Portales-Oliva} % Student name
-
 \date{March 28th, 2025} % Due date
-
 \institute{University of Mars \\ Institute of Intergalactic Travel} % Institute or school name
-
 \class{Special Relativity (Physics 301)} % Course or class name
-
 \professor{Dr. Albert Einstein} % Professor or teacher in charge of the assignment
 
 %----------------------------------------------------------------------------------------
@@ -68,128 +72,159 @@
 
 \begin{problem}
 Suppose that
-	\begin{center}
-
-	\end{center}
+\begin{align*}
+	A &= \set{x : x \in \mathbb{N} \text{ and x is even}}\\
+	B &= \set{x : x \in \mathbb{N} \text{ and x is prime}}\\
+	C &= \set{x : x \in \mathbb{N} \text{ and x is a multiple of 5}}
+\end{align*}	
 \end{problem}
 
 %------------------------------------------------
 
-\subsection*{Answer}
-
-While this question leaves out the crucial element of the geographic origin of the swallow, according to Jonathan Corum, an unladen European swallow maintains a cruising airspeed velocity of \textbf{11 metres per second}, or \textbf{24 miles an hour}. The velocity of the corresponding African swallows requires further research as kinematic data is severely lacking for these species.
+\subsection*{Answer} Describe each of the following sets:\\
+a) $A \cap B = \set{2}$   because 2 is the only even prime number\\
+b) $B \cap C = \emptyset$ because a multiple of 5 cannot be prime\\
+c) $A \cup B = \set{1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17, 18, 19, \ldots}$, the set of all naturals minus composite odd numbers\\
+d) $A \cap (B \cup C)$ includes $2$ and the even multiples of $5$, because 2 is the only even prime.
 
 %----------------------------------------------------------------------------------------
 
 \section*{Question 2}
 
 \begin{problem}
-	How much wood would a woodchuck chuck if a woodchuck could chuck wood?
-	
-	\medskip
-	
-	\begin{enumerate}[(\itshape a\normalfont)] % Sub-questions styled as italic letters
-		\item Suppose ``chuck" implies throwing.
-		\item Suppose ``chuck" implies vomiting.
-	\end{enumerate}
+Suppose that $A = \set{a,b,c}, B = \set{1,2,3}, C = \set{x}$, and $D = \emptyset$.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} List all of the elements in each of the following sets\\
+a) $A \times B = \set{(a,1),(a,2),(a,3),(b,1),(b,2),(b,3),(c,1),(c,2),(c,3)}$\\
+b) $B \times A = \set{(1,a),(1,b),(1,c),(2,a),(2,b),(2,c),(3,a),(3,b),(3,c)}$\\
+c) $A \times B \times C=\set{(a,1,x),(a,2,x),(a,3,x),(b,1,x),(b,2,x),(b,3,x),(c,1,x),(c,2,x),(c,3,x)}$\\
+d) $A \times D = \emptyset$
+
+
+
+%----------------------------------------------------------------------------------------
+\section*{Question 8}
+
+\begin{problem}
+Prove $A \subset B$ if and only if $A \cap B = A$
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} Take any two sets $B$ and $A \subset B$.
+$$
+A \subset B  \Longleftrightarrow \forall a \in A, a \in B \Longleftrightarrow A \cap B = A
+$$
+as required. \qed
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+
+\section*{Question 10}
+
+\begin{problem}
+Prove $A \cup B = (A \cap B) \cup (A \backslash B) \cup (B \backslash A)$
 \end{problem}
 
 %------------------------------------------------
 
 \subsection*{Answer}
-
-\begin{enumerate}[(\itshape a\normalfont)] % Sub-questions styled as italic letters
-	\item According to the Associated Press (1988), a New York Fish and Wildlife technician named Richard Thomas calculated the volume of dirt in a typical 25--30 foot (7.6--9.1 m) long woodchuck burrow and had determined that if the woodchuck had moved an equivalent volume of wood, it could move ``about \textbf{700 pounds (320 kg)} on a good day, with the wind at his back".
-    
-	\item A woodchuck can ingest 361.92 cm\textsuperscript{3} (22.09 cu in) of wood per day. Assuming immediate expulsion on ingestion with a 5\% retainment rate, a woodchuck could chuck \textbf{343.82 cm\textsuperscript{3}} of wood per day.
-\end{enumerate}
-
+ Take any two sets $A, B$.
+\begin{align*}
+A \cup B &= \set{x : x \in A} \cup \set{x : x \in B}\\
+&=((A \backslash B) \cup (A \backslash B')) \cup ((B \backslash A) \cup (B \backslash A'))\\
+&=((A \backslash B) \cup (A \cap B)) \cup ((B \backslash A) \cup (B \cap A))\\
+&=(A \cap B) \cup (B \cap A) \cup (A \backslash B) \cup (B \backslash A)\\
+&=(A \cap B) \cup (A \backslash B) \cup (B \backslash A)\\
+\end{align*}
+as required. \qed
 %----------------------------------------------------------------------------------------
 
-\section*{Question 3}
+\section*{Question 11}
 
 \begin{problem}
-	Identify the author of Equation \ref{eq:bayes} below and briefly describe it in Latin.
-	
-	\medskip
-	
-	\begin{equation}\label{eq:bayes}
-		P(A|B) = \frac{P(B|A)P(A)}{P(B)}
-	\end{equation}
-	
-	\smallskip
-\end{problem}
-
-%------------------------------------------------
-
-\subsection*{Answer} 
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor arcu luctus, imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcorper, nec faucibus ipsum molestie. Sed dictum nisl non aliquet porttitor. Etiam vulputate arcu dignissim, finibus sem et, viverra nisl. Aenean luctus congue massa, ut laoreet metus ornare in. Nunc fermentum nisi imperdiet lectus tincidunt vestibulum at ac elit. Nulla mattis nisl eu malesuada suscipit.
-
-%----------------------------------------------------------------------------------------
-
-\section*{Question 4 (bonus marks)}
-
-\begin{problem}
-	The table below shows the nutritional consistencies of two sausage types. Explain their relative differences given what you know about daily adult nutritional recommendations.
-	
-	\bigskip
-    
-	\begin{center}
-		\begin{tabular}{l l l}
-			\toprule
-			\textit{Per 50g} & Pork & Soy \\
-			\midrule
-			Energy & 760kJ & 538kJ\\
-			Protein & 7.0g & 9.3g\\
-			Carbohydrate & 0.0g & 4.9g\\
-			Fat & 16.8g & 9.1g\\
-			Sodium & 0.4g & 0.4g\\
-			Fibre & 0.0g & 1.4g\\
-			\bottomrule
-		\end{tabular}
-	\end{center}
-	
-	\medskip
+Prove $(A \cup B) \times C = (A \times C) \cup (B \times C)$
 \end{problem}
 
 %------------------------------------------------
 
 \subsection*{Answer}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor arcu luctus, imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcorper, nec faucibus ipsum molestie. Sed dictum nisl non aliquet porttitor. Etiam vulputate arcu dignissim, finibus sem et, viverra nisl. Aenean luctus congue massa, ut laoreet metus ornare in. Nunc fermentum nisi imperdiet lectus tincidunt vestibulum at ac elit. Nulla mattis nisl eu malesuada suscipit.
-
+ Take any three sets $A, B, C$.
+\begin{align*}
+(A \cup B) \times C &= \set{(x, c) : x \in (A \cup B), c \in C}\\
+&= \set{(x, c) : x \in A, c \in C} \cup \set{(x, c) : x \in B, c \in C} \\
+&=(A \times C) \cup (B \times C)
+\end{align*}
+as required. \qed
 %----------------------------------------------------------------------------------------
 
-\section*{Question 5 (bonus marks)}
+\section*{Question 14}
 
 \begin{problem}
-	\lstinputlisting[
-		caption=Luftballons Perl Script, % Caption above the listing
-		label=lst:luftballons, % Label for referencing this listing
-		language=Perl, % Use Perl functions/syntax highlighting
-		frame=single, % Frame around the code listing
-		showstringspaces=false, % Don't put marks in string spaces
-		numbers=left, % Line numbers on left
-		numberstyle=\tiny, % Line numbers styling
-	]{luftballons.pl}
-	
-	\begin{enumerate}
-		\item How many luftballons will be output by the Listing \ref{lst:luftballons} above?
-		\item Identify the regular expression in Listing \ref{lst:luftballons} and explain how it relates to the anti-war sentiments found in the rest of the script.
-	\end{enumerate}
-
+Prove $A \backslash (B \cup C) = (A \backslash B) \cap (A \backslash C)$
 \end{problem}
 
 %------------------------------------------------
 
 \subsection*{Answer}
+ Take any three sets $A, B, C$.
+\begin{align*}
+A \backslash (B \cup C) &= A \cap (B \cup C)'\\
+&= A \cap A \cap (B' \cap C')\\
+&= A \cap B' \cap A \cap C'\\
+&= (A \backslash B) \cap (A \backslash C)
+\end{align*}
+as required. \qed
+%----------------------------------------------------------------------------------------
 
-\begin{enumerate}
-	\item 99 luftballons.
-	\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor arcu luctus, imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcorper, nec faucibus ipsum molestie. Sed dictum nisl non aliquet porttitor. Etiam vulputate arcu dignissim, finibus sem et, viverra nisl. Aenean luctus congue massa, ut laoreet metus ornare in. Nunc fermentum nisi imperdiet lectus tincidunt vestibulum at ac elit. Nulla mattis nisl eu malesuada suscipit.
-\end{enumerate}
+\newpage
 
 %----------------------------------------------------------------------------------------
+
+\section*{Question 16}
+
+\begin{problem}
+Prove $(A \backslash B) \cup (B \backslash A) = (A \cup B) \backslash (A \cap B)$
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}
+Take any two sets $A, B$.
+\begin{align*}
+(A \backslash B) \cup (B \backslash A) &= (A \cap B') \cup (B \cap A')\\
+&= ((A \cap B') \cup B) \cap ((A \cap B') \cup A')\\
+&= ((A \cup B) \cap (B \cup B')) \cap ((A \cup A') \cap (B' \cup A'))\\
+&=(A \cup B) \cap (B' \cup A')\\
+&= (A \cup B) \cap (A \cap B)'\\
+&= (A \cup B) \backslash (A \cap B)
+\end{align*}
+as required. \qed
+%----------------------------------------------------------------------------------------
+
+\section*{Question 18}
+
+\begin{problem}
+Determine which of the following functions are one-to-one and which are onto. If the function is not onto, determine its range.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}
+Functions:\\
+a) $f : \R \to \R : x \mapsto e^x$ \\
+This function is one-to-one but not onto. Its range is $\R _{>0}$\\
+b) $f : \Z \to \Z : n \mapsto n^2 + 3$ \\
+c) $f : \R \to \R : x \mapsto \sin(x)$ \\
+d) $f : \Z \to \Z : n \mapsto n^2$ \\
+
+%----------------------------------------------------------------------------------------
+
 
 \end{document}
