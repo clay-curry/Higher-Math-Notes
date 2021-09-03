@@ -1,0 +1,192 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fphw Assignment
+% LaTeX Template
+% Version 1.0 (27/04/2019)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Authors:
+% Class by Felipe Portales-Oliva (f.portales.oliva@gmail.com) with template 
+% content and modifications by Vel (vel@LaTeXTemplates.com)
+%
+% Template (this file) License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	12pt, % Default font size, values between 10pt-12pt are allowed
+	%letterpaper, % Uncomment for US letter paper size
+	%spanish, % Uncomment for Spanish
+]{fphw}
+
+% Template-specific packages
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage{graphicx} % Required for including images
+\usepackage{booktabs} % Required for better horizontal rules in tables
+\usepackage{listings} % Required for insertion of code
+\usepackage{enumerate} % To modify the enumerate environment
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+%----------------------------------------------------------------------------------------
+%	MY SHORTCUTS
+%----------------------------------------------------------------------------------------
+
+\newcommand\set[1]{\{#1\}}
+\newcommand\qed{\text{$\blacksquare$}}
+\newcommand\R[1]{\text{$\mathbb{R}^{#1}$}}
+\newcommand\F[1]{\text{$\mathbb{F}^{#1}$}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\U{\text{$U$ }}
+\newcommand\ls[2]{\text{$#1_1, \ldots, #1_{#2}$}}
+\newcommand\poly[1]{\text{$\mathcal{P}_{#1}(\F{})$ }}
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Homework \#1} % Assignment title
+\author{Clayton Curry} % Student name
+\date{Sep 5, 2021} % Due date
+\institute{University of Oklahoma \\ Department of Mathematics} % Institute or school name
+\class{Abstract Linear Algebra} % Course or class name
+\professor{Dr. Gregory Muller} % Professor or teacher in charge of the assignment
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Output the assignment title, created automatically using the information in the custom commands above
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT CONTENT
+%----------------------------------------------------------------------------------------
+
+\section*{1C: 7}
+
+\begin{problem}
+Give an example of a nonempty subset \U of \R{2} such that \U is closed under addition and under taking additive inverses (meaning $-u \in U$ whenever $u \in \U$ ), but \U is not a subspace of \R{2}.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} Will demonstrate by example:\\
+
+
+%----------------------------------------------------------------------------------------
+
+\section*{1C: 8}
+
+\begin{problem}
+Give an example of a nonempty subset \U of \R{2} such that \U is closed under scalar multiplication, but \U is not a subspace of \R{2}.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} Will demonstrate by example:\\
+
+
+%----------------------------------------------------------------------------------------
+
+\section*{1C: 9}
+
+\begin{problem}
+A function $f : \R{} \to \R{}$ is called periodic if there exists a positive number $p$ such that $f(x) = f(x + p)$ for all $x \in \R{}$. Is the set of periodic functions from \R{} to \R{} a subspace of \R{\R{}}? Explain.\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} Will demonstrate by example:\\
+
+
+%----------------------------------------------------------------------------------------
+
+\section*{2A: 1}
+
+\begin{problem}
+Suppose $v_1, v_2,  v_3, v_4$ spans $V$. Prove that the list
+$$v_1-v_2, v_2 - v_3, v_3-v_4, v_4$$
+also spans $V$.
+
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} Will demonstrate by example:\\
+
+
+%----------------------------------------------------------------------------------------
+
+\section*{2A: 3}
+
+\begin{problem}
+Find a number $t$ such that 
+$$(3,1,4), (2,-3,5), (5,9,t)$$
+is not linearly independent in \R{3}.
+
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} Will demonstrate by example:\\
+
+
+%----------------------------------------------------------------------------------------
+
+\section*{2A: 9}
+
+\begin{problem}
+Prove or give a counterexample: If \ls{v}{m} and \ls{w}{m} are linearly independent lists of vectors in $V$, then $v_1 + w_1 + \cdots + v_m + w_m$ is linearly independent.
+
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} Will demonstrate by counter-example:\\
+
+
+%----------------------------------------------------------------------------------------
+
+
+\section*{2B: 5}
+
+\begin{problem}
+Prove or disprove: there exists a basis $p_0, p_1, p_2, p_3$ of \poly{3} such that none of the polynomials $p_0, p_1, p_2, p_3$ has degree 2.
+
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} Will demonstrate by counter-example:\\
+
+
+%----------------------------------------------------------------------------------------
+
+
+\section*{2A: 6}
+
+\begin{problem}
+Suppose $v_1, v_2, v_3, v_4$ is a basis of $V$. Prove that
+$$
+v_1 + v_2, v_2 + v_3, v_3 + v_4, v_4
+$$
+is a basis of $V$.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} Will demonstrate by counter-example:\\
+
+
+%----------------------------------------------------------------------------------------
+
+
+\end{document}

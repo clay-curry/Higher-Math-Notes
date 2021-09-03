@@ -1,0 +1,230 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fphw Assignment
+% LaTeX Template
+% Version 1.0 (27/04/2019)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Authors:
+% Class by Felipe Portales-Oliva (f.portales.oliva@gmail.com) with template 
+% content and modifications by Vel (vel@LaTeXTemplates.com)
+%
+% Template (this file) License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	12pt, % Default font size, values between 10pt-12pt are allowed
+	%letterpaper, % Uncomment for US letter paper size
+	%spanish, % Uncomment for Spanish
+]{fphw}
+
+% Template-specific packages
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage{graphicx} % Required for including images
+\usepackage{booktabs} % Required for better horizontal rules in tables
+\usepackage{listings} % Required for insertion of code
+\usepackage{enumerate} % To modify the enumerate environment
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+%----------------------------------------------------------------------------------------
+%	MY SHORTCUTS
+%----------------------------------------------------------------------------------------
+
+\newcommand\set[1]{\{#1\}}
+\newcommand\qed{\text{$\blacksquare$}}
+\newcommand\R{\mathbb{R}}
+\newcommand\Z{\mathbb{Z}}
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Homework \#1} % Assignment title
+\author{Felipe Portales-Oliva} % Student name
+\date{March 28th, 2025} % Due date
+\institute{University of Mars \\ Institute of Intergalactic Travel} % Institute or school name
+\class{Special Relativity (Physics 301)} % Course or class name
+\professor{Dr. Albert Einstein} % Professor or teacher in charge of the assignment
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Output the assignment title, created automatically using the information in the custom commands above
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT CONTENT
+%----------------------------------------------------------------------------------------
+
+\section*{Question 1}
+
+\begin{problem}
+Suppose that
+\begin{align*}
+	A &= \set{x : x \in \mathbb{N} \text{ and x is even}}\\
+	B &= \set{x : x \in \mathbb{N} \text{ and x is prime}}\\
+	C &= \set{x : x \in \mathbb{N} \text{ and x is a multiple of 5}}
+\end{align*}	
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} Describe each of the following sets:\\
+a) $A \cap B = \set{2}$   because 2 is the only even prime number\\
+b) $B \cap C = \emptyset$ because a multiple of 5 cannot be prime\\
+c) $A \cup B = \set{1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17, 18, 19, \ldots}$, the set of all naturals minus composite odd numbers\\
+d) $A \cap (B \cup C)$ includes $2$ and the even multiples of $5$, because 2 is the only even prime.
+
+%----------------------------------------------------------------------------------------
+
+\section*{Question 2}
+
+\begin{problem}
+Suppose that $A = \set{a,b,c}, B = \set{1,2,3}, C = \set{x}$, and $D = \emptyset$.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} List all of the elements in each of the following sets\\
+a) $A \times B = \set{(a,1),(a,2),(a,3),(b,1),(b,2),(b,3),(c,1),(c,2),(c,3)}$\\
+b) $B \times A = \set{(1,a),(1,b),(1,c),(2,a),(2,b),(2,c),(3,a),(3,b),(3,c)}$\\
+c) $A \times B \times C=\set{(a,1,x),(a,2,x),(a,3,x),(b,1,x),(b,2,x),(b,3,x),(c,1,x),(c,2,x),(c,3,x)}$\\
+d) $A \times D = \emptyset$
+
+
+
+%----------------------------------------------------------------------------------------
+\section*{Question 8}
+
+\begin{problem}
+Prove $A \subset B$ if and only if $A \cap B = A$
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} Take any two sets $B$ and $A \subset B$.
+$$
+A \subset B  \Longleftrightarrow \forall a \in A, a \in B \Longleftrightarrow A \cap B = A
+$$
+as required. \qed
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+
+\section*{Question 10}
+
+\begin{problem}
+Prove $A \cup B = (A \cap B) \cup (A \backslash B) \cup (B \backslash A)$
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}
+ Take any two sets $A, B$.
+\begin{align*}
+A \cup B &= \set{x : x \in A} \cup \set{x : x \in B}\\
+&=((A \backslash B) \cup (A \backslash B')) \cup ((B \backslash A) \cup (B \backslash A'))\\
+&=((A \backslash B) \cup (A \cap B)) \cup ((B \backslash A) \cup (B \cap A))\\
+&=(A \cap B) \cup (B \cap A) \cup (A \backslash B) \cup (B \backslash A)\\
+&=(A \cap B) \cup (A \backslash B) \cup (B \backslash A)\\
+\end{align*}
+as required. \qed
+%----------------------------------------------------------------------------------------
+
+\section*{Question 11}
+
+\begin{problem}
+Prove $(A \cup B) \times C = (A \times C) \cup (B \times C)$
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}
+ Take any three sets $A, B, C$.
+\begin{align*}
+(A \cup B) \times C &= \set{(x, c) : x \in (A \cup B), c \in C}\\
+&= \set{(x, c) : x \in A, c \in C} \cup \set{(x, c) : x \in B, c \in C} \\
+&=(A \times C) \cup (B \times C)
+\end{align*}
+as required. \qed
+%----------------------------------------------------------------------------------------
+
+\section*{Question 14}
+
+\begin{problem}
+Prove $A \backslash (B \cup C) = (A \backslash B) \cap (A \backslash C)$
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}
+ Take any three sets $A, B, C$.
+\begin{align*}
+A \backslash (B \cup C) &= A \cap (B \cup C)'\\
+&= A \cap A \cap (B' \cap C')\\
+&= A \cap B' \cap A \cap C'\\
+&= (A \backslash B) \cap (A \backslash C)
+\end{align*}
+as required. \qed
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+
+\section*{Question 16}
+
+\begin{problem}
+Prove $(A \backslash B) \cup (B \backslash A) = (A \cup B) \backslash (A \cap B)$
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}
+Take any two sets $A, B$.
+\begin{align*}
+(A \backslash B) \cup (B \backslash A) &= (A \cap B') \cup (B \cap A')\\
+&= ((A \cap B') \cup B) \cap ((A \cap B') \cup A')\\
+&= ((A \cup B) \cap (B \cup B')) \cap ((A \cup A') \cap (B' \cup A'))\\
+&=(A \cup B) \cap (B' \cup A')\\
+&= (A \cup B) \cap (A \cap B)'\\
+&= (A \cup B) \backslash (A \cap B)
+\end{align*}
+as required. \qed
+%----------------------------------------------------------------------------------------
+
+\section*{Question 18}
+
+\begin{problem}
+Determine which of the following functions are one-to-one and which are onto. If the function is not onto, determine its range.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}
+Functions:\\
+a) $f : \R \to \R : x \mapsto e^x$ \\
+This function is one-to-one but not onto. Its range is $\R _{>0}$\\
+b) $f : \Z \to \Z : n \mapsto n^2 + 3$ \\
+c) $f : \R \to \R : x \mapsto \sin(x)$ \\
+d) $f : \Z \to \Z : n \mapsto n^2$ \\
+
+%----------------------------------------------------------------------------------------
+
+
+\end{document}
