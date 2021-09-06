@@ -29,11 +29,8 @@
 \usepackage[utf8]{inputenc} % Required for inputting international characters
 \usepackage[T1]{fontenc} % Output font encoding for international characters
 \usepackage{mathpazo} % Use the Palatino font
-\usepackage{graphicx} % Required for including images
 \usepackage{booktabs} % Required for better horizontal rules in tables
-\usepackage{listings} % Required for insertion of code
 \usepackage{enumerate} % To modify the enumerate environment
-
 \usepackage{amsmath}
 \usepackage{amssymb}
 %----------------------------------------------------------------------------------------
@@ -44,6 +41,7 @@
 \newcommand\qed{\text{$\blacksquare$}}
 \newcommand\R{\mathbb{R}}
 \newcommand\Z{\mathbb{Z}}
+\newcommand\N{\mathbb{N}}
 
 %----------------------------------------------------------------------------------------
 
@@ -51,12 +49,12 @@
 %	ASSIGNMENT INFORMATION
 %----------------------------------------------------------------------------------------
 
-\title{Homework \#1} % Assignment title
-\author{Felipe Portales-Oliva} % Student name
-\date{March 28th, 2025} % Due date
-\institute{University of Mars \\ Institute of Intergalactic Travel} % Institute or school name
-\class{Special Relativity (Physics 301)} % Course or class name
-\professor{Dr. Albert Einstein} % Professor or teacher in charge of the assignment
+\title{Execise Set \#1} % Assignment title
+\author{Clayton Curry} % Student name
+\date{September 1st, 2021} % Due date
+\institute{University of Oklahoma \\ Department of Mathematics} % Institute or school name
+\class{Intro to Abstract Algebra (MATH 4323)} % Course or class name
+\professor{Dr. Roi Docampo} % Professor or teacher in charge of the assignment
 
 %----------------------------------------------------------------------------------------
 
@@ -83,7 +81,7 @@ Suppose that
 
 \subsection*{Answer} Describe each of the following sets:\\
 a) $A \cap B = \set{2}$   because 2 is the only even prime number\\
-b) $B \cap C = \emptyset$ because a multiple of 5 cannot be prime\\
+b) $B \cap C = \set{5}$ because a multiple of 5 cannot be prime\\
 c) $A \cup B = \set{1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17, 18, 19, \ldots}$, the set of all naturals minus composite odd numbers\\
 d) $A \cap (B \cup C)$ includes $2$ and the even multiples of $5$, because 2 is the only even prime.
 
@@ -118,7 +116,7 @@ Prove $A \subset B$ if and only if $A \cap B = A$
 $$
 A \subset B  \Longleftrightarrow \forall a \in A, a \in B \Longleftrightarrow A \cap B = A
 $$
-as required. \qed
+where the first iff holds by definition; the second iff holds because the set $A$ contains every element in $A$, $B$ contains at least every element in $A$, and their intersection contains no more elements than the collection defined by $A$.\qed
 
 %----------------------------------------------------------------------------------------
 
@@ -129,19 +127,22 @@ as required. \qed
 \section*{Question 10}
 
 \begin{problem}
-Prove $A \cup B = (A \cap B) \cup (A \backslash B) \cup (B \backslash A)$
+Prove $A \cup B = (A \cap B) \cup (A \setminus B) \cup (B \setminus A)$
 \end{problem}
 
 %------------------------------------------------
 
 \subsection*{Answer}
- Take any two sets $A, B$.
+ Take any two sets $A, B \subset U$. By De Morgan's Laws and set opertation rules of distributivity,
 \begin{align*}
 A \cup B &= \set{x : x \in A} \cup \set{x : x \in B}\\
-&=((A \backslash B) \cup (A \backslash B')) \cup ((B \backslash A) \cup (B \backslash A'))\\
-&=((A \backslash B) \cup (A \cap B)) \cup ((B \backslash A) \cup (B \cap A))\\
-&=(A \cap B) \cup (B \cap A) \cup (A \backslash B) \cup (B \backslash A)\\
-&=(A \cap B) \cup (A \backslash B) \cup (B \backslash A)\\
+&=(A \cap U) \cup (B \cap U)\\
+&=(A \cap (B \cup B')) \cup (B \cap (A \cup A'))\\
+&=((A \cap B) \cup (A \cap B')) \cup ((B \cap A) \cup (B \cap A'))\\
+&=((A \setminus B) \cup (A \setminus B')) \cup ((B \setminus A) \cup (B \setminus A'))\\
+&=((A \setminus B) \cup (A \cap B)) \cup ((B \setminus A) \cup (B \cap A))\\
+&=(A \cap B) \cup (B \cap A) \cup (A \setminus B) \cup (B \setminus A)\\
+&=(A \cap B) \cup (A \setminus B) \cup (B \setminus A)\\
 \end{align*}
 as required. \qed
 %----------------------------------------------------------------------------------------
@@ -167,18 +168,18 @@ as required. \qed
 \section*{Question 14}
 
 \begin{problem}
-Prove $A \backslash (B \cup C) = (A \backslash B) \cap (A \backslash C)$
+Prove $A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$
 \end{problem}
 
 %------------------------------------------------
 
 \subsection*{Answer}
- Take any three sets $A, B, C$.
+ Take any three sets $A, B, C$.  By De Morgan's Laws and set opertation rules of distributivity,
 \begin{align*}
-A \backslash (B \cup C) &= A \cap (B \cup C)'\\
+A \setminus (B \cup C) &= A \cap (B \cup C)'\\
 &= A \cap A \cap (B' \cap C')\\
 &= A \cap B' \cap A \cap C'\\
-&= (A \backslash B) \cap (A \backslash C)
+&= (A \setminus B) \cap (A \setminus C)
 \end{align*}
 as required. \qed
 %----------------------------------------------------------------------------------------
@@ -190,20 +191,21 @@ as required. \qed
 \section*{Question 16}
 
 \begin{problem}
-Prove $(A \backslash B) \cup (B \backslash A) = (A \cup B) \backslash (A \cap B)$
+Prove $(A \setminus B) \cup (B \setminus A) = (A \cup B) \setminus (A \cap B)$
 \end{problem}
 
 %------------------------------------------------
 
 \subsection*{Answer}
-Take any two sets $A, B$.
+Take any two sets $A, B \subset U$. By De Morgan's Laws and set opertation rules of distributivity,
 \begin{align*}
-(A \backslash B) \cup (B \backslash A) &= (A \cap B') \cup (B \cap A')\\
+(A \setminus B) \cup (B \setminus A) &= (A \cap B') \cup (B \cap A')\\
 &= ((A \cap B') \cup B) \cap ((A \cap B') \cup A')\\
 &= ((A \cup B) \cap (B \cup B')) \cap ((A \cup A') \cap (B' \cup A'))\\
+&= ((A \cup B) \cap U) \cap (U \cap (B' \cup A'))\\
 &=(A \cup B) \cap (B' \cup A')\\
 &= (A \cup B) \cap (A \cap B)'\\
-&= (A \cup B) \backslash (A \cap B)
+&= (A \cup B) \setminus (A \cap B)
 \end{align*}
 as required. \qed
 %----------------------------------------------------------------------------------------
@@ -221,10 +223,160 @@ Functions:\\
 a) $f : \R \to \R : x \mapsto e^x$ \\
 This function is one-to-one but not onto. Its range is $\R _{>0}$\\
 b) $f : \Z \to \Z : n \mapsto n^2 + 3$ \\
-c) $f : \R \to \R : x \mapsto \sin(x)$ \\
+This function is not one-to-one or onto. Its range is $\Z_{\ge3}$\\
+c) $f : \R \to \R : x \mapsto \sin(x)$\\
+This function is not one-to-one or onto. Its range is $[-1, 1]$.\\
 d) $f : \Z \to \Z : n \mapsto n^2$ \\
+This function is not one to one or onto. Its range is $\set{0} \cup \N$.\\
+%----------------------------------------------------------------------------------------
+
+\section*{Question 19}
+
+\begin{problem}
+Let $f: A \to B$ and $g: B \to C$ be invertable mappings; that is, mappings such that $f^{-1}$ and $g^{-1}$ exist. Show that $(g \circ f)^{-1} = f^{-1} \circ g^{-1}$ 
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}
+Take any $a \in A$, and suppose $a\overset{f}{\mapsto}b\overset{g}{\mapsto}c$. Therefore $(g \circ f)(a) = c$. Then
+$$
+a = f^{-1}(b) = f^{-1}(g^{-1}(c)) = (f^{-1} \circ g^{-1})(c)
+$$
+Hence $(g \circ f)^{-1} = (f^{-1} \circ g^{-1})$, which was to be demonstrated. \qed
+
+%----------------------------------------------------------------------------------------
+\newpage
+%----------------------------------------------------------------------------------------
+
+\section*{Question 20}
+
+\begin{problem}
+Define a function $f : \N \to \N$ that is one-to-one but not onto.
+Define a function $f : \N \to \N$ that is not one-to-one but onto.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}
+Suppose $f : \N \to \N$.\\
+a) The function defined by $f : x \mapsto x + 1$ is one-to-one but not onto.\\
+b) The function defined by $f = (1,1) \cup \set{(x, x-1) : x \in \N \text{ and } x \ge 2}$ is onto but not one-to-one.
 
 %----------------------------------------------------------------------------------------
 
+\section*{Question 22b}
+
+\begin{problem}
+Let  $f: A \to B$ and $g: B \to C$ be maps. If $g \circ f$ is onto, show that $g$ is onto.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}
+If $f: A \to B$, and $g \circ f$ is onto, then,
+$$f(A) \subset B \implies g(f(A)) \subset g(B) \subset C \implies C \subset g(B) \subset C$$
+where the first $\implies$ holds because the preimage of $g(B)$ contains the preimage of $g(f(A))$, and the second $\implies$ holds because $(g \circ f) (A) = g(f(A)) = C$, by definition of onto. This demonstrates $g(B) = C$. Therefore, the mapping $g$ is onto. \qed
+
+%----------------------------------------------------------------------------------------
+
+\section*{Question 22c}
+
+\begin{problem}
+Let  $f: A \to B$ and $g: B \to C$ be maps. If $g \circ f$ is one-to-one, show that $f$ is one-to-one.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}
+Take any one-to-one composition, $g \circ f$. Since $g \circ f$ is one-to-one, it is invertible (the inverse was shown earlier to be $f^{-1} \circ g^{-1}$). Therefore
+\begin{align*}
+(g \circ f)(a) &= (g \circ f)(b)\\
+g^{-1}(g \circ f)(a) &= g^{-1}(g \circ f)(b)\\
+f(a) &= f(b)\\
+ f^{-1}f(a)&=f^{-1}f(b)\\
+a &= b
+\end{align*}
+where we see that $f(a)=f(b) \implies a=b$. Hence, $f$ is injective. \qed
+
+%----------------------------------------------------------------------------------------
+\newpage
+%----------------------------------------------------------------------------------------
+
+\section*{Question 24}
+
+\begin{problem}
+Let  $f: X \to Y$ be a map with $A_1, A_2 \subset X$ and $B_1, B_2 \subset Y$.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}Prove the following statements\\
+a) $$f (A_1 \cup A_2) = f(A_1) \cup f(A_2)$$
+Let $f: X \to Y$ be a map with $A_1, A_2 \subset X$. Then,
+\begin{align*}
+b \in f (A_1 \cup A_2) &\Longleftrightarrow \exists a \text{ such that } b = f(a), \text{ where } a \in A_1 \cup A_2\\
+&\Longleftrightarrow a \in A_1 \text{ or } a \in A_2\\
+&\Longleftrightarrow b \in f(A_1) \text{ or } b \in f(A_2)\\
+&\Longleftrightarrow b \in f(A_1) \cup f(A_2)
+\end{align*}
+where the first $\Leftrightarrow$ restates the asssumption; the second $\Leftrightarrow$ holds by definition; the third $\Leftrightarrow$ holds because the preimage of $b$ belongs to $A_1$ or $A_2$; and the final $\Leftrightarrow$ reiterates the preceding statement. Since $b \in f (A_1 \cup A_2) \Leftrightarrow b \in f(A_1) \cup f(A_2)$, the equality $f (A_1 \cup A_2) = f(A_1) \cup f(A_2)$ is demonstrated.  \qed
+
+\vspace{10 pt}
+
+\noindent
+b) $$f(A_1 \cap A_2) \subset f(A_1) \cap f(A_2)$$
+Consider any $b \in f(A_1 \cap A_2)$.
+\begin{align*}
+\exists a \in A_1, A_2 \text { such that } b = f(a) &\implies b \in f(A_1) \text{ and } b \in f(A_2)\\
+&\implies b \in f(A_1) \cap f(A_2)
+\end{align*}
+where the first $\implies$ holds because the preimage of $b$ must exist in both $A_1$ and $A_2$, and the second $\implies$ holds by definition. Since $b \in f(A_1 \cap A_2) \implies b \in f(A_1) \cap f(A_2)$, the relation $f(A_1 \cap A_2) \subset f(A_1) \cap f(A_2)$ is demonstrated. \qed
+
+For an example that disproves the equality, consider the mapping $f : \R \to \R$ defined by $f(x) = x^2$ for all $x \in \R$. Define the subsets,
+\begin{align*}
+\R &\supset A_1 = [-1, 0]\\
+\R &\supset A_2 = [0, 1]
+\end{align*}
+Notice,
+$$f(A_1 \cap A_2) = f(\set{0}) = \set{0} \ne [0, 1] = [0, 1] \cap [0, 1] = f(A_1) \cap f(A_2)$$
+Hence 
+$$f(A_1 \cap A_2) \ne f(A_1) \cap f(A_2).$$
+
+\newpage
+
+\noindent
+c)$$f^{-1}(B_1 \cup B_2) = f^{-1}(B_1) \cup f^{-1}(B_2)$$
+Let the mapping $g : Y \to X$ be defined by the equation $g(b) = f^{-1}(b)$ for all $b \in B$. \\
+In part a), 
+$$
+g(B_1 \cup B_2)=g(B_1) \cup g(B_2)
+$$
+was demonstrated for any arbitrary mapping. Hence,
+$$f^{-1}(B_1 \cup B_2) = f^{-1}(B_1) \cup f^{-1}(B_2),$$
+as required. \qed
+
+\vspace{20 pt}
+\noindent
+d)$$f^{-1}(B_1 \cap B_2) = f^{-1}(B_1) \cap f^{-1}(B_2)$$
+Notice, in part b),
+$$f^{-1}(B_1 \cap B_2) \subset f^{-1}(B_1) \cap f^{-1}(B_2)$$
+was demonstrated for any arbitrary mapping. 
+
+The right-hand set will now be shown to contain the left-hand set. Suppose $f(A_1) = B_1$ and $f(A_2) = B_2$. Then for all $b \in B_1 \cap B_2$, $\exists a \in f^{-1}(B_1 \cap B_2)$ such that $b = f(a)$. Hence $(f^{-1}(B_1) \cap f^{-1}(B_2)) \subset f^{-1}(B_1 \cap B_2)$,  as required. \qed
+
+\vspace{20 pt}
+\noindent
+e)$$f^{-1}(Y \setminus B_1) = X \setminus f^{-1}(B_1)$$
+
+\noindent
+In part d), it was shown that
+$$f^{-1}(Y \setminus B_1) = f^{-1}(Y \cap B_1') = f^{-1}(Y) \cap f^{-1}(B_1')$$
+Since $f$ is invertible, $f$ is bijective, hence $f^{-1}(Y) = X$. Since $f^{-1}(B_1')$ contains all the elements that do not map to $B_1$, $f^{-1}(B_1') = f^{-1}(B_1)'$, which is every element that does not map to $B_1$. Hence
+$$
+f^{-1}(Y \setminus B_1) = f^{-1}(Y) \cap f^{-1}(B_1') = X \cap f^{-1}(B_1)' = X \setminus f^{-1}(B_1)
+$$
+as required. \qed
+%----------------------------------------------------------------------------------------
 
 \end{document}
