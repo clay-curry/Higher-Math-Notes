@@ -1,0 +1,234 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fphw Assignment
+% LaTeX Template
+% Version 1.0 (27/04/2019)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Authors:
+% Class by Felipe Portales-Oliva (f.portales.oliva@gmail.com) with template 
+% content and modifications by Vel (vel@LaTeXTemplates.com)
+%
+% Template (this file) License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	12pt, % Default font size, values between 10pt-12pt are allowed
+	%letterpaper, % Uncomment for US letter paper size
+	%spanish, % Uncomment for Spanish
+]{fphw}
+
+% Template-specific packages
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage{booktabs} % Required for better horizontal rules in tables
+\usepackage{enumerate} % To modify the enumerate environment
+\usepackage{amsmath}
+\usepackage{amssymb}
+%----------------------------------------------------------------------------------------
+%	MY SHORTCUTS
+%----------------------------------------------------------------------------------------
+
+\newcommand\set[1]{\{#1\}}
+\newcommand\qed{\text{$\blacksquare$}}
+\newcommand\R{\mathbb{R}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\N{\mathbb{N}}
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Execise Set \#2} % Assignment title
+\author{Clayton Curry} % Student name
+\date{September 10th, 2021} % Due date
+\institute{University of Oklahoma \\ Department of Mathematics} % Institute or school name
+\class{Intro to Abstract Algebra (MATH 4323)} % Course or class name
+\professor{Dr. Roi Docampo} % Professor or teacher in charge of the assignment
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Output the assignment title, created automatically using the information in the custom commands above
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT CONTENT
+%----------------------------------------------------------------------------------------
+
+\section*{1.4 \#25}
+
+\begin{problem}
+Determine whether or not the following relations are equivalence
+relations on the given set. If the relation is an equivalence relation,
+describe the partition given by it. If the relation is not an equivalence state why it fails to be one.
+\begin{align*}
+&a) x \sim y \text{ in } \R{} \text{ if } x \ge y &&c) x \sim y \text{ in } \R{} \text{ if } |x - y| \le 4\\
+&b) m \sim n \text{ in } \Z{} \text{ if } mn > 0 &&d) m \sim n \text{ in }  \Z{} \text{ if } m \equiv n \mod 6
+\end{align*}	
+
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} .\\
+a) The $\ge$ relation does not possess symmetry. Hence, $1 \sim 0$ but $0 \not \sim 1$, which means $\sim$ is not an equivalence relation.\\
+b) Because $0 \times 0 = 0 \not > 0$, $\sim$ does not possess reflexivity so it = is not an equivalence relation.\\
+c) Let $x = 0, y = 3,$ and $z = 6$, notice $x \sim y$ and $y \sim x$ but $x \not \sim z$.  $\sim$ does not possess transitivity so it is not an equivalence relation.\\
+d) $m \sim n \text{ in }  \Z{} \text{ if } m \equiv n \mod 6$ is an equivalence relation that generates six equivalence classes, $[0], [1], [2], [3], [4], [5]$.
+%----------------------------------------------------------------------------------------
+
+\section*{1.4 \#28}
+
+\begin{problem}
+Find the error in the following argument by providing a counterexample. “The reflexive property is redundant in the axioms for an
+equivalence relation. If $x \sim y$, then $y \sim x$ by the symmetric property. Using the transitive property, we can deduce that $x \sim x$.”
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} .\\
+
+
+
+%----------------------------------------------------------------------------------------
+\newpage
+\section*{2.3 \#1}
+
+\begin{problem}
+Prove that
+$$
+\sum_{j = 1}^n j^2 = \frac{n(n+1)(2n+1)}{6}
+$$
+for $n \in \N{}$.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} By induction, it will be demonstrated that for all $n \in \N{}$,
+\begin{equation} \label{eq1}
+\sum_{j = 1}^n j^2 = \frac{n(n+1)(2n+1)}{6}
+\end{equation}
+\textbf{Base case:} When $n = 1$, the left side of $(1)$ is $1^2 = 1$, and the right side is $(1)(2)(3)/6 = 1$, so both sides are equal and $(1)$ is true for $n=1$.\\
+\textbf{Induction step:} Let $k \in \N{}$ be given and suppose $(1)$ is true for $n = k$. Then,
+\begin{align*}
+\sum_{j = 1}^{k+1} j^2 &= \sum_{j = 1}^{k} j^2 + (k + 1)^2\\
+&=\frac{k(k+1)(2k+1)}{6} + \frac{6(k + 1)(k + 1)}{6}\\
+&=\frac{(k+1)(k(2k+1)+6(k+1))}{6}\\
+&=\frac{(k+1)(2k^2+7k + 6)}{6}\\
+&=\frac{(k+1)(k+2)(2k+3)}{6}\\
+&=\frac{(k+1)((k+1)+1)(2(k+1) + 1)}{6}
+\end{align*}
+Thus $(1)$ holds for $n = k + 1$, and the proof of the induction step is complete. \qed
+%----------------------------------------------------------------------------------------
+\newpage
+\section*{2.3 \#3}
+
+\begin{problem}
+Prove that
+$$
+n! > 2^n
+$$
+for $n \ge 4$.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} By induction, it will be demonstrated that for all $\N{} \ni n \ge 4$,
+\begin{equation} \label{eq1}
+n! > 2^n
+\end{equation}
+\textbf{Base case:} When $n = 4$, the left side of $(2)$ is $(4)(3)(2)(1) = 24$, and the right side is $(2)(2)(2)(2) = 16$, so the factorial is larger than the exponential and $(2)$ is true for $n=4$.\\
+\textbf{Induction step:} Let $k \in \N{}$ be given and suppose $(2)$ is true for $n = k$. Then for $k \ge 4$,
+\begin{align*}
+2^{k+1} &= 2 \cdot 2^k\\
+&< 2(k!)\\
+&< (k+1)(k!)\\
+&= (k+1)!
+\end{align*}
+Thus $(2)$ holds for $n \ge 4$, and the proof of the induction step is complete. \qed
+
+%----------------------------------------------------------------------------------------
+
+\section*{2.3 \#5}
+
+\begin{problem}
+Prove that $10^{n+1} + 10^n + 1$ is divisible by 3 for $n \in \N{}$.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} By induction, it will be demonstrated that for all $n \in \N{}$,
+\begin{equation}
+10^{n+1} + 10^n + 1
+\end{equation}
+is divisible by 3.\\
+\textbf{Base case:} When $n = 1$,
+$$
+10^{1+1} + 10^1 + 1 = 111 = 37 \cdot 3
+$$
+is divisible by 3, and the proof of the base case is complete. \\
+\textbf{Induction step:} Let $k \in \N{}$ be given and suppose $(3)$ is divisible for $n = k$. Then for $n = k+1$,
+\begin{align*}
+10^{(k+1)+1} + 10^{k+1} + 1 &= 10(10^{k+1} + 10^k) + (10 - 9) \\
+&=10(10^{k+1} + 10^k + 1) - 9 \\
+&= 10 (3j) - 3 \cdot 3 \hspace{20 pt} \text{ for some $j \in \Z{}$, by assumption}\\
+&= (10j - 3)\cdot 3
+\end{align*}
+which is divisible by 3, and the proof of the induction step is complete. \qed
+
+%----------------------------------------------------------------------------------------
+
+\section*{2.3 \#10}
+
+\begin{problem}
+Prove that
+$$
+\sum^n_{k = 1} \frac{1}{k(k+1)} = \frac{n}{n+1}
+$$
+for $n \in N{}$.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} .\\
+
+
+%----------------------------------------------------------------------------------------
+
+\section*{2.3 \#12}
+
+\begin{problem}
+Let X be a set. Define the power set of X, denoted P(X), to be the set of all subsets of X. For every positive integer $n$, show that a set with exactly $n$ elements has a power set with exactly $2^n$ elements.
+
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} .\\
+
+
+%----------------------------------------------------------------------------------------
+
+\section*{2.3 \#15b \& e}
+
+\begin{problem}
+For each of the following pairs of numbers $a$ and $b$, calculate gcd$(a, b)$
+and find integers $r$ and $s$ such that gcd$(a, b) = ra + sb$.\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} .\\
+
+%----------------------------------------------------------------------------------------
+\end{document}
