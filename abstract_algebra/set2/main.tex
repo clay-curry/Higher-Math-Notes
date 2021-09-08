@@ -42,7 +42,7 @@
 \newcommand\R{\mathbb{R}}
 \newcommand\Z{\mathbb{Z}}
 \newcommand\N{\mathbb{N}}
-
+\newcommand*\quot[2]{{^{\textstyle #1}\big/ _{\textstyle #2}}}
 %----------------------------------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
@@ -82,10 +82,10 @@ describe the partition given by it. If the relation is not an equivalence state 
 %------------------------------------------------
 
 \subsection*{Answer} .\\
-a) The $\ge$ relation does not possess symmetry. Hence, $1 \sim 0$ but $0 \not \sim 1$, which means $\sim$ is not an equivalence relation.\\
-b) Because $0 \times 0 = 0 \not > 0$, $\sim$ does not possess reflexivity so it = is not an equivalence relation.\\
-c) Let $x = 0, y = 3,$ and $z = 6$, notice $x \sim y$ and $y \sim x$ but $x \not \sim z$.  $\sim$ does not possess transitivity so it is not an equivalence relation.\\
-d) $m \sim n \text{ in }  \Z{} \text{ if } m \equiv n \mod 6$ is an equivalence relation that generates six equivalence classes, $[0], [1], [2], [3], [4], [5]$.
+a) Because the $\ge$ relation does not possess symmetry, $1 \sim 0$ but $0 \not \sim 1$. Hence, $\sim$ is not an equivalence relation.\\
+b) Because $0 \cdot 0 = 0 \not > 0$, $\sim$ does not possess reflexivity so $\sim$ is not an equivalence relation.\\
+c) Let $x = 0, y = 3,$ and $z = 6$, notice $x \sim y$ and $y \sim z$ but $x \not \sim z$.  Therefore, $\sim$ does not possess transitivity so it is not an equivalence relation.\\
+d) This is an equivalence relation where $\quot{\Z{}}{\sim}$ contains six equivalence classes, $[0], [1], $ $[2], [3], [4], [5]$.
 %----------------------------------------------------------------------------------------
 
 \section*{1.4 \#28}
@@ -97,8 +97,7 @@ equivalence relation. If $x \sim y$, then $y \sim x$ by the symmetric property. 
 
 %------------------------------------------------
 
-\subsection*{Answer} .\\
-
+\subsection*{Answer} Take $R$ to be the binary relation on $X = \set{a, b}$ such that $R = \set{(b,  b)}$. Therefore, $R$ possesses symmetry and transitivity but not reflexivity, and the quotient set $\quot{X}{R} = \set{\set{b}}$ makes a subset of $2^X$ that is not parition of $X$. Hence $R$ lacks one of the most crucial properies of equivalence relations, because $R$ does not generate a set of equivalence classes that partition $X$.
 
 
 %----------------------------------------------------------------------------------------
@@ -201,11 +200,32 @@ for $n \in N{}$.
 
 %------------------------------------------------
 
-\subsection*{Answer} .\\
-
+\subsection*{Answer} By induction, it will be demonstrated that for all $n \in \N{}$,
+\begin{equation}
+\sum^n_{k = 1} \frac{1}{k(k+1)} = \frac{n}{n+1}
+\end{equation}
+\textbf{Base case:} When $n = 1$, the left hand side of $(4)$ equals
+$$
+\sum^1_{k = 1} \frac{1}{k(k+1)} =  \frac{1}{1(1+1)} = \frac{1}{1+1} = \frac{1}{2}
+$$
+and the right hand side of $(4)$ equals
+$$
+\frac{1}{1+1} = \frac{1}{2}
+$$
+and the proof of the base case is complete.\\
+\textbf{Induction step:} Let $j \in \N{}$ be given and suppose $(4)$ holds for $n = j$. Then for $n = j+1$,
+\begin{align*}
+\sum^{j+1}_{k = 1} \frac{1}{k(k+1)} &= \sum^{j}_{k = 1} \frac{1}{k(k+1)} + \frac{1}{(j+1)(j+2)}\\
+&=  \frac{j}{j+1} +  \frac{1}{(j+1)(j+2)}\\
+&= \frac{j(j+2) + 1}{(j+1)(j+2)}\\
+&= \frac{j^2 + 2j + 1}{j+1}{j+2}\\
+&= \frac{j+1}{j+2}\\
+&= \frac{(j+1)}{(j+1)+1}
+\end{align*}
+and the proof of the induction step is complete. \qed
 
 %----------------------------------------------------------------------------------------
-
+\newpage
 \section*{2.3 \#12}
 
 \begin{problem}
@@ -215,9 +235,21 @@ Let X be a set. Define the power set of X, denoted P(X), to be the set of all su
 
 %------------------------------------------------
 
-\subsection*{Answer} .\\
-
-
+\subsection*{Answer} By induction, it will be demonstrated that
+\begin{equation}
+|P(X)| = 2^{|X|}
+\end{equation}
+for any set $X$.\\
+\textbf{Base case:} When $n = 1$, the left hand side of $(5)$ equals
+$$
+| P^X | = |\set{\emptyset, \set{x}}| = 2
+$$
+and the right hand side of $(5)$ equals $P(X)=2^{|\set{x}|} = 2^1 = 2$, and the base case holds.\\
+\textbf{Inductive step:}
+Let $n, k \in \N{}$ and suppose $|X| = n$ and $(5)$ holds for $n = k$. Then for $n = k+1$,
+$$
+|P(X \cup \set{y})| = |P(X) + P(X)
+$$
 %----------------------------------------------------------------------------------------
 
 \section*{2.3 \#15b \& e}

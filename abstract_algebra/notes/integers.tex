@@ -9,187 +9,66 @@
 \newcommand\F[1]{\text{$\mathbb{F}^{#1}$}}
 \newcommand\C[1]{\text{$\mathbb{C}^{#1}$}}
 \newcommand\Z[1]{\text{$\mathbb{Z}^{#1}$}}
+\newcommand\N[1]{\text{$\mathbb{N}^{#1}$}}
 \renewcommand\P{\text{$\mathcal{P}$}}
 
 \newcommand\U{\mathbf{U}}
 \renewcommand\S{\mathcal{S}}
 \renewcommand\u{\mathbf{u}}
-\newcommand\V{\mathbf{V}}
-\newcommand\W{\mathbf{W}}
 \newcommand\set[1]{\{#1\}}
 \newcommand\ls[2]{#1_1, \ldots, #1_{#2}}
 
 
 % FONT STYLES
 
-\title{Linear Algebra Done Right \\ Axler, Sheldon}
+\title{Abstract Algebra \\ Judson, Thomas J.}
 \author{Notes by:  \\ Clay Curry}
 \date{}
 
 \begin{document}
+\maketitle
+\stepcounter{section}
+\section{The Integers}
 
-\section{Preliminaries}
+\subsection{Induction}
 
-Abstract algebra is the study of the structures, also known as \textbf{Algebraic Structures}, provided by operations (mappings between elements) on sets. Of these structures, a traditional first course in Abstract Algebra covers the theoretical aspects of groups, rings, and fields. 
+\definition{First Principle of Mathematical Induction}
+{Let $S(n)$ be a statement about integers for $n \in \N{}$ and suppose $S(n_0)$ is true for some integer $n_0$. If for all integers $k$ with $k \ge n_0$, $S(k)$ implies that $S(k+1)$ is true, then $S(n)$ is true for all integers $n$ greater than or equal to $n_0$.}
 
-\noindent\rule{\textwidth}{1pt}
+\definition{Second Principle of Mathematical Induction}
+{Let $S(n)$ be a statement about integers for $n \in \N{}$ and suppose $S(n_0)$ is true for some integer $n_0$. If $S(n_0), S(n_0 + 1), \ldots, S(k)$ imply that $S(k + 1)$ for $k \ge n_0$, then the statement $S(n)$ is true for all integers $n \ge n_0$.}
 
-\subsubsection{Contents of MATH 4323}
-These notes cover the contents of my Abstract Algebra I course (MATH 4323). This includes:\\
-proofs, induction,  the division algorithm, congruences and symmetries, groups, subgroups, cyclic groups, repeated squaring, complex numbers, permutations, dihedral groups, cosets, Lagrange's Theorem, Fermat's and Euler's Theorems, private key cryptography, public key cryptography, isomorphisms, direct products, normal subgroups, simplicity of $A_n$, homomorphisms, isomorphism theorems, matrix groups, finite Abelian groups, solvable groups, group actions, the Class Equations, Bursinde's Counting Theorem, the Sylow Theorems, applications of the Sylow Theorems.
+\definition{Principle of Well-Ordering}
+{Every non-empty subset of the natural numbers contains a least element.}
 
-\noindent\rule{\textwidth}{1pt}
+\theorem{}{The Principle of Mathematical Induction implies that 1 is the least natural number}{}
 
-\subsection{Set Theory}
-A basic knowledge of set theory, mathematical induction, equivalence relations, and matrices is a must. Even more important is the ability to read and understand mathematical proofs.
+\theorem{}{The Principle of Mathematical Induction implies the Principle of Well-Ordering. That  is, every nonempty subset of $\N{}$ contains a least element.}{}
 
-\subsubsection{A Short note on Proofs}
-
-Although mathematics is often motivated by physical experimentation or by computer simulations, \textbf{mathematics is made rigorous through the use of logical arguments}.
-
-\definition
-{Axiomatic Approach to Abstract Mathematics}
-{
-In studying abstract mathematics, we take what is called an \textbf{axiomatic approach}; that is, we: 
-\points{take a collection of objects $\S$, and} 
-{assume some rules about their structure.} 
-}
-
-\noindent
-Rules about the structure of elements in a set are called \textbf{axioms}. With a \textbf{set} and a \textbf{system of axioms}, we can achieve the following:
-\points
-{derive other information about S by using logical arguments}
-{derive other information that does not contradict one another}
-{not include redundant axioms}
-{provide enough flexibility to investigate many kinds of mathematical objects}
-
-\noindent
-A \textbf{proposition} in logic or mathematics is an assertion that is either true or false. A \textbf{mathematical proof} is nothing more than a convincing argument about the accuracy of a proposition. Mathemeticians are interested in statements like ``if $p$, then $q$." Here p is
-called the \textbf{hypothesis} and q is known as the \textbf{conclusion}. Many mathematical conclusions are derived from a chain of hypotheses and conclusions.
-
-The following are useful facts about proofs. Never assume any hypothesis that is not explicitly stated in the theorem; you cannot take things for granted. To show that an object is unique, assume that there are two such objects, say r and s, and then show that r = s. Sometimes it is easier to prove the contrapositive of a statement. Although it is better to find a direct proof of a theorem, this task can sometimes be difficult. Use contradiction: assume the theorem is false and show that the assumption makes some statement that cannot possibly be true.
-
-% PAGE 2
-\subsubsection{Sets and Equivalence Relations}
-\definition{Set}
-{A \textbf{set} is a well-defined collection of objects; that is, it is defined in such a manner that we can determine for any given object $x$ whether or not $x$ belongs to the set.}
-
-We can find various relations between sets as well as perform operations on sets.
-
-\example{Subsets}
-{$$
-\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}
-$$}
-
-When two sets have no elements in common, they are said to be \textbf{disjoint}; for example, if $E$ is the set of even integers and $O$ is the set of odd integers, then E and O are disjoint.
-
-\definition{Difference of Sets}
-{We define the difference of two sets A and B to be:
-$$
-A \setminus B = A \cap B' = \{ x : x \in A, x \notin B\}
-$$}
-
-\theorem{De Morgan's Laws}
-{Let $A$ and $B$ be sets. Then
-\points{$(A \cup B)' = A' \cap B'$}{$(A \cap B)' = A' \cup B'$}}{}
-
-
-%%%%%%%%%%%%%%%%%%%
-%           Cartesian Products
-%%%%%%%%%%%%%%%%%%%
-\subsection{Cartesian Products and Mappings}
-Given sets $A$ and $B$, we can define a new set $A \times B$, called the \textbf{Cartesian product} of $A$ and $B$, as a set of ordered pairs. 
-
-\definition{Cartesian Product}
-{
-Let $A$ and $B$ be sets. Then the \textbf{Cartesian product} of $A$ and $B$,
-$$
-A \times B = \set{(a, b) : a \in A, b \in B}
-$$
-We define a \textbf{Cartesian Product of }$\mathbf{n}$ \textbf{sets} to be
-$$
-A_1 \times \cdots \times A_n = \set{(\ls{a}{n}) : a_i \in A_i \text{ for all } i \in \set{1, \ldots, n}} 
-$$
-}
-In general, if $A_1 = \cdots = A_n$, we often write $A^n$ to denote $A \times \cdots \times A$ where $A$ would be written $n$ times.  A mathematical \textbf{relation} encodes the common concept of relation: an element x is related to an element y, if and only if the pair (x, y) belongs to the set of ordered pairs that defines the binary relation.  Subsets of $A \times B$ are called \textbf{binary relations}. Subsets of $A_n \times \cdots \times A_n$ are called \textbf{n-ary relations.}
-
-\example{\R{3}}
-{The set \R{3} consists of all 3-tuples of real numbers.}
-
-
-%%%%%%%%%%%%%%%%%%%
-%		     Mappings
-%%%%%%%%%%%%%%%%%%%
-\subsubsection{Mappings}
-\definition{mappings, functions}
-{We will define a \textbf{mapping} or \textbf{function} from $f \subset A \times B$ from a set $A$ to $B$ to be the special type of binary relation where the relation $f$ is
-\points{
-\textbf{functional} (also called right-unique) if:
-$$\forall x \in A, \forall y \in B, \forall z \in B, \hspace{10pt} ((x,y) \in f \wedge (x, z) \in f) \implies y = z;$$
-}
-{
-\textbf{serial} (also called left-total) if:
-$$\forall x \in A, \exists y \in B, \hspace{10pt} (x,y) \in f.$$
-}
-}
-
-Instead of writing down ordered pairs $(a, b) \in f \subset A \times B$, mathematicians will usually denote that $f$ is a function from set $A$ to set $B$ by optionally writing $f: A \to B$ or $A\overset{f}{\mapsto}B$ followed by an expression that $f$ satisfies for all $a \in A$. When the domain is obvious, mathematicians will usually forego meantioning the sets under the relation $f$.
-
-\definition{Domain}
-{
-The \textbf{domain} or set of departure of a function is the set into which all of the input of the function is constrained to fall.
-}
-
-\definition{Range, Image}
-{
-The  \textbf{range} or \textbf{image} or set of destination of a function $f: A \to B$ of all output values it may produce. The range of $f$ is denoted by,
-$$
-f(A) =\set{b \in B: \exists a \in A, \text{ with } g(a) =b}
-$$
-}
-
-\definition{Composition}
-{
-Let $f: A \to B$ and $g: B \to C$ be mappings between sets. Define a new map, the \textbf{composition} of $f$ and $g$ from $A$ to $C$, by
-$$
-g \circ f = g(f(a))
-$$
-for all $a \in A$.
-}
-
-The domain and codomain are not always explicitly given when a function is defined, and one might only know that the domain is contained in a larger set. Typically, this occurs in mathematical analysis, where "a function from X to Y " often refers to a function that may have a proper subset of X as domain. For example, a "function from the reals to the reals" may refer to a real-valued function of a real variable. However, a "function from the reals to the reals" does not mean that the domain of the function is the whole set of the real numbers, but only that the domain is a set of real numbers that contains a non-empty open interval. Such a function is then called a partial function. 
-
-\theorem{Invertable iff one-to-one}
-{A mapping is invertable if and only if it is both one-to-one and onto.}
-{}
 \newpage
+\subsection{The Division Algorithm}
 
-%%%%%%%%%%%%%%%%%%%
-%	    Equivalence Relations
-%%%%%%%%%%%%%%%%%%%
-\subsubsection{Equivalence Relations}
-A fundamental notion in mathematics is that of equality. We can generalize equality with equivalence realtions and equivalence classes.
+An application of the Principle of Well-Ordering that is often-used is the division algorithm.
 
-\definition{Equivalence Relation}
+\theorem{Division Algorithm}
 {
-An \textbf{equivalence relation} on a set $X$ is a relation $R \subset X \times X$ such that
-\points
-{$(x,x) \in R$ for all $x \in X$ (\textbf{reflexive property})}
-{$(x,y) \in R$ implies $(y, x) \in R$ (\textbf{symmetric property})}
-{$(x,y) \in R \wedge (y, z) \in R \implies (x, z) \in R$ (\textbf{transitive property})}
+Let $a$ and $b$ be integers, with $b \ge 0$. Then there exists unique integers $q$ and $r$ such that
+$$
+a = bq + r
+$$
+where $0 \le r < b$. 
 }
+{\textit{existence of $q$ and $r$}. Consider the set,
+$$
+R = \set{a - bx : x \in \Z{} \wedge a - bx \ge 0}
+$$
+If $0 \in R$, then $b | a$, and we can let $q = a/b$ and $r = 0$. If $0 \not \in R$, then the WOP guarentees the existence of a smallest element in a set $R$ iff $R \subseteq \N{}$ and $R \ne \emptyset$. Since each element $x \in R$ satisfies $x \in \Z{}$ and $x \ge 0$ and $0 \not \in R$, the first condition of the WOP is satisfied, $R \subseteq \N{}$.\\
+To show that $R \ne \emptyset$, consider the two cases:\\
 
-\noindent
-Notation:
+\textbf{Case 1:} $a \ge 0$. Then it is clear that $a \in R$, by letting $x = 0$.
 
-We usually write $x \sim y$ instead of $(x,y) \in R$. If the equivalence relation already has an associated notion such as =, $\equiv$, or $\cong$.
-
-\example{}
-{Let $p, q, r,$ and $s \in \Z{}$ where $q \ne 0 \ne s$. Define $p/q \sim r/s$ if $ps = qr$.}
-
-\theorem{Partition for every equivalence relation}
-{Given an equivalence relation $\sim$ on a set $X$, the equivalence classes of $X$ form a partition of $X$. Conversely, if \P = $\set{X_i}$ is a partition of a set $X$, then there is an equivalence relation on $X$ with equivalence classes $X_i$.}
-
+\textbf{Case 2:} $a < 0$. Then if $x = 2a$, $a-bx = a - b(2a) = a(1-2b)$, we have the product of a negative integer $a$ and a negative integer $(1-2b)$ when $b \ge 1$, therefore $a - bx \ge 0$. 
+}
 
 \end{document}
 
