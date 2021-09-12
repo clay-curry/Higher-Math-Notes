@@ -168,7 +168,7 @@ Suppose $\ls{v}{m}$ is a linearly dependent list in $V$. Then there exists $j \l
 {$v_j \in \spann{\ls{v}{j-1}}$;}
 {If the $j^{\text{th}}$ term is removed from $\ls{v}{m}$, the span of the remaining list equals $\spann{\ls{v}{m}}$.}
 }
-{The provided procedure demonstrates the first proposition. Assuming $\ls{v}{m}$ is linearly dependent, by definition,\mathdiv{\exists \ls{a}{m} \in \F{} \text{ not all } 0 \text{ such that } \0 = \lc{a}{v}{m}.}
+{The following procedure demonstrates the first proposition. Assuming $\ls{v}{m}$ is linearly dependent, by definition,\mathdiv{\exists \ls{a}{m} \in \F{} \text{ not all } 0 \text{ such that } \0 = \lc{a}{v}{m}.}
 For any such combination, select the highest value of $j \in \{1, \ldots, m \}$ such that $a_j \ne 0$. Notice, \mathdiv{-a_jv_j = \lc{a}{v}{j-1} \implies v_j = \frac{a_1}{-a_j}v_1 + \cdots + \frac{a_{j-1}}{-a_j}v_{j-1} \text{ (which is possible since $a_j \ne 0$)}}Hence there exists $j \le m$ such that, \mathdiv{v_j \in \spann{\ls{v}{j-1}}.}
 
 For the second proposition, the following procedure demonstrates that $v_j$ can be removed without changing the span. Building on the previous result,\mathdiv{v_j \in \spann{\ls{v}{j-1}} \implies \exists \ls{b}{j-1} \in \F{} \text{ such that } v_j = \lc{b}{v}{j-1}.}This situation means any element $w \in \spann{\ls{v}{m}}$, we have,
