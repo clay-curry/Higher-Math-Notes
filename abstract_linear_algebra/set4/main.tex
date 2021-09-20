@@ -1,0 +1,162 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fphw Assignment
+% LaTeX Template
+% Version 1.0 (27/04/2019)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Authors:
+% Class by Felipe Portales-Oliva (f.portales.oliva@gmail.com) with template 
+% content and modifications by Vel (vel@LaTeXTemplates.com)
+%
+% Template (this file) License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	12pt, % Default font size, values between 10pt-12pt are allowed
+	%letterpaper, % Uncomment for US letter paper size
+]{fphw}
+
+% Template-specific packages
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage{graphicx} % Required for including images
+\usepackage{booktabs} % Required for better horizontal rules in tables
+\usepackage{listings} % Required for insertion of code
+\usepackage{enumerate} % To modify the enumerate environment
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+%----------------------------------------------------------------------------------------
+%	MY SHORTCUTS
+%----------------------------------------------------------------------------------------
+
+\newcommand\0{\mathbf{0}}
+\newcommand\set[1]{\{#1\}}
+\newcommand\qed{\text{$\blacksquare$}}
+\newcommand\R[1]{\text{$\mathbb{R}^{#1}$}}
+\newcommand\F[1]{\text{$\mathbb{F}^{#1}$}}
+\newcommand\Z{\text{$\mathbb{Z}$}}
+\newcommand\N{\text{$\mathbb{N}$}}
+\newcommand\U{\text{$U$ }}
+\newcommand\ls[2]{\text{$#1_1, \ldots, #1_{#2}$}}
+\newcommand\poly[1]{\text{$\mathcal{P}_{#1}(\F{})$ }}
+\newcommand\spann[1]{\mathbf{span}(#1)}
+\renewcommand\deg[1]{\textbf{deg$(#1)$}}
+\renewcommand\dim[1]{\mathbf{dim}(#1)}
+\newcommand\lc[3]{#1_1 #2_1 + \cdots + #1_{#3} #2_{#3}}
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Homework \#4} % Assignment title
+\author{Clayton Curry} % Student name
+\date{Sep 19, 2021} % Due date
+\institute{University of Oklahoma \\ Department of Mathematics} % Institute or school name
+\class{Abstract Linear Algebra} % Course or class name
+\professor{Dr. Gregory Muller} % Professor or teacher in charge of the assignment
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Output the assignment title, created automatically using the information in the custom commands above
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT CONTENT
+%----------------------------------------------------------------------------------------
+
+\section*{1C: 24}
+
+\begin{problem}
+A function $f : \R{} \to \R{}$ is called even if
+$$
+f(-x) = f (x)
+$$
+for all $x \in \R{}$. A function $f : \R{} \to \R{}$ is called odd if
+$$
+f(-x) = -f(x)
+$$
+for all $x \in \R{}$. 
+
+Let $U_e$ denote the set of real-valued even functions on $\R{}$ and let $U_o$ denote the set of real-valued odd functions on $\R{}$. Show that
+$$
+\R{\R{}} = U_e \oplus U_o
+$$
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer} 
+If $f \in \R{\R{}}$, then
+\begin{align*}
+f(x) &= \frac{f(x) + f(x)}{2} + 0\\
+&=\frac{f(x) + f(x)}{2} + \frac{f(-x) - f(-x)}{2}\\
+&=\frac{f(x) + f(-x)}{2} + \frac{f(x) - f(-x)}{2}
+\end{align*}
+for all $x \in \R{}$. Notice, 
+$$
+\frac{f(x) + f(-x)}{2} \in U_e
+$$
+and
+$$
+ \frac{f(x) - f(-x)}{2} in U_o
+$$
+which implies that $f$ can be uniquely writted as the sum of an even function and an odd function. Since any $f \in \R{\R{}}$ can be expressed as a unique sum of an even function and odd function, $\R{\R{}}$ is a direct sum of $U_o$  and $U_e$. \qed
+
+%----------------------------------------------------------------------------------------
+\newpage
+\section*{2C: 11}
+\begin{problem}
+
+\end{problem}
+
+\subsection*{Answer} 
+\qed
+
+%----------------------------------------------------------------------------------------
+
+\section*{3A: 4}
+
+\begin{problem}
+
+\end{problem}
+
+\subsection*{Answer}
+\qed
+
+%----------------------------------------------------------------------------------------
+
+\section*{3A: 7}
+
+\begin{problem}
+
+\end{problem}
+
+\subsection*{Answer} 
+\qed
+
+%----------------------------------------------------------------------------------------
+
+\section*{3A: 14}
+
+\begin{problem}
+
+\end{problem}
+
+\subsection*{Answer} 
+\qed
+
+%----------------------------------------------------------------------------------------
+\end{document}
