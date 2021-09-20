@@ -53,6 +53,7 @@
 \renewcommand\deg[1]{\textbf{deg$(#1)$}}
 \renewcommand\dim[1]{\mathbf{dim}(#1)}
 \newcommand\lc[3]{#1_1 #2_1 + \cdots + #1_{#3} #2_{#3}}
+\renewcommand\L[2]{\mathcal{L}(#1, #2)}
 
 %----------------------------------------------------------------------------------------
 
@@ -111,7 +112,7 @@ $$
 $$
 and
 $$
- \frac{f(x) - f(-x)}{2} in U_o
+ \frac{f(x) - f(-x)}{2} \in U_o
 $$
 which implies that $f$ can be uniquely writted as the sum of an even function and an odd function. Since any $f \in \R{\R{}}$ can be expressed as a unique sum of an even function and odd function, $\R{\R{}}$ is a direct sum of $U_o$  and $U_e$. \qed
 
@@ -119,44 +120,72 @@ which implies that $f$ can be uniquely writted as the sum of an even function an
 \newpage
 \section*{2C: 11}
 \begin{problem}
-
+Suppose that $U$ and $W$ are subspaces of $\R{8}$ such that $\dim{U} = 3$, $\dim{W} = 5$ and $U + W = \R{8}$. Prove that $\R{8} = U \oplus W$.
 \end{problem}
 
 \subsection*{Answer} 
-\qed
+Since $\dim{U} = 3$ and $\dim W = 5$, there exists three linearly independent spanning vectors $u_1, u_2, u_3$ in $U$ and five linearly independent spanning vectors $w_1,w_2$ $w_3,w_4,w_5$ in $W$. Since any spanning list of vectors in a subspace with length equal to the dimension of the subspace is a basis of the subspace, $u_1, u_2, u_3,w_1,w_2,w_3,w_4,w_5$ are necessarily a basis of $U + W$ and by extension linearly independent in $U + W$. Since $u_1, u_2, u_3,w_1,w_2,w_3,w_4,w_5$ are linearly independent, the only way to write $\0$ as a linear combination of $u$'s and $w$'s is by taking each coefficient to $\0$. Another theorem states that the sum of subspaces is a direct sum if and only if a linear combination equal to zero is the trivial one. Therefore, it then follows that $\R{8} = U \oplus W$.
 
 %----------------------------------------------------------------------------------------
 
 \section*{3A: 4}
 
 \begin{problem}
-
+Suppose $T \in \L V W$ and $\ls vm$ is a list of vectors in $V$ such that $\ls{Tv}m$ is linearly independent in $W$. Prove that $\ls vm$ is linearly independent.
 \end{problem}
 
 \subsection*{Answer}
-\qed
+Suppose $\ls cn \in \F{}$ where at least one $c_j \ne 0$ such that
+$$
+\0 = \lc cvn
+$$
+If $\ls{Tv}m$ is linearly independent in $W$, we have
+$$
+\0 = T(\lc c{v}n) = \lc c{Tv}n
+$$
+where at least one $c_j \ne 0$, which is a contratiction. More precisely, by assuming some set of independent vectors in $W$ under some $T \in \L VW$ is dependent in $V$, we have reached a contradiction. Therefore any set of independent vectors in $W$ under some $T \in \L VW$ must also be independent in $V$. \qed
 
 %----------------------------------------------------------------------------------------
 
 \section*{3A: 7}
 
 \begin{problem}
-
+Show that every linear map from a 1-dimensional vector space to itself is
+multiplication by some scalar. More precisely, prove that if $\dim V = 1$
+and $T \in \L{V,V}$ then there exists $\lambda \in \F{}$ such that $Tv = \lambda v$ for all $v \in V$.
 \end{problem}
 
 \subsection*{Answer} 
-\qed
+If $T \in \L VV$, then $T$ maps elements from $\set{ kv \in V : k \in \F{}, v \in V, v \ne 0}$ back to itself, because any non-zero $v \in V$ is a basis of $V$. By selecting the appropriate $\lambda \in \F{}$ such that $v\overset{T}{\mapsto}\lambda v$, then for any $kv \in V$, we have $T(kv) = k T(v) = k(\lambda v) = (k\lambda) v = (\lambda k) v = \lambda (kv)$. Since any element $kv$ maps to $\lambda (kv)$ under $T$, the transformation $T$ is indistinguishable from multiplication by $\lambda$.
+
 
 %----------------------------------------------------------------------------------------
-
+\newpage
 \section*{3A: 14}
 
 \begin{problem}
-
+Suppose $V$ is finite-dimensional with $\dim V = 2$. Prove that there exist
+$S, T \in \L VV$ such that $S T \ne T S$.
 \end{problem}
 
 \subsection*{Answer} 
-\qed
+Let $V = \R{2}$, and define the maps $T$ and $S$ by the following equations,
+$$
+T \begin{pmatrix}a \\ b\end{pmatrix} = \begin{pmatrix}1 & 2\\1 & 0\end{pmatrix}\begin{pmatrix}a \\ b\end{pmatrix} \hspace{15 pt}\text{and}\hspace{15 pt} S \begin{pmatrix}a \\ b\end{pmatrix} = \begin{pmatrix}2 & 1\\2 & 0\end{pmatrix}\begin{pmatrix}a \\ b\end{pmatrix}
+$$
+for all $\begin{pmatrix}a & b\end{pmatrix}^T \in \R{2}$. Notice $ST$ is defined by
+$$
+ST \begin{pmatrix}a \\ b\end{pmatrix} = \begin{pmatrix}2 & 1\\2 & 0\end{pmatrix} \begin{pmatrix}\begin{pmatrix}1 & 2\\1 & 0\end{pmatrix} \begin{pmatrix}a \\ b\end{pmatrix}\end{pmatrix} =  \begin{pmatrix}\begin{pmatrix}2 & 1\\2 & 0\end{pmatrix} \begin{pmatrix}1 & 2\\1 & 0\end{pmatrix}\end{pmatrix} \begin{pmatrix}a \\ b\end{pmatrix} = \begin{pmatrix}3&4\\2&4\end{pmatrix}\begin{pmatrix}a \\ b\end{pmatrix}
+$$
+and 
+$$
+TS \begin{pmatrix}a \\ b\end{pmatrix} = \begin{pmatrix}1 & 2\\1 & 0\end{pmatrix}\begin{pmatrix}\begin{pmatrix}2 & 1\\2 & 0\end{pmatrix}\begin{pmatrix}a \\ b\end{pmatrix}\end{pmatrix} = \begin{pmatrix}\begin{pmatrix}1 & 2\\1 & 0\end{pmatrix}\begin{pmatrix}2 & 1\\2 & 0\end{pmatrix}\end{pmatrix}\begin{pmatrix}a \\ b\end{pmatrix} = \begin{pmatrix}6 & 1 \\ 2 & 1\end{pmatrix} \begin{pmatrix}a \\ b\end{pmatrix}
+$$
+but
+$$
+\begin{pmatrix}3&4\\2&4\end{pmatrix}\begin{pmatrix}a \\ b\end{pmatrix} \ne \begin{pmatrix}6 & 1 \\ 2 & 1\end{pmatrix} \begin{pmatrix}a \\ b\end{pmatrix}
+$$
+for some $\begin{pmatrix}a & b\end{pmatrix}^T \in \R{2}$. Hence this example provides a case of $S,T$ with $ST \ne TS$. \qed
 
 %----------------------------------------------------------------------------------------
 \end{document}
