@@ -1,0 +1,223 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	12pt, % Default font size, values between 10pt-12pt are allowed
+	%letterpaper, % Uncomment for US letter paper size
+]{fphw}
+
+% Template-specific packages
+\usepackage{enumerate} % To modify the enumerate environment
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+%----------------------------------------------------------------------------------------
+%	MY SHORTCUTS
+%----------------------------------------------------------------------------------------
+
+\newcommand\0{\mathbf{0}}
+\newcommand\set[1]{\{#1\}}
+\newcommand\qed{\text{$\blacksquare$}}
+\newcommand\R[1]{\text{$\mathbb{R}^{#1}$}}
+\newcommand\F[1]{\text{$\mathbb{F}^{#1}$}}
+\newcommand\Z{\text{$\mathbb{Z}$}}
+\newcommand\B[1]{\text{$\mathcal{B}_{#1}$}}
+\newcommand\nulll[1]{\text{null($#1$)}}
+\newcommand\N{\text{$\mathbb{N}$}}
+\newcommand\U{\text{$U$ }}
+\newcommand\ls[2]{\text{$#1_1, \ldots, #1_{#2}$}}
+\newcommand\poly[1]{\text{$\mathcal{P}_{#1}(\R{})$}}
+\newcommand\spann[1]{\mathbf{span}(#1)}
+\renewcommand\deg[1]{\textbf{deg$(#1)$}}
+\renewcommand\dim[1]{\mathbf{dim}(#1)}
+\newcommand\lc[3]{#1_1 #2_1 + \cdots + #1_{#3} #2_{#3}}
+\renewcommand\L[1]{\mathcal{L}(#1)}
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Homework \#6} % Assignment title
+\author{Clayton Curry} % Student name
+\date{Oct 3, 2021} % Due date
+\institute{University of Oklahoma \\ Department of Mathematics} % Institute or school name
+\class{Abstract Linear Algebra} % Course or class name
+\professor{Dr. Gregory Muller} % Professor or teacher in charge of the assignment
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Output the assignment title, created automatically using the information in the custom commands above
+
+
+%----------------------------------------------------------------------------------------
+%	Problem 10.A: 2
+%----------------------------------------------------------------------------------------
+\section*{10.A: 2}
+\begin{problem}
+Suppose $A$ and $B$ are square matrices of the same size and $AB=I$. Prove that $BA=I$.
+\end{problem}
+
+
+\subsection*{Answer}
+If $A,B$ are square matrices and $AB = I$, then the linear transformation $T_A$ is surjective, which implies $T_A$ is injective (because $A$ is a square matrix). Since $T_A$ is injective and surjective, $T_A$ is isomorphic and therefore $A^{-1}$ exists. Since $A^{-1}$ exists,
+\begin{align*}
+I &= A^{-1}A\\ 
+&= A^{-1} I A\\
+&= A^{-1}(AB)A\\
+&=(A^{-1}A)BA\\
+&=I(BA)\\
+&=BA 
+\end{align*}
+
+%----------------------------------------------------------------------------------------
+%	Problem 10.A: 3
+%----------------------------------------------------------------------------------------
+\section*{10A: 3}
+\begin{problem}
+Suppose $T \in \L{V}$ has the same matrix with respect to every basis of $V$. Prove that $T$ is a scalar multiple of the identity operator.
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}
+The following lemmas, $(1)$ and $(2)$, yield the following implications, demonstrating the above statement.
+\begin{enumerate}
+\item If there exists a non-zero vector in $V$ that is not an eigenvector of $T$, then there are two bases for $V$ such that the associated matrices of $T$ are not equal.
+\item If every non-zero vector in $V$ is an eigenvector of $T$, then $T$ is a scalar multiple of the identity map.
+\end{enumerate}
+\begin{align*}
+ \forall \text{ bases $\B1, \B2$ of } V, [T]_{\B1,\B1} = [T]_{\B2,\B2} &\overset{(1)}{\implies}  \forall v \in V, \exists \lambda \in \F{}, \text{ such that } Tv = \lambda v\\
+&\overset{(2)}{\implies}\text{$T$ is a scalar multiple of the identity map.}
+\end{align*}
+Therefore, any linear endomorphism $T$ that has the same matrix with respect to every basis of $V$ is a scalar multiple of the identity operator on $V$.
+\qed
+
+\vspace{10 pt}
+Proof of Lemma (1)\\
+Define the linear endomorphism $T$ on $V$ by the equation $Tv_k = \lambda_kv_k$, where each $v_k$ belongs to an ordered basis $\B1=(\ls vn)$ of $V$, $\ls \lambda n \in \F{}$, and $\lambda_i \ne \lambda_j$. Since each $v_k \in \B1$ is an eigenvector of $T$, the matrix associated with $T$ for the basis $\B1$ is the diagonal matrix,
+$$
+[T]_{\B1, \B1}=
+\begin{pmatrix}
+\lambda_1 & 0 & \cdots & 0\\
+0 & \lambda_2 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & \lambda_n
+\end{pmatrix}
+$$
+
+By extension, $\B2 = (v_1, \ldots, v_{n-1}, v_1 + \cdots +v_n)$ is a basis of $V$. Since $\not \exists \lambda \in \F{}$ where, $T v_k = \lambda v_k$ for all $v_k \in \B1$, $(v_1 + \cdots + v_n)$ is not an eigenvector of $T$ and the matrix $[T]_{\B2,\B2}$ cannot be diagonal. Since, there exists a non-zero vector in $V$ that is not an eigenvector of $T$, $[T]_{\B1,\B1} \ne [T]_{\B2,\B2}$.
+
+\vspace{10 pt}
+Proof of Lemma (2)\\
+If, as assumed, any vector $v \in V$ is an eigenvector, then there exists a scalar map $\phi : V \to \F{}$, such that
+\begin{equation}
+Tv = (\phi v) v
+\end{equation}
+where $\phi v$ is the eigenvalue cooresponding to $v$. If it is shown that $\phi$ maps all $v \in V$ to the same element in $\F{}$, then it is demonstrated that $T$ is a scalar multiple of the identity map on $V$.
+
+If $u, v \in V$ are related by the equation, $u = \beta v$ for some $\beta \in \F{}$, we have,
+\begin{equation} \label{eq:2}
+\phi(u)u = \phi(\beta v) \beta v = T(\beta v) = \beta T(v) = \beta \phi(v) v = \phi(v) \beta v
+\end{equation}
+When $(\beta v) \ne 0$, (\ref{eq:2}) shows that
+\begin{equation} \label{eq:3}
+\phi(\beta v) = \phi(v)
+\end{equation}
+i.e. $\phi$ maps every member of the one-dimensional subspace generated by $v$ to $\phi(v)$. When $u, v$ are linearly independent,
+\begin{equation} \label{eq:4}
+T(u + v) = \phi(u + v)(u + v) = \phi(u + v)u + \phi(u + v)v
+\end{equation}
+but additive property of $T$ also requires that,
+\begin{equation} \label{eq:5}
+T(u + v) = T(u) + T(v) = \phi(u)u + \phi(v)v
+\end{equation}
+combining (\ref{eq:4}) and (\ref{eq:5}),
+\begin{equation} \label{eq:6}
+(\phi(u + v) - \phi(u))u + (\phi(u + v)-\phi(v))v = 0
+\end{equation}
+equation (\ref{eq:6}) tells us $\phi(u + v) = \phi(u) = \phi(v)$ because we assumed that $u, v$ are linearly independent.
+
+Since $u,v$ are an arbitrary pair of linearly independent vectors, the result produced by (\ref{eq:6}) combined with (\ref{eq:3}) shows that $\phi(v)$ is a constant for all $v \in V$; taking $\lambda = \phi(v)$ for any $v \in V$ then yields the complete solution. \qed
+\newpage
+
+
+%----------------------------------------------------------------------------------------
+%	Problem 5.A: 2
+%----------------------------------------------------------------------------------------
+\section*{5.A: 2}
+\begin{problem}
+Suppose $S, T \in \L{V}$ are such that $ST = TS$. Prove that null$(S)$ is invariant under $T$.
+\end{problem}
+\subsection*{Answer}
+Let $v \in \nulll S$. Then
+\begin{align*}
+S(Tv) &= T(Sv) = T(0) = 0\\ 
+&\implies \forall v \in \nulll S, Tv \in \nulll S\\
+&\implies T(\nulll S) \subseteq \nulll S
+\end{align*}
+Therefore null$(S)$ is invariant under $T$.
+
+%----------------------------------------------------------------------------------------
+%	Problem 5.A: 7
+%----------------------------------------------------------------------------------------
+\section*{5.A: 7}
+\begin{problem}
+Suppose $T \in \L{\R{2}}$ is defined by $T(x,y) = (-3y,x)$. Find the eigenvalues of $T$.
+\end{problem}
+\subsection*{Answer}
+Suppose $\lambda$ is an eigenvalue of $T$. Then
+\begin{align*}
+\lambda x &= -3y\\
+\lambda y &= x\\
+0 &= (\lambda x + 3y) + (\lambda y - x)\\
+(x-3y) &= \lambda(x+y)\\
+\lambda &= \frac{(x-3y)}{(x+y)}
+\end{align*}
+Hence
+$$
+\lambda (1,0) = 1 (1, 0) = (1, 0)
+$$
+but
+$$
+T(1, 0) = (0,1) \ne \lambda (1,0)
+$$
+Therefore, no $\lambda \in \R{}$ is an eigenvalue of $T$
+
+
+%----------------------------------------------------------------------------------------
+%	Problem 5.A: 11
+%----------------------------------------------------------------------------------------
+\section*{5.A: 11}
+\begin{problem}
+Define $T: \poly{} \to \poly{}$ by $Tp = p'$. Find all eigenvalues and eigenvectors of $T$.
+\end{problem}
+\subsection*{Answer}
+$\poly{} \subsetneq \mathcal{C}^\infty$ and the only function $f \in C^\infty$, such that $Tf = f' = cf$, is the function defined by $f(x) = e^{cx}$ for all $x \in \R{}$, but $e^{cx} \not \in \poly{}$. Therefore, no element in $\poly{}$ is an eigenvector for $T$ and there is no eigenvalue for $T$ in $\poly{}$.
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	Problem 5.A: 12
+%----------------------------------------------------------------------------------------
+\section*{5.A: 12}
+\begin{problem}
+Define $T \in \L{\poly{4}}$ by 
+$$
+(Tp)(x) = xp'(x)
+$$
+for all $x \in \R{}$. Find all eigenvalues and eigenvectors of $T$.
+\end{problem}
+
+\subsection*{Answer} Note that
+\begin{align*}
+T x^4 &= x(4x^3) = 4x^4& T x^3 &= x (3x^2) = 3x^3 \\
+T x^2 &= x(2x) = 2x^2  & T x &= x (1) = 1\\
+T(1) &= x (0) = 0
+\end{align*}
+Hence the span of each vector in the standard basis of $\poly{4}$ forms a distinct invariant subspace under $T$, with eigenvalue equal to the exact degree of the spanning polynomial.
+\end{document}

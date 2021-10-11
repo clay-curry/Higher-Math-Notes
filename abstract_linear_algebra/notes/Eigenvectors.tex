@@ -1,0 +1,381 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{clays_notes}
+
+
+\newcommand\A[1]{\text{$A_{#1}$}}
+\newcommand\B[1]{\text{$B_{#1}$}}
+\newcommand\R[1]{\text{$\mathbf{R^{#1}}$}}
+\newcommand\C[1]{\text{$\mathbf{C^{#1}}$}}
+\newcommand\F[1]{\text{$\mathbf{F^{#1}}$}}
+\newcommand\M[1]{\text{$\mathcal{M}(#1)$}}
+\newcommand\V{\text{$\mathbf{V}$}}
+\newcommand\U{\text{$\mathbf{U}$}}
+\newcommand\W{\text{$\mathbf{W}$}}
+\newcommand\0{\text{$\mathbf{0}$}}
+\renewcommand\L[2]{\mathcal{L}(#1,#2)}
+
+
+\newcommand\lc[3]{#1_1 #2_1 + \cdots + #1_{#3} #2_{#3}}
+\newcommand\ls[2]{#1_1, \ldots, #1_{#2}}
+\newcommand\spann[1]{\mathbf{span}(#1)}
+\newcommand\set[1]{\{#1\}}
+\newcommand\poly[1]{\mathcal{P}_{#1}(\F{})}
+\renewcommand\deg{\text{deg }}
+\renewcommand\dim{\text{dim }}
+\renewcommand\null{\text{null }}
+\newcommand\range{\text{range }}
+
+% FONT STYLES
+
+\title{Eigenvectors}
+\author{Notes by:  \\ Clay Curry}
+\date{}
+
+\begin{document}
+
+\section{Change of Basis and Conjugation}
+
+\definition{Linear Endomorphisms}
+{For the rest of the class, we will focus on linear maps from a vector space to itself
+$$T : \V \to \V$$
+These are sometimes called \textbf{linear endomorphisms} of \V.
+}
+\note{Notational Shortcuts}
+{\points
+{$\F{}$ denotes $\R{}$ or $\C{}$}
+{$\V$ and $\W$ denote vector spaces over $\F{}$}
+}
+
+\subsection{The Vector Space of Linear Maps}
+\definition{Linear Map}
+{
+A \textbf{linear map} from $V$ to $W$ is a function $T : V \to W$ with the following properies:
+\points
+{\textbf{Additivity: } $T(u+v) = Tu + Tv$ for all $u, v \in V$;}
+{\textbf{Homogeneity: } $T(\lambda v) = \lambda Tv$ for all $\lambda \in \F{}$ and $v \in V$.}
+}
+Some mathematicians use the term \textbf{linear transformation} or \textbf{vector space homomorphism}, which means the same thing as linear map. 
+
+\definition{$\L{V}{W}$}
+{The set of all linear maps from $\V$ to $\W$ is denoted $\L{\V}{\W}$.}
+
+It is easy to verify that each of the functions defined below is indeed a linear map.
+
+\example{Linear Maps}
+{
+\textbf{Zero}\\
+In addition to other uses, the symbol $0$ can be used to denote the function that takes each element of the vector space to zero. To be specific, $0 \in \L{V}{W}$ is defined by $$0v = 0$$
+\textbf{Identity}\\
+The \textbf{identity map} denoted $I$ can be used to denote the function that takes each element of the vector space to itself. To be specific, $I \in \L{V}{V}$ is defined by $$Iv = v$$
+\textbf{Differentiation}\\
+Let $f, g \in \R{\R{}}$ be once-differentiable functions in $\R{}$. Notice 
+$$\frac{d}{dx}(f + g)(x) =  \frac{d}{dx}(f(x) + g(x)) = \frac{d}{dx}f(x) + \frac{d}{dx}g(x) = (\frac{d}{dx}f + \frac{d}{dx}g)(x).$$
+$$\frac{d}{dx}(\lambda f)(x) = \frac{d}{dx}(\lambda f(x)) = \lambda \frac{d}{dx}f(x)$$
+\textbf{Integration}\\
+Let $f, g \in \R{\R{}}$ be once-integrable functions over $(a,b) \subseteq \R{}$. Notice 
+$$\int_a^b (f + g)(x) dx =  \int_a^b (f(x) + g(x)) dx = \int_a^b f(x) dx + \int_a^b g(x)dx$$
+$$\int_a^b (\lambda f)(x) dx = \int_a^b (\lambda f(x)) dx= \lambda \int_a^b f(x) dx$$
+}
+The previous two assertions, that differentiation and integration are linear, are other ways of stating the basic results about differentiation and integration: the derivative or integral of a sum is the sum of the derivatives or integrals; the derivative or integral of a constant times a function is the constant multiple of the derivative or integral of the function.
+
+\example{Linear Maps}
+{
+\textbf{Multiplication by $x^2$}\\
+Define $T \in \L{\poly{}, \poly{}}$ by, $$(Tp)(x) = x^2 p(x) \hspace{10 pt} \text{ for } x \in \F{}.$$
+\textbf{Backward shift}\\
+Recall that $\F{\infty}$ denotes the vector space of all sequences of elements in $\F{}$. Define $T \in \L{\F{\infty}}{\F{\infty}}$ by $$T(x_1, x_2, x_3, \ldots) = (x_2, x_3, \ldots)$$
+\textbf{From $\R{3}$ to $\R{2}$}\\
+Define $T \in \L{\R{3}}{\R{2}}$ by $$T(x,y,z) = (2x - y + 3z, 7x + 5y - 6z)$$
+}
+
+The uniqueness part of the next result means that a linear map is completely determined by its values on a basis.
+
+\theorem{Linear maps and basis of domain}
+{Suppose $\ls{v}{n}$ is a basis of $\V$ and $\ls{w}{n} \in W$. Then there exists a unique linear map $T: \V \to \W$ such that \mathdiv{Tv_j = w_j} for each $j =1, \ldots, n$.}
+{
+First we show existence, then uniqueness. Define $T: \V \to \W$ by $$T(\lc cvn) = \lc cwn$$where $\ls cn$ are arbitrary elements of $\F{}$. Since $\ls vn$ is a basis, $T$ is well-defined and is therefore a function from $V$ to $W$.
+For each $j \in \{1, \ldots, n\}$, taking $c_j = 1$ and the other $c$'s equal to $0$ in the equation shows $T v_j = w_j$. The map can be easily verified to be a vector space homomorphism. Thus, the desired map exists.
+
+To prove uniqueness, supppose $S, T \in \L{\V}{\W}$ and that $\forall j \in \{1, \ldots, n\}, S v_j=T v_j=w_j$. Then $\forall \ls an \in \F{}$,
+\begin{align*}
+S(\lc avn) &= a_1 Sv_1 + \cdots a_n Sv_n\\
+&= a_1 w_1 + \cdots a_n w_n \\
+&= a_1 Tv_1 + \cdots a_n Tv_n\\
+&= T(\lc avn)\\
+&\implies \text{$S = T$ for all elements in $\spann{\ls vn}$.}
+\end{align*}
+But $\V = \spann{\ls cn}$, which implies $S = T \space{5pt} \forall v \in \V \implies S = T \implies T$ is unique.
+}
+
+\newpage
+
+\subsubsection{Algebraic Operations on $\L{\V}{\W}$}
+\definition{Addition and Scalar Multiplication on $\L{\V}{\W}$}
+{
+Suppose $S, T \in \L{\V}{\W}$ and $\lambda \in \F{}$. The \textbf{sum} $S+T$ and the \textbf{product} $\lambda T$ are the maps from $\V$ to $\W$ defined by:
+\mathdiv{(S+T)(v) = Sv + Tv \text{ \hspace{5 pt} and \hspace{5 pt} } (\lambda T)(v) = \lambda (Tv)}
+for all $v \in \V$.
+}
+
+\theorem{$\L{\V}{\W}$ is a vector space}
+{With the operations of addition and scalar multiplication as defined above, $\L{\V}{\W}$ is a vector space.}
+{}
+
+\definition{Product of Linear Maps}
+{If $T \in \L{\U}{\V}$ and $S \in \L{\V}{\W}$, then the \textbf{product} $ST : \U \to \W$ is defined by \mathdiv{(ST)(u) = S(Tu)}for $u \in \U$.}
+
+\theorem{The product of linear maps is a linear map}
+{If $T \in \L{\U}{\V}$ and $S \in \L{\V}{\W}$, then $ST \in \L{\U}{\W}$.}
+{
+Suppose $u,v \in \U$, $T \in \L{\U}{\V}$, and $S \in \L{\V}{\W}$
+\begin{align*}
+ST(u+v) &= S(Tu + Tv) &ST(\lambda u) &= S(\lambda Tu)\\
+&= S(Tu) + S(Tv) &&= \lambda S(Tu) \\
+&= ST(u) + ST(v) &&= \lambda ST(u)
+\end{align*}
+}
+
+\property{Algebraic properties of products of linear maps}
+{
+\points
+{\textbf{Associativity: }\mathdiv{(T_1T_2)T_3 = T_1(T_2T_3)}whenever $T_1, T_2,$ and $T_3$ are linear maps such that products make sense.}
+{\textbf{Identity: }\mathdiv{TI = IT = T}whenever $T \in \L{V}{W}$ and the left $I$ is the identity map on $V$ and the right $I$ is the identity map on $W$.}
+{\textbf{Distributitvity: }\mathdiv{(S_1 + S_2)T = S_1T + S_2T \text{ \hspace{5pt} and \hspace{5pt} } S(T_1 + T_2) = ST_1 + ST_2}whenever $S, S_1, S_2 \in \L{V}{W}$ and $T, T_1, T_2 \in \L{U}{V}$.}
+}
+
+\theorem{Linear maps take $\0$ to $\0$}
+{Suppose $T \in \L{\V}{\W}$. Then $T(\0) = \0$.}
+{Let $v \in \V$. Then \mathdiv{T(\0) = T(0 v) = 0 T(v) = \0}as desired}
+
+
+%%%%%%%%%%%%%%%%%%%
+% Section 3.2 : Null Spaces and Ranges
+%%%%%%%%%%%%%%%%%%%
+
+\subsection{Null Spaces and Ranges}
+\subsubsection{Null Spaces and Injectivity}
+
+In this section, we will learn about two subspaces intimitely connected with each linear map. The first subspace exists in the domain; the second exists in the codomain.
+
+\definition{Null Space}
+{For $T \in \L{\V}{\W}$, the \textbf{null space} of $T$, denoted $\null T$, is the subset of $\V$ consisting of all the vectors $v \in \V$ that $T$ maps to $0 \in \W$:\mathdiv{\null T = \set{v \in \V : Tv = 0 \in \W}}}
+
+Some mathematicians use the term \textbf{kernel} instead of null space.
+
+\theorem{The null space is a subspace}
+{Suppose $T \in \L{\V}{\W}$. Then $\null T$ is a subspace of $\V$.}
+{Suppose $u, v \in \null T$.
+\begin{adjustwidth}{1cm}{}
+1.	The additive identity $\0 \in \null T$ because $T(\0) = \0$.\\
+2.	$T(u + v) = Tu + Tv = \0 + \0 = \0 \implies u + v \in \null T$ \\
+3. $T(\lambda v) = \lambda Tv = \lambda \0 = \0 \implies \lambda v \in \null T$
+\end{adjustwidth}
+
+Hence, $\null T$ is a subspace of \V.
+}
+
+\definition{Injective, one-to-one}
+{A function $T : \V \to \W$ is called injective if $Tu = Tv$ implies $u=v$.}
+
+\theorem{Injectivity is equivalent to null space equals $\set{\0}$}
+{Let $T \in \L{\V}{\W}$. Then $T$ is injective if and only if $\null T = \set{\0}$}
+{
+$T$ is injective $\implies$ only one vector in $\V$ is sent to \0 in \W $\implies \null T  = \set \0$.
+
+$\null T = \set \0$ and $Tv = Tu \implies \0 = Tv - Tu = T(v - u) \implies v - u \in \null T \implies v = u.$
+}
+
+\subsubsection{Range and Surjectivity}
+\definition{Range}
+{For a function $T : \V \to \W$, the range of $T$ is the subset of $\W$ consisting of those vectors that are of the form $Tv$ for some $v \in \V$:
+\mathdiv{\range T = \set{Tv : v \in \V}}
+}
+
+\theorem{The range is a subspace}
+{Suppose $T \in \L{\V}{\W}$. Then $\range T$ is a subspace of $\W$.}
+{
+Suppose $u, w \in \range T$ and $T(v_1) = u$ and $T(v_2) = w$.
+\begin{adjustwidth}{1cm}{}
+1.	The additive identity $\0 \in \range T$ because $T(\0) = \0$.\\
+2.	$u + w = Tv_1 + Tv_2 = T(v_1 + v_2) \implies u + v \in \range T$ \\
+3. $\lambda u = \lambda Tv_1 = T (\lambda v_1) \implies \lambda u \in \range T$
+\end{adjustwidth}
+}
+
+\definition{Surgective, onto}
+{A function $T : V \to W$ is called \textbf{surjective} or \textbf{onto} if its range is equal to $W$.}
+
+\subsubsection{Fundamental Theorem of Linear Maps}
+The next result is so important that it gets a dramatic name.
+\theorem{Fundamental Theorem of Linear Maps}
+{Suppose $\V$ is finite-dimensional and $T \in \L{\V}{\W}$. Then $\range T$ is finite-dimensional and \mathdiv{\dim \V = \dim \null T + \dim \range T}}
+{
+Because $\null T$ is a subspace of \V, $\null T$ has a basis $\ls vm$. Because $\ls vm$ is linearly independent in \V, the list can be extended to a basis of $\ls vm, \ls wn$ of \V. Therefore $\dim V = m + n = \dim \null T + n$, and the above proposition holds if it can be demonstrated that $\dim \range T = n$.
+
+Notice that when $T$ acts on any $v \in \V$, we have
+\begin{align*}
+Tv &= T(\lc cvm + \lc dwn)\\
+&= \lc c{Tv}m + \lc d{Tw}n \\
+&= \0 + \cdots + \0 + \lc d{Tw}n \\
+&= \lc d{Tw}n \\
+&\implies \ls {Tw}n \text{ spans } \range T
+\end{align*}
+
+If we select a $v \in \V$ such that $Tv = \0$, then
+\begin{align*}
+Tv = \lc d{Tw}n = \0 &\implies v \in \null T \\
+&\implies v = \lc cvm \\
+&\implies d_1 = \cdots = d_m = 0 \\
+&\implies Tw_1, \cdots, Tw_n \text{ is linearly independent} \\
+&\implies Tw_1, \cdots, Tw_n \text{ is a basis for $\range T$}
+\end{align*}
+
+Because $Tw_1, \cdots, Tw_n$ is a basis, it follows that $\dim \range T = n$, as desired. By this logic, we conclude that if \V is finite-dimensional and $T \in \L{\V}{\W}$ then,\mathdiv{\dim \V = \dim \null T + \dim \range T}
+}
+
+\newpage
+
+Now we can show that no injective linear map exists from a finite-dimensional vector space to a ``smaller" (is measured in dimension).
+
+\theorem{A map to a smaller dimensional subspace is not injective}
+{Suppose $\V$ and $\W$ are finite-dimensional vector spaces such that $\dim \V > \dim \W$. Then no linear map from $\V$ to $\W$ is injective.}
+{
+Take any $T \in \L{\V}{\W}$ and suppose $\dim \V > \dim \W$. By the Fundamental Theorem of Linear Maps,
+\begin{align*}
+\dim \null T &= \dim \V - \dim \range T\\
+\dim \null T &\ge \dim \V - \dim \W\\
+\dim \null T &> 0
+\end{align*}
+This means $\null T$ contains vectors other than \0. Therefore, $T$ is not injective.
+}
+
+\theorem{A map to a larger dimensional subspace is not surjective}
+{Suppose $V$ and $W$ are finite-dimensional vector spaces such that $\dim V < \dim W$. Then no linear map from $V$ to $W$ is surjective.}
+{
+Take any $T \in \L{\V}{\W}$ and suppose $\dim \V < \dim \W$. By the Fundamental Theorem of Linear Maps,
+\begin{align*}
+\dim \range T &= \dim \V - \dim \null T \\
+&\le \dim \V \\
+&< \dim \W
+\end{align*}
+Since $\dim \range T < \dim \W$, $\range T$ does not span \W. Therefore, T is not surjective.
+}
+
+\theorem{Homogenous system of linear equations}
+{A homogenous system of linear equations with more variables than equations has non-zero solutions.}
+{}
+
+\theorem{Inhomogeneous system of linear equations}
+{An inhomogeneous system of linear equations with more equations than variables has no solution for some choice of the constant terms.}
+{}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%
+% Section 3.2 : Matrices
+%%%%%%%%%%%%%%%%%%%
+% \begin{matrix} -- creates a matrix without brackets or boundaries.
+% a & b & c \\
+% d & e & f \\
+% g & h & i \\
+% \end{matrix}
+% \begin{pmatrix} -- creates a matrix with parathenses
+% \begin{bmatrix} -- creates a matrix with brackets
+% \begin{Bmatrix} -- creates a matrix with curly brackets
+% \begin{vmatrix} -- creates a matrix with rectangular line boundary
+% \begin{Vmatrix} -- creates a matrix with double vertical bar brackets
+\subsection{Matrices}
+
+Suppose $T \in \L{\V}{\W}$ and $\ls vn$ is a basis of $\V$, then the values of $\ls {Tv}{n}$ determine the action of $T$ on any arbitrary vectors in $V$. Matrices became popular for recording the values of the $Tv_j$'s in terms of a basis of $W$.
+
+\definition{Matrix, $A_{j,k}$}
+{
+Let $m$ and $n$ denote positive integers. An $m$-by-$n$ \textbf{matrix} \A{} is a rectangular array of elements of \F{} with $m$ rows and $n$ columns:
+$$
+\A{} = \begin{pmatrix}
+\A{1,1} & \cdots & \A{1,n} \\
+\vdots & & \vdots \\
+\A{m, 1} & \cdots & \A{m,n}
+\end{pmatrix}
+$$
+The notation \A{j,k} denotes the entry in row $j$, column $k$ of \A{}. In other words, the first index refers to the row number and the second index refers to the column number.
+}
+
+Now we come to the key definition in this section.
+\definition{Matrix of a Linear Map, \M{T}}
+{
+Suppose $T \in \L{\V}{\W}$ and $\ls vn$ is a basis of \V and $\ls wm$ is a basis of \W. The \textbf{matrix of } $T$ with respect to these bases is the $m$-by-$n$ matrix \M{T} whose entries \A{j,k} are defined by,
+$$
+T v_k = \A{1,k}w_1 + \cdots + \A{m, k}w_m \hspace{10pt}\text{ for } k = 1, \cdots, n.
+$$
+
+If the bases are not clear from the context, then the notation \M{T, (\ls vn), (\ls wm)} is used.
+}
+
+To remember how \M{T} is constructed from $T$, you might write across the top of the matrix the basis vectors $\ls vn$ for the domain and along the left the basis vectors $\ls wm$ for the vector space into which $T$ maps as follows:
+\example{Matrix encoding $(\ls vn) \mapsto (\ls wm)$}
+{
+Only the $k^\text{th}$ column is shown. Thus the second index of each displayed entry of the matrix is $k$.
+$$
+\M{T} = \begin{array}{ccc}
+&\begin{matrix}
+v_1 & \cdots & v_k & \cdots & v_n
+\end{matrix} \\
+\begin{matrix}
+w_1 \\
+\vdots \\
+w_m
+\end{matrix} &
+\begin{pmatrix}
+\hspace{13pt} & \hspace{13pt} & \A{1,k} & \hspace{13pt} & \hspace{13pt} \\
+& & \vdots & & \\
+& & \A{m,k} & &
+\end{pmatrix}
+\end{array}
+$$
+The above picture should remind you that \textbf{$Tv_k$ can be computed from $\mathbf{\M T}$ by multiplying each entry in the $\mathbf{k^{th}}$ column by the corresponding $\mathbf{w_j}$ then adding up the resulting vectors. }
+}
+If $T$ is a linear map from \F{n} to \F{m}, then unless stated otherwise, assume the bases in question are the standard ones (where the $k^{th}$ basis vector is $1$ in the $k^{th}$ slot and $0$ in all the other slots).
+
+\example{Matrix of $T \in \L{\F{n}}{\F{m}}$}{If $T \in \L{\F{n}}{\F{m}}$ and you think of elements of \F{m} as columns of numbers, then you can think of the $k^{th}$ column of \M{T} as $T$ applied to the $k^{th}$ standard basis vector of \F{n}. }
+
+\newpage
+\subsubsection{Addition and Scalar Multiplication of Matrices}
+Suppose $S, T \in \L{\V}{\W}$. For the rest of the section, assume \V and \W are finite-dimensional and have a basis chosen for them. 
+
+We are interested in whether \M{S + T} = \M{S} + \M{T} and whether \M{\lambda T} = $\lambda \M{T}$?
+
+\definition{Matrix Addition}
+{
+The sum of two matrices of the same size is the matrix obtained by the corresponding entries of two matrices.
+$$
+\begin{pmatrix}
+\A{1,1} & \cdots & \A{1, n} \\
+\vdots & & \vdots \\
+\A{m, 1} & \cdots & \A{m, n}
+\end{pmatrix} +
+\begin{pmatrix}
+\B{1,1} & \cdots & \B{1, n} \\
+\vdots & & \vdots \\
+\B{m, 1} & \cdots & \B{m, n}
+\end{pmatrix} = 
+\begin{pmatrix}
+\A{1,1} + \B{1,1} & \cdots & \A{1,n} + \B{1, n} \\
+\vdots & & \vdots \\
+\A{m,1} + \B{m, 1} & \cdots & \A{m,n} + \B{m, n}
+\end{pmatrix}
+$$ 
+}
+
+In the following result, the assumption is that the same bases are used for \M{S}, \M{T}, and \M{S + T}.
+\theorem{The Matrix of the Sum of Linear Maps}
+{Suppose $S, T \in \L{\V}{\W}$. Then \M{S + T} = \M{S} + \M{T}.}
+{}
+
+Still assuming that the same bases are used, is the matrix of a scalar times a linear map the same as the scalar times the matrix of the linear map? Again we must provide a definition for scalar multiplication.
+
+\end{document}
