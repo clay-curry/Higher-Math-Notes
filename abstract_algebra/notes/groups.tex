@@ -5,18 +5,6 @@
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 \usepackage{clays_notes}
 
-\newcommand\R[1]{\text{$\mathbb{R}^{#1}$}}
-\newcommand\F[1]{\text{$\mathbb{F}^{#1}$}}
-\newcommand\C[1]{\text{$\mathbb{C}^{#1}$}}
-\newcommand\Z[1]{\text{$\mathbb{Z}^{#1}$}}
-\newcommand\N[1]{\text{$\mathbb{N}^{#1}$}}
-\renewcommand\P{\text{$\mathcal{P}$}}
-
-\newcommand\U{\mathbf{U}}
-\renewcommand\S{\mathcal{S}}
-\renewcommand\u{\mathbf{u}}
-\newcommand\set[1]{\{#1\}}
-\newcommand\ls[2]{#1_1, \ldots, #1_{#2}}
 
 
 % FONT STYLES
@@ -28,51 +16,143 @@
 \begin{document}
 \maketitle
 \stepcounter{section}
-\section{The Integers}
+\stepcounter{section}
+\section{Groups}
 
-\subsection{Induction}
+One of the richest algebraic structures is one in which sets have a single operation that generalizes structures like $\Z{}$ together with its single operation of addition and the set of invertible $2 \times 2$ matrices together with its single operation of matrix multiplication. These sets, together with their respective operations, are examples of algebraic structures known as \textbf{groups}.
 
-\definition{First Principle of Mathematical Induction}
-{Let $S(n)$ be a statement about integers for $n \in \N{}$ and suppose $S(n_0)$ is true for some integer $n_0$. If for all integers $k$ with $k \ge n_0$, $S(k)$ implies that $S(k+1)$ is true, then $S(n)$ is true for all integers $n$ greater than or equal to $n_0$.}
+Historically, the theory of groups arose from an attempt to find the roots of a polynomial in terms of its coefficients. Nowadays, modern group theory is uesd in the study of coding theory, counting, and symmetries: a deep philosophical concept touching almost every area of scientific study including biology, chemistry, and physics.
 
-\definition{Second Principle of Mathematical Induction}
-{Let $S(n)$ be a statement about integers for $n \in \N{}$ and suppose $S(n_0)$ is true for some integer $n_0$. If $S(n_0), S(n_0 + 1), \ldots, S(k)$ imply that $S(k + 1)$ for $k \ge n_0$, then the statement $S(n)$ is true for all integers $n \ge n_0$.}
+\subsection{Intger Equivalence Classes}
 
-\definition{Principle of Well-Ordering}
-{Every non-empty subset of the natural numbers contains a least element.}
+This section provides examples of mathematical structures that can be viewed as sets with single operations.
 
-\theorem{}{The Principle of Mathematical Induction implies that 1 is the least natural number}{}
+\subsubsection{The Integers mod n}
+\definition{Modulus n}
+{Fix $n \in \N{}$ and $a,b \in \Z{}$. The \textbf{modulo $\mathbf{n}$ operation} relates $a$ and $b$ when $n$ divides $a-b$. Here $n$ is said to be the \textbf{modulus} of the mod $n$ relation.  The following statements are equivalent
+\points
+{$n | a - b$}
+{``$a$ and $b$ are congruent modulo $n$"}
+{$a \equiv b \mod n$}
+{$a \equiv_n b$}
+The integers mod $n$ relation partitions $\Z{}$ into $n$ different equivalence classes; the these equivalence classes are described in notation by:
+\points
+{$\Z{}_n$ for the combined $n$ equivalence classes (also called congruence classes)  in $^{\Z{}} / _{\equiv_n}$ }
+{$[a]_n := \set{x \in \Z{}: x \equiv a \mod n}$ for the individual congruence classes.}
+}
 
-\theorem{}{The Principle of Mathematical Induction implies the Principle of Well-Ordering. That  is, every nonempty subset of $\N{}$ contains a least element.}{}
+Note the exists a 1-to-1 correspondence between conguence classes and the set of remainders.
+
+\example{Applications of Integers mod n}
+{\points{Cryptograpy}{Coding Theory}{Detection of Errors in Identification Codes}}
 
 \newpage
-\subsection{The Division Algorithm}
+It is possible to define arithmetic operations on $\Z{}_n$; for any two integers, 
+\definition{Arithmetic on $\Z{}_n$}
+{Define
+Addition modulo $n$ by the following formula 
+$$[a + b]_n = [a]_n + [b]_n$$
+Multiplication modulo $n$ by the following formula
+$$[ab]_n = ([a]_n)([b]_n)$$
 
-An application of the Principle of Well-Ordering that is often-used is the division algorithm.
-
-\theorem{Division Algorithm}
-{
-Let $a$ and $b$ be integers, with $b \ge 0$. Then there exists unique integers $q$ and $r$ such that
+\theorem{Properties of modular aritmetic}
+{Every non-zero $[k]_n \in Z_n$ has an inverse in $Z_n$ if $k$ is relatively prime to $n$. That is, $k$ has an inverse in $\Z{}_n$ if
 $$
-a = bq + r
-$$
-where $0 \le r < b$. 
-}
-{\textit{existence of $q$ and $r$}. Consider the set,
-$$
-R = \set{a - bx : x \in \Z{} \wedge a - bx \ge 0}
-$$
-If $0 \in R$, then $b | a$, and we can let $q = a/b$ and $r = 0$. If $0 \not \in R$, then the WOP guarentees the existence of a smallest element in a set $R$ iff $R \subseteq \N{}$ and $R \ne \emptyset$. Since $a-xb \in \Z{}$ and $a-xb > 0$, clearly $R \subset N$ the first condition of the WOP is satisfied. To show that $R \ne \emptyset$, consider the two cases:
+\gcd(k, n) = 1
+$$}
+{}
 
-\textbf{Case 1:} $a \ge 0$. By letting $x = 0$, clearly $a \in R$.
-
-\textbf{Case 2:} $a < 0$. By letting $x = 2a$ and substituting $a-bx = a - b(2a) = a(1-2b)$, we have the product of two negative integers $a$ and $(1-2b)$, when $b > 1$ (which is being claimed), hence $a - bx \in R$.
-
-\vspace{5 pt}
-\noindent
-Because $R \subset \N{}$ and $R \ne \emptyset$, the WOP guarentees that there exists a least element $r = a - bq$.
 }
 
+\subsection{Symmetries}
+A map from the plane to itself preserving the symmetry of an object is called a \textbf{rigid motion}. A \textbf{symmetry} of a rectangle include all the rigid motions of the rectangle: the identity motion, $180^\circ$ rotation, reflection across verticle axis, and reflection across the horizontal axis.
+
+\definition{Symmetry}
+{A \textbf{symmetry} of a geometric figure is a rearrangement of the figure preserving the arrangement of its sides and vertices as well as its distances and angles.}
+
+\newpage
+\subsubsection{Definitions and Examples}
+A \textbf{binary operation} or \textbf{law of composition} on a set $G$ is a function $G \times G \to G$ that assigns to each pair $(a, b) \in G \times G$ a unique element $a \circ b$ or $ab$ in $G$, called the \textit{composition of} $a$ and $b$. 
+\definition{Group}
+{A \textbf{group} $(G, \circ)$ is a set $G$ together with a law of composition $(a,b) \mapsto a \circ b$ that satisfies the following axioms.
+\points
+{The law of composition is \textbf{associative}. That is for all $a,b,c \in G$.
+$$a \circ (b \circ c) = (a \circ b) \circ c$$}
+{There exists an element $e \in G$, called the \textbf{ identity element} in G, such that for any $a \in G$
+$$e \circ a = a \circ e = a$$}
+{For each element $a \in G$, there exists an \textbf{inverse element} in $G$, denoted by $a^{-1}$, such that
+$$a \circ a^{-1} = a^{-1} \circ a = e$$}
+}
+A group $G$ with the property that $a \circ b = b \circ a$ for all $a,b \in G$ is called \textbf{abelian} or \textbf{commutative}. Groups not satisfying this property are said to be \textbf{nonabelian} or \textbf{noncommutative}.
+
+It is often convenient to describe a group in terms of an addition or multiplication table. Such a table is called a \textbf{Cayley table}.
+
+\begin{center}
+\noindent\begin{tabular}{c | c c c c c}
+    + & 0 & 1 & 2 & 3 & 4  \\
+    \cline{1-6}
+    0 & 0 & 1 & 2 & 3 & 4 \\
+    1 & 1 & 2 & 3 & 4 & 0 \\
+    2 & 2 & 3 & 4 & 0 & 1 \\
+    3 & 3 & 4 & 0 & 1 & 2 \\
+    4 & 4 & 0 & 1 & 2 & 3 \\
+\end{tabular}
+
+\vspace{10pt}
+Cayley table for $(\Z{}_5, +)$
+\end{center}
+
+One property of modular multiplication was that every non-zero $[k]_n \in \Z{}_n$ has an inverse in $\Z{}_n$ if $k$ is relatively prime to $n$. \definition{Group of Units}
+{The set of congruence classes in $\Z{}_n$ where the congruence class has a multiplicative inverse in $\Z{}_n$, denoted by $\mathbf{U(n)}$, is called the \textbf{group of units} of $\Z{}_n$.
+
+\begin{center}
+\noindent\begin{tabular}{c | c c c c c}
+    $\cdot$ & 1 & 3 & 5 & 7\\
+    \cline{1-5}
+    1 & 1 & 3 & 5 & 7 \\
+    3 & 3 & 1 & 7 & 5 \\
+    5 & 5 & 7 & 1 & 3 \\
+    7 & 7 & 5 & 3 & 1 \\
+\end{tabular}
+
+\vspace{10pt}
+Cayley table for $U(8)$.
+\end{center}
+}
+
+The \textbf{order} of a finite group is the number of elements that it contains. A group is \textbf{finite}, or has \textbf{finite order}, if it contains a finite number of elements; otehrwise the group is said to be \textbf{infinite} or to have \textbf{infinite order}.
+
+\newpage
+\subsubsection{Basic Properties of Groups}
+
+\theorem{Unique identity element}
+{The identity element in a group $G$ is unique; that is, there exists only one $e \in G$ such that $e \circ g = g \circ e = g$ for all $g \in G$.}
+{}
+\theorem{Unique inverse for each element}
+{If $g$ is any element in a group $G$, then the inverse of $g$, denoted by $g^{-1}$, is unique.}
+{}
+\theorem{Inverse of a composition is unique}
+{Let $G$ be a group. If $a, b \in G$ then $(ab)^{-1} = b^{-1} a^{-1}$.}
+{}
+\theorem{Inverse undoes inverse}
+{Let $G$ be a group. For any $a \in G, (a^{-1})^{-1} = a$.}
+{}
+
+
+\begin{center}
+\noindent\begin{tabular}{c | c c c c c}
+    + & 0 & 1 & 2 & 3 & 4  \\
+    \cline{1-6}
+    0 & 0 & 1 & 2 & 3 & 4 \\
+    1 & 1 & 2 & 3 & 4 & 0 \\
+    2 & 2 & 3 & 4 & 0 & 1 \\
+    3 & 3 & 4 & 0 & 1 & 2 \\
+    4 & 4 & 0 & 1 & 2 & 3 \\
+\end{tabular}
+
+\vspace{10pt}
+Cayley table for Sudoku.
+\end{center}
 \end{document}
 
 

@@ -285,6 +285,19 @@ Since $\dim \range T < \dim \W$, $\range T$ does not span \W. Therefore, T is no
 \subsection{Matrices}
 
 Suppose $T \in \L{\V}{\W}$ and $\ls vn$ is a basis of $\V$, then the values of $\ls {Tv}{n}$ determine the action of $T$ on any arbitrary vectors in $V$. Matrices became popular for recording the values of the $Tv_j$'s in terms of a basis of $W$.
+\definition{Coefficient Vectors}
+{
+If $\mathcal{B} = (\ls vn)$ is an ordered basis for \V, then for any $u \in \V$, where
+$$
+u = \lc avn
+$$
+the \textbf{coefficient vector} of $u \in V$ is defined to be the element of $\F{n}$,
+$$
+[u]_\mathcal{B} := (\lc an)
+$$
+where the entries of $[u]_\mathcal{B}$ correspond to the coefficients in the unique linear combination of $_\mathcal{B}$ equal to $u$.
+}
+
 
 \definition{Matrix, $A_{j,k}$}
 {
@@ -337,7 +350,6 @@ If $T$ is a linear map from \F{n} to \F{m}, then unless stated otherwise, assume
 
 \example{Matrix of $T \in \L{\F{n}}{\F{m}}$}{If $T \in \L{\F{n}}{\F{m}}$ and you think of elements of \F{m} as columns of numbers, then you can think of the $k^{th}$ column of \M{T} as $T$ applied to the $k^{th}$ standard basis vector of \F{n}. }
 
-\newpage
 \subsubsection{Addition and Scalar Multiplication of Matrices}
 Suppose $S, T \in \L{\V}{\W}$. For the rest of the section, assume \V and \W are finite-dimensional and have a basis chosen for them. 
 
@@ -372,4 +384,45 @@ In the following result, the assumption is that the same bases are used for \M{S
 
 Still assuming that the same bases are used, is the matrix of a scalar times a linear map the same as the scalar times the matrix of the linear map? Again we must provide a definition for scalar multiplication.
 
+\newpage
+\subsection{Isomorphisms}
+Taking coefficient vectors as a map. 
+
+\definition{Coefficient vectors as a map}
+{
+Let $\V$ be a finite-dimensional vector space with $\dim \V = n$. Sending an element of $\V$ to its coefficient vector gives a map
+$$
+C_\mathcal{B} : \V \to \F{n}
+$$
+}
+
+\property{Properties of the coefficient map}
+{
+\points
+{Coefficient vectors are unique; that is$$[u_1]_\mathcal{B} = [u_2]_\mathcal{B} \implies u_1 = u_2$$}
+{Every vector in $\F{n}$ is a coefficient vector, that is $$\forall w \in \F{n}, \exists u \in \V \text{ with } [u]_mathcal{B} = w$$}
+}
+
+\definition{The inverse to $C_\mathcal{B}$}
+{Let $C^{-1}_\mathcal{B}: \F{n} \to V$ be the linear map defined by
+$$
+C^{-1}_\mathcal{B} : (\ls cn) \mapsto \lc cvn 
+$$
+}
+This definition can be generalized as follows
+\definition{Inverse map}
+{The \textbf{inverse} to a linear map $T : V \to W$ is a linear map $$T^{-1} : W \to V$$such that $TT^{-1} = Id_W$ and $T^{-1}T = Id_V$.}
+
+The next definition captures the idea of two vector spaces that are essentially the same, excep for the names fo the elements of the vector space.
+\definition{Isomorphism}
+{A linear map with an inverse is called an \textbf{isomorphism}, or equivalently an \textbf{invertible} linear map.}
+
+The point of isomorphism is that they allow us to translate problems from one vector space to another.
+\theorem{Dimension shows whether vector spaces are isomorphic}
+{Two finite-dimensional vector spaces over \F{} are isomorphic if and only if they have the same dimension}
+{}
+
+\theorem{$\L{V, W}$ and $\F{m,n}$ are isomorphic}
+{Suppose $\ls vn$ is a basis of $\V$ and $\ls wm$ is a basis of $\W$. Then $\M{}$ is an isomorphism between $\L{V,W}$ and $\F{m,n}$.}
+{}
 \end{document}

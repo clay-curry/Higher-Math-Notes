@@ -23,6 +23,16 @@
 % # $ % ^ & _ { } ~ \
 % \# \$ \% \^{} \& \_ \{ \} \~{} \textbackslash{}
 
+%%% Aliases
+\newcommand\R[1]{\text{$\mathbb{R}^{#1}$}}
+\newcommand\F[1]{\text{$\mathbb{F}^{#1}$}}
+\newcommand\C[1]{\text{$\mathbb{C}^{#1}$}}
+\newcommand\Z[1]{\text{$\mathbb{Z}^{#1}$}}
+\newcommand\N[1]{\text{$\mathbb{N}^{#1}$}}
+\renewcommand\P{\text{$\mathcal{P}$}}
+\newcommand\set[1]{\{#1\}}
+\newcommand\ls[2]{#1_1, \ldots, #1_{#2}}
+\renewcommand\S{\mathcal{S}}
 
 %%% PACKAGE SETUP (sectsty) - SECTION TITLE APPEARANCE
 \allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
@@ -110,6 +120,5 @@ Proof:
 }
 \newcommand{\checknextarg}{\@ifnextchar\bgroup{\gobblenextarg}{\end{itemize}}}
 \newcommand{\gobblenextarg}[1]{\item #1\@ifnextchar\bgroup{\gobblenextarg}{\end{itemize}}}
-
 \makeatother
 
