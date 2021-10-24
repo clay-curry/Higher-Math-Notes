@@ -1,0 +1,79 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{clays_notes}
+
+
+\newcommand\A[1]{\text{$A_{#1}$}}
+\newcommand\B[1]{\text{$B_{#1}$}}
+\newcommand\R[1]{\text{$\mathbb{R^{#1}}$}}
+\newcommand\C[1]{\text{$\mathbb{C^{#1}}$}}
+\newcommand\F[1]{\text{$\mathbb{F^{#1}}$}}
+\newcommand\M[1]{\text{$\mathcal{M}(#1)$}}
+\newcommand\V{\text{$V$}}
+\newcommand\U{\text{$U$}}
+\newcommand\W{\text{$W$}}
+\newcommand\0{\text{$\mathbf{0}$}}
+\renewcommand\L[2]{\mathcal{L}(#1,#2)}
+
+
+\newcommand\lc[3]{#1_1 #2_1 + \cdots + #1_{#3} #2_{#3}}
+\newcommand\ls[2]{#1_1, \ldots, #1_{#2}}
+\newcommand\spann[1]{\mathbf{span}(#1)}
+\newcommand\set[1]{\{#1\}}
+\newcommand\poly[1]{\mathcal{P}_{#1}(\C{})}
+\renewcommand\deg{\text{deg }}
+\renewcommand\dim{\text{dim}}
+\renewcommand\null{\text{null }}
+\newcommand\range{\text{range }}
+
+% FONT STYLES
+
+\title{Generalized Eigenvectors}
+\author{Notes by:  \\ Clay Curry}
+\date{}
+
+\begin{document}
+
+\section{Generalized Eigenvectors}
+\subsection{Complexification}
+Recall that a matrix $T$ is diagnolizable if and only if \textbf{the sum of the geometric multiplicities equals the dimension of $\V$.}
+Recall that if there are the maximum number of distinct eigenvalues, then $T$ is diagonalizable.
+\theorem{Enough roots of the characteristic polynomial}
+{If $T$ is diagonalizable; that is,
+$$
+\sum_\lambda \text{geom.multi. of }\lambda = \dim(\V)
+$$
+then
+$$
+\sum_\lambda \text{alg.multi. of }\lambda = \dim(\V)
+$$
+that is, the characteristic polynomial $p_T$ factors as the product of linear terms.
+}{}
+
+If we consider the vector spaces over $\C{}$, we know that any characteristic polynomial factors as the product of linear terms by the Fundamental Theorem of Algebra
+\theorem{Fundamental Theorem of Algebra}
+{Every nonzero complex polynomial $p \in \poly{}$ can be factored, in essentially a unique way, as a product of a constant and linear terms, in the form
+$$
+p(x)=\prod a(x-\lambda)^{\mu(\lambda)}
+$$
+where $a$ is the leading coefficient of $p(x)$ and $\mu(\lambda)$ denotes the algebraic multiplicity of $\lambda$.}{}
+
+These two facts can be combined to show the following
+\theorem{Consequences for multiplicity}
+{If $T: \V \to \V$ is $\C{}$-linear and $\dim_\C{}(\V) < \infty$, then
+$$
+\sum_\lambda \text{alg.multi. of }\lambda = \dim_\C{}(\V)
+$$
+also $T$ is diagonalizable iff for each eigenvalue $\lambda$ of $T$,
+$$
+\text{alg.multi. of }\lambda = \text{geom.multi. of }\lambda
+$$
+
+}{}
+
+
+
+\end{document}

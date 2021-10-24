@@ -45,6 +45,20 @@
 }
 
 \subsection{The Vector Space of Linear Maps}
+In algebra, a homomorphism is a structure-preserving map between two algebraic structures of the same type (such as two groups, two rings, or two vector spaces).
+\definition{Homomorphism}
+{
+Let $A, B$ be two sets equipped with the same structure such that if $\cdot$ binary operation on $A$ and $B$. A \textbf{homomorphic map}, or homomorphism, between $A$ and $B$ is a mapping that is compatible with the operation $\cdot$, that is
+$$
+f(x \cdot y) = f(x) \cdot f(y)
+$$
+Formally, a map $f : A \to B$ preserves an operation $\mu$ of arity $k$, defined both on $A$ and $B$ if
+$$
+f(\mu_A(a_1, \ldots, a_k)) = \mu_B(f(a_1), \ldots, f(a_k))
+$$
+for all elements $a_1, \ldots, a_k \in A$.
+}
+
 \definition{Linear Map}
 {
 A \textbf{linear map} from $V$ to $W$ is a function $T : V \to W$ with the following properies:

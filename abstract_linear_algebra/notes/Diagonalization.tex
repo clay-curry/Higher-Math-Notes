@@ -1,0 +1,123 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{clays_notes}
+
+
+\newcommand\A[1]{\text{$A_{#1}$}}
+\newcommand\B[1]{\text{$\mathcal{B}_{#1}$}}
+\newcommand\R[1]{\text{$\mathbb{R^{#1}}$}}
+\newcommand\C[1]{\text{$\mathbb{C^{#1}}$}}
+\newcommand\F[1]{\text{$\mathbb{F^{#1}}$}}
+\newcommand\M[1]{\text{$\mathcal{M}(#1)$}}
+\newcommand\V{\text{$V$}}
+\newcommand\U{\text{$U$}}
+\newcommand\W{\text{$W$}}
+\newcommand\0{\text{$\mathbf{0}$}}
+\renewcommand\L[2]{\mathcal{L}(#1,#2)}
+
+
+\newcommand\lc[3]{#1_1 #2_1 + \cdots + #1_{#3} #2_{#3}}
+\newcommand\ls[2]{#1_1, \ldots, #1_{#2}}
+\newcommand\spann[1]{\mathbf{span}(#1)}
+\newcommand\set[1]{\{#1\}}
+\newcommand\poly[1]{\mathcal{P}_{#1}(\F{})}
+\renewcommand\deg{\text{deg }}
+\renewcommand\dim{\text{dim }}
+\newcommand\nul{\text{null }}
+\newcommand\range{\text{range }}
+
+% FONT STYLES
+
+\title{Eigenvectors}
+\author{Notes by:  \\ Clay Curry}
+\date{}
+
+\begin{document}
+\setcounter{section}{3}
+\section{Eigentheory and Diagnolization}
+
+In this chapter we develop the tools that will help us \textbf{understand the structure of vector space endomorphisms (linear operators)}, that is, maps from a vector space $\V \to \V$ that preserve the operations of addition and scalar multiplication over some field $\F{}$ that endow structure on $\V$. 
+
+By focusing on certain subspaces, called \textbf{invariant subspaces} of the endomorphism, we will show that these so called \textbf{``eigenspaces"} allow us to create a simpler characterization of endomorphisms on $\V$.
+\definition{Linear Endomorphisms}
+{In the study of linear maps on vector spaces, an \textbf{endomorphism} is a structure preserving map from a vector space to itself, or \textbf{homomorphism} from a vector space to itself. For the rest of the class, we will focus on linear maps from a vector space to itself
+$$T : \V \to \V$$
+These are sometimes called \textbf{linear endomorphisms} of \V.
+}
+\noindent
+Suppose $T$ is a linear endomorphism on $\V$. Notice that if we have a direct sum decomposition of $\V$
+$$
+V = \U_1 \oplus \U_2 \oplus \cdots \oplus \U_m
+$$
+where each $\U_j$ is a proper subspace of $\V$, then to understand the behavior of $T$, we need only to understand the behavior of \textbf{the maps of $T$ restricted to each subspace $\U_j$; each $T |_{\U_j}$}. The reason we can characterize all of $T$ by focusing on each $T |_{\U_j}$ is because any element of $\V$ is described by one unique linear combination of elements in $\U_j$.
+
+
+\note{Notational Shortcuts}
+{\points
+{$\F{}$ denotes $\R{}$ or $\C{}$}
+{$\V$ and $\W$ denote vector spaces over $\F{}$}
+}
+\subsection{Recall:}
+
+\definition{Change of Basis Matrix}
+{For any two bases $\B1,\B2$ of $\V$, the \textbf{change of basis matrix} from $\B1$ to $\B2$ is the matrix $[Id_\V]_{\B2,\B1}$}
+
+\definition{Conjugation of matrices}
+{Let $A, B$ be matrices. The \textbf{conjugation of $A$ by $B$} is the matrix $BAB^{-1}$. Therefore, the matrix of $T$ w.r.t. $\B2$ is the conjugation of the matrix of $T$
+w.r.t. $\B1$ by the change of basis matrix from $\B1$ to $\B2$.}
+
+\definition{Similarity}
+{Two square matrices are \textbf{similar} if one is the conjugation of the other by some invertible matrix.}
+
+\definition{Determinant}
+{If $T: \V \to \V$ is linear and $\dim V < \infty$, the \textbf{determinant} of $T$ is $\det([T]_{\B{},\B{}})$, where $\B{}$ is any choice of basis for $\V$.}
+
+
+\subsection{Invariant Subspaces}
+Notice the above description of $T$ being characterized by $m$ restriction maps $T |_{\U_j}$ on proper subspaces of $\V$ requires $T$ to be an endomorphism on each $\U_j$. The notion of a subspace that is its own codomain under $T$ is sufficiently important to deserve a name.
+
+\definition{Invariant Subspace}
+{Suppose $T$ is a linear endomorphism on $\V$. A subspace $\U$ of $\V$ is called invariant under $T$ if $u \in \U$ implies $Tu \in \U$. That is, $\U$ is said to be an \textbf{invariant subspace of $\V$} if
+$$
+T(\U) \subseteq \U
+$$} 
+
+\noindent
+In other words, $\U$ is invariant under $T$ if $T|_U$ is an endomorphism on $\U$.
+
+Take any $v \in V$ with $v \ne0$ and let $\U$ equal the set of all scalar multiples of $v$. Because $U$ has dimension $1$, if $U$ is invariant under an endomorphism $T$, then $T$ acts as multiplication on $U$, and hence there is a scalar $\lambda \in \F{}$ such that
+\begin{equation} \label{eq:1}
+Tv = \lambda v
+\end{equation}
+
+Equation \ref{eq:1} is important enough that the vectors $v$ and scalars $\lambda$ satisfying it are given special names.
+\definition{Eigenvalue}
+{Suppose $T$ is a linear endomorphism on $\V$. A number $\lambda \in \F{}$ is called an \textbf{eigenvalue} of $T$ if there exists $v \in V$ such that $v \ne 0$ and $Tv = \lambda v$.}
+
+\definition{Eigenvector}
+{Suppose $T$ is an endomorphism on $\V$ and $\lambda \in \F{}$ is an eigenvalue of $T$. A vector $v \in V$ is called an \textbf{eigenvector} of $T$ cooresponding to $\lambda$ if $v \ne 0$ and $Tv = \lambda v$.}
+
+
+\theorem{Equivalent Conditions to be an Eigenvalue}
+{Suppose $\V$ is finite-dimensional, $T$ is an endomorphism on $\V$, and $\lambda \in \F{}$. Then the following are equivalent.
+\points
+{$\lambda$ is an eigenvalue of $T$ with $v$ the cooresponding eigenvector;}
+{$(T - \lambda I_V)$ is not injective and $v \in \ker{(T - \lambda I_V)}$;}
+{$(T - \lambda I_V)$ is not surjective;}
+{$(T - \lambda I_V)$ is not invertable;}
+Therefore, the eigenvectors of $T$ with eigenvalue $\lambda$ are the non-zero vectors in $\ker{(T-\lambda I_V)}$}{}
+
+The eigenvectors associated with a particular eigenvalue is important enough that the set of all vectors associated with a particular eigenvalues is given a special name.
+\definition{Eigenspace}
+{Let $T$ be an endomorphism on $\V$ and $\lambda \in \F{}$. The $\mathbf{\lambda}$\textbf{-eigenspace of }$\mathbf{T}$ is
+$$
+\ker(T-\lambda I_V)
+$$ 
+}
+
+\subsection{Characteristic Polynomials}
+
+\end{document}
