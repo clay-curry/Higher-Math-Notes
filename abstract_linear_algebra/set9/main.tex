@@ -1,0 +1,272 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	12pt, % Default font size, values between 10pt-12pt are allowed
+	%letterpaper, % Uncomment for US letter paper size
+]{fphw}
+
+% Template-specific packages
+\usepackage{enumerate} % To modify the enumerate environment
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+%----------------------------------------------------------------------------------------
+%	MY SHORTCUTS
+%----------------------------------------------------------------------------------------
+
+\newcommand\br{\vspace{10 pt}}
+\newcommand\0{\mathbf{0}}
+\newcommand\set[1]{\{#1\}}
+\newcommand\qed{\text{$\blacksquare$}}
+\newcommand\R[1]{\text{$\mathbb{R}^{#1}$}}
+\newcommand\C[1]{\text{$\mathbb{C}^{#1}$}}
+\newcommand\F[1]{\text{$\mathbb{F}^{#1}$}}
+\newcommand\Z{\text{$\mathbb{Z}$}}
+\newcommand\B[1]{\text{$\mathcal{B}_{#1}$}}
+\newcommand\nulll[1]{\text{null($#1$)}}
+\newcommand\N{\text{$\mathbb{N}$}}
+\newcommand\U{\text{$U$ }}
+\newcommand\ls[2]{\text{$#1_1, \ldots, #1_{#2}$}}
+\newcommand\poly[1]{\text{$\mathbb{P}_{#1}(\F{})$}}
+\newcommand\spann[1]{\mathbf{span}(#1)}
+\renewcommand\deg[1]{\textbf{deg$(#1)$}}
+\renewcommand\dim[1]{\mathbf{dim}(#1)}
+\newcommand\lc[3]{#1_1 #2_1 + \cdots + #1_{#3} #2_{#3}}
+\renewcommand\L[1]{\mathcal{L}(#1)}
+\newcommand\tr{\text{tr}}
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Homework \#7} % Assignment title
+\author{Clayton Curry} % Student name
+\date{Oct 10, 2021} % Due date
+\institute{University of Oklahoma \\ Department of Mathematics} % Institute or school name
+\class{Abstract Linear Algebra} % Course or class name
+\professor{Dr. Gregory Muller} % Professor or teacher in charge of the assignment
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\maketitle % Output the assignment title, created automatically using the information in the custom commands above
+
+
+%----------------------------------------------------------------------------------------
+%	Problem 1
+%----------------------------------------------------------------------------------------
+\section*{Problem 1}
+\begin{problem}
+Let $T: \poly{2} \to \poly{2}$ be the linear map defined by
+\begin{equation*}
+T(p(x))=p(1)x^2+p(2)x+p(-1)
+\end{equation*}
+\noindent
+a) Find the trace, determinant, and characteristic polynomial of $T$.\\
+b) Find the eigenvalues of $T$.\\
+c) For each eigenvalue, find an eigenvector of $T$.
+\end{problem}
+
+\subsection*{Answer} For any $\F{}$-linear vector space $V$  and endomorphism $T : V \to V$, the trace and determinant of $T$ can be deduced from the second and last coefficients of the characteristic polynomial $p_T \in \poly{}$ of $T$. The characteristic polynomial $p_T$ may be calculated from the matrix $A_T$ of $T$ w.r.t. the basis $\B{}=(x^2, x, 1)$ of $\poly{2}$.
+\begin{center}
+\begin{minipage}{0.30\textwidth}
+\begin{align*}
+x^2 &\mapsto x^2 + 4 x + 1\\
+x &\mapsto x^2 + 2 x + -1 \\
+1 &\mapsto x^2 + x + 1
+\end{align*}
+\end{minipage}%
+\begin{minipage}{0.05\textwidth}
+$$
+\implies
+$$
+\end{minipage}
+\begin{minipage}{0.30\textwidth}
+$$
+A_T=\begin{bmatrix}
+1 & 1 & 1\\
+4 & 2 & 1\\
+1 & -1 & 1
+\end{bmatrix}
+$$
+\end{minipage}%
+\end{center}
+
+\br
+\noindent
+The characteristic polynomial $p_T$ is defined as the determinant,
+\begin{align*}
+\det(\lambda Id_v - A_T) &= (\lambda - 1)(\lambda - 2)(\lambda - 1) + (-1) + (4) - ((\lambda - 2) + 4(\lambda - 1) + (-1)(\lambda-1))\\
+&= (\lambda - 1)(\lambda - 2)(\lambda - 1) - 3(\lambda - 1) - (\lambda - 2) + 3\\
+&= (\lambda^3 - 4 \lambda^2 + 5 \lambda -2) - (3 \lambda - 3) - (\lambda - 2) + 3\\
+&= \lambda^3 - 4 \lambda^2 + \lambda + 6
+\end{align*}
+
+\br
+\noindent
+a) So tr$(T) = -(-4) = 4$ and $\det(T) = (-1)^3(6) = -6$, and
+$$
+p_T(\lambda) = (\lambda+1)(\lambda-2)(\lambda-3)
+$$
+
+\br
+\noindent
+b) The eigenvalues of $T$ are characterized by the roots of $p_T$, $\set{-1, 2, 3}$
+
+\br
+\noindent
+c) Using elimination to compute bases for the kernels of the linear transformation defined as multiplication by $\lambda Id - A_T$, the vectors in $\poly{2}$ associated with each eigenvalue of $T$ is spanned by the following vectors
+\begin{align*}
+\lambda &= 3 : -x^2-3x+1 & \lambda &= 2 : -x^2-5x+4 & \lambda &= -1 : -x^2+x+1
+\end{align*}
+
+\newpage
+%----------------------------------------------------------------------------------------
+%	Problem 2
+%----------------------------------------------------------------------------------------
+\section*{Problem 2}
+\begin{problem}
+Let $R: \C{3} \to \C{3}$ be the linear map which acts like multiplication by
+\begin{equation*}
+\begin{bmatrix}
+1 & 0 & 2\\
+2 & 1 & 0\\
+0 & 2 & 1
+\end{bmatrix}
+\end{equation*}
+\noindent
+a) Find the trace, determinant, and characteristic polynomial of $R$.\\
+b) Find the eigenvalues of $R$.\\
+c) For each eigenvalue, find an eigenvector of $R$.
+\end{problem}
+
+\subsection*{Answer} .\\
+a) The second-highest and lowest degree coefficients of the characteristic polynomial $p_R$ indicate the trace and determinant of $R$. The characteristic polynomial of $R$ is defined as the determinant,
+\begin{equation*}
+\det(\lambda Id_v - [R]_{\B{}\B{}}) = (\lambda - 1)^3 + 2^3 = \lambda^3 - 3 \lambda^2 +3 \lambda - 9
+\end{equation*}
+So tr$(R) = 3$ and $\det(R) = 9$, and
+$$
+p_R(\lambda) = \lambda^3 - 3 \lambda^2 + 3 \lambda - 9 = (\lambda - 3)(\lambda - i \sqrt{3})(\lambda + i \sqrt{3})
+$$
+b) The eigenvalues of $R$ are the roots of $p_R(\lambda) : \set{3, i\sqrt{3}, -i \sqrt{3}}$.\\
+c) Using elimination to compute bases for the kernels of the linear transformation defined as multiplication by $\lambda Id - A_T$, the vectors in $\poly{2}$ associated with each eigenvalue of $T$ is spanned by the following vectors
+\begin{align*}
+\lambda = 3 &: (1,1,1)\\
+\lambda = i\sqrt{3} &: (-1-i \sqrt 3, -1 + i \sqrt 3, 2)\\
+\lambda = -i\sqrt{3} &: (-1+i \sqrt 3, -1 - i \sqrt 3, 2)
+\end{align*}
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	Problem 3
+%----------------------------------------------------------------------------------------
+\section*{Problem 3}
+\begin{problem}
+Let $\dim{V} < \infty$ and let $P: V \to V$ be an \textbf{idempotent} linear map; that is, $P^2 = P$. Assuming we know that $P$ is not the zero map nor the identity map, find the minimal polynomial of $P$.
+\end{problem}
+
+\subsection*{Answer} Let $\dim V = n$. Since $P$ is idempotent, $P = P^2$, so $P(P - Id) = 0$.
+$$
+\det P(P - Id) = 0
+$$
+
+the Cayley-Hamilton Theorem implies $p_P$ has the property,
+$$
+p_P(P) = p_P(P^2) = 0
+$$
+
+Since any matrix of a linear map on $V$ must have exactly $n$ entries along the diagonal,
+\begin{align*}
+p_P(P) &= P^n + a_{n-1} P^{n-1} + \cdots + a_2 P^2 + a_1 P^1 + a_0 P^0\\
+ &= P^n - \tr (P) P^{n-1} +\cdots + a_1 P^1  + (-1)^n \det (P) Id\\
+ &= P - \tr (P) P +\cdots + a_1 P  + (-1)^n \det (P) Id\\
+ &= P(-\tr(P)Id + \cdots + a_1) + (-1)^n \det(P) Id
+\end{align*}
+
+\newpage 
+%----------------------------------------------------------------------------------------
+%	Problem 4
+%----------------------------------------------------------------------------------------
+\section*{Problem 4}
+\begin{problem}
+Let $T : V \to V$ be an invertible linear map with $\dim{V} < \infty$.
+
+\br
+\noindent
+a) Show that the characteristic polynomial of $T^{-1}$ is
+\begin{equation*}
+\frac{1}{p_T(0)}x^{\dim{V}}p_T(x^{-1})
+\end{equation*}
+
+\noindent
+b) Show that there is a polynomial $p(x)$ with $p(T) =T^{-1}$.
+\end{problem}
+
+\subsection*{Answer} $T$ invertible $\implies$ ker($T$) = $0 \implies Tv = 0$ only if $v = 0 \implies 0$ is not an eigenvalue of $T \implies 0$ is not a root of $p_T \implies 1/{p_T(0)}$ exists.
+
+%----------------------------------------------------------------------------------------
+%	Problem 5
+%----------------------------------------------------------------------------------------
+\newpage
+\section*{Problem 5}
+\begin{problem}
+Goal: show that the eigenvalues of a linear transformation are always roots of the minimal polynomial.
+
+\br
+\noindent
+Let $T : V \to V$ be a linear map with $\dim{V} < \infty$.
+
+\br
+\noindent
+a) Let $v$ be an eigenvector of $T$ with eigenvalue $\lambda$. Show that, for every polynomial $p(x)$,
+\begin{equation*}
+p(T)v = p(\lambda)v
+\end{equation*}
+
+\br
+\noindent
+b) Show that every eigenvalue is a root of the minimal polynomial of $T$.
+
+\br
+\noindent
+c) Show that, if $T$ has $\dim{V}$-many distinct eigenvalues $\ls{\lambda}{\dim{V}}$, then the characteristic polynomial of $T$ equals the minimal polynomial of $T$.
+
+
+\end{problem}
+
+\subsection*{Answer} .\\
+a) If $v$ is an eigenvector of $T$ with eigenvalue $\lambda$. Then
+\begin{align*}
+p(T)v &= (a_m T^m + a_{m-1} T^{m-1} + \cdots + a_1 T^1 + a_0 T^0)v \\
+&= a_m T^m v + a_{m-1} T^{m-1} v + \cdots + a_1 T^1 v + a_0 T^0 v \\
+&= a_m \lambda^m v + a_{m-1} \lambda^{m-1} v + \cdots + a_1 \lambda^1 v + a_0 \lambda^0 v \\
+&= (a_m \lambda^m + a_{m-1} \lambda^{m-1} + \cdots + a_1 \lambda^1 + a_0 \lambda^0) v \\
+&= p(\lambda) v
+\end{align*}
+
+\noindent
+b) Let $\mu_T$ denote the minimal polynomial of $T$, $\lambda_i$ denote the $i$'th eigenvalue of $T$, and $v_i \in V$ be the non-zero eigenvector associated with $\lambda_i$. 
+
+\br
+\noindent
+Since $\mu(T) v_i = \mu (\lambda_i) v_i = 0$, we have two cases $\mu(\lambda_i) = 0$ or $v_i = 0$, but we assumed $v_i$ is a non-zero eigenvector, so $\lambda_i$ must be a root of $\mu$. Since $i$ is arbitrary, all eigenvalues of $T$ are roots of the minimal polynomial of $T$.
+
+\br
+\noindent
+c) Let $\mu_T$ denote the minimal polynomial of $T$. Since the set of eigenvalues of $T, \lambda_1, \lambda_2, \ldots, \lambda_{\dim{V}}$ are the of roots of $\mu_T$ and $p_T$, we can factorize $\mu_T$ into the map defined by
+$$
+\mu_T(z) = q(z)(z-\lambda_1)(z-\lambda_2)\cdots(z-\lambda_{\dim{V}})
+$$
+and $p_T$ into the map defined by
+$$
+p_T(z) = r(z)(z-\lambda_1)(z-\lambda_2)\cdots(z-\lambda_{\dim{V}})
+$$
+Since $\deg{\mu_T} \le \deg{p_T} = \dim{V}$ and $\mu_T$ and $p_T$ is monic, the above factors $q(z) = r(z) = (-1)^{\dim{V}}$. Therefore, when $T$ has $\dim{V}$ distinct eigenvalues, $\mu_T = p_T$.
+\newpage
+
+\end{document}
